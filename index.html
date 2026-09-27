@@ -18,7 +18,7 @@
       --saffron-fire: #ff6600;
       --saffron-amber: #ff9900;
       --bg-darkness: #050302;
-      --card-glass: rgba(18, 11, 5, 0.94);
+      --card-glass: rgba(18, 11, 5, 0.95);
       --font-hindi: 'Tiro Devanagari Hindi', serif;
       --font-title: 'Yatra One', cursive;
       --font-ancient: 'Cinzel', serif;
@@ -41,24 +41,16 @@
       perspective: 1000px;
     }
 
-    /* 1. CINEMATIC CANVASES (Zero Interaction Blocking) */
-    #divineCanvas {
+    /* 1. CINEMATIC CANVASES */
+    #divineCanvas, #particleCanvas {
       position: fixed;
       inset: 0;
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 1;
     }
-
-    #particleCanvas {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 150;
-    }
+    #divineCanvas { z-index: 1; }
+    #particleCanvas { z-index: 250; }
 
     /* 2. SACRED HEADER */
     header {
@@ -204,15 +196,14 @@
     /* 4. REAL 3D-STYLED NARADMUNI AVATAR */
     #naradEntity {
       position: fixed;
-      width: 82px;
-      height: 82px;
+      width: 78px;
+      height: 78px;
       z-index: 5000;
       cursor: pointer;
       touch-action: none;
       filter: drop-shadow(0 0 18px rgba(255, 140, 0, 0.95));
       transform: translate3d(16px, 150px, 0);
       will-change: transform;
-      transition: filter 0.2s ease;
     }
 
     .narad-svg-art {
@@ -223,7 +214,7 @@
 
     @keyframes levitateFloat {
       0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-8px) scale(1.03); }
+      50% { transform: translateY(-7px) scale(1.02); }
     }
 
     .narad-bubble {
@@ -257,15 +248,15 @@
       border-radius: 50%;
       border: 3px solid var(--gold-pure);
       box-shadow: 0 0 50px var(--gold-pure), inset 0 0 35px var(--saffron-fire);
-      animation: portalExpand 0.7s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+      animation: portalExpand 0.65s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
     }
 
     @keyframes portalExpand {
       0% { width: 10px; height: 10px; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-      100% { width: 700px; height: 700px; opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
+      100% { width: 650px; height: 650px; opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
     }
 
-    /* 5. FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap Anywhere or ✕ to Dismiss) */
+    /* 5. FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap anywhere to dismiss) */
     .milestone-blur-curtain {
       position: fixed;
       inset: 0;
@@ -273,21 +264,16 @@
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       z-index: 20000;
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       padding: 24px;
       opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
       cursor: pointer;
+      transition: opacity 0.3s ease;
     }
-
     .milestone-blur-curtain.active {
       opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
     }
 
     .milestone-holy-card {
@@ -299,7 +285,7 @@
       max-width: 440px;
       width: 100%;
       position: relative;
-      cursor: default;
+      cursor: pointer;
       box-shadow: 0 0 60px rgba(255, 140, 0, 0.8), 0 0 100px rgba(255, 215, 0, 0.4);
       animation: holyPop 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     }
@@ -316,10 +302,10 @@
       background: rgba(60, 30, 10, 0.85);
       border: 1px solid var(--gold-pure);
       color: var(--gold-bright);
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      font-size: 1rem;
+      font-size: 1.1rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -367,10 +353,10 @@
     }
 
     .milestone-dismiss-hint {
-      font-size: 0.74rem;
-      color: #dfcaa7;
+      font-size: 0.76rem;
+      color: #ffd899;
       margin-top: 14px;
-      opacity: 0.8;
+      opacity: 0.85;
     }
 
     /* 6. USER ONBOARDING MODAL */
@@ -380,19 +366,13 @@
       background: rgba(2, 1, 0, 0.94);
       backdrop-filter: blur(18px);
       z-index: 30000;
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
     }
     .onboarding-curtain.active {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
+      display: flex;
     }
 
     .onboarding-card {
@@ -586,10 +566,12 @@
       transform: scale(1.04);
     }
 
-    .tab-section { display: none; }
+    .tab-section {
+      display: none;
+    }
     .tab-section.active {
       display: block;
-      animation: dimensionalWarp 0.4s cubic-bezier(0.18, 0.85, 0.35, 1);
+      animation: dimensionalWarp 0.35s cubic-bezier(0.18, 0.85, 0.35, 1);
     }
 
     @keyframes dimensionalWarp {
@@ -660,21 +642,18 @@
     .chat-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.88);
+      background: rgba(0,0,0,0.85);
       backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       z-index: 10000;
-      display: flex;
+      display: none;
       justify-content: center;
       align-items: flex-end;
       opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.35s ease, visibility 0.35s ease;
+      transition: opacity 0.3s ease;
     }
     .chat-backdrop.active {
       opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
     }
 
     .chat-frame {
@@ -782,9 +761,9 @@
     </div>
   </div>
 
-  <!-- FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap anywhere to close) -->
+  <!-- FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap anywhere to dismiss) -->
   <div class="milestone-blur-curtain" id="milestoneCurtain" onclick="closeMilestoneModal()">
-    <div class="milestone-holy-card" onclick="event.stopPropagation()">
+    <div class="milestone-holy-card" onclick="closeMilestoneModal()">
       <button class="milestone-close-btn" onclick="closeMilestoneModal()">✕</button>
       <div style="font-size: 2.2rem; margin-bottom: 4px;">🌸 ॐ 🌸</div>
       <h2 id="milestoneTitle">१०८ दिव्य नाम पूर्ण!</h2>
@@ -909,7 +888,7 @@
       <button class="nav-btn" onclick="switchCategory('katha-view', this)">अमर कथाएं</button>
     </div>
 
-    <!-- 1. GITA -->
+    <!-- 1. GITA SECTION -->
     <div id="gita-view" class="tab-section active">
       <div class="verse-card">
         <span class="verse-badge">अध्याय २ • श्लोक ४७ • निष्काम कर्म</span>
@@ -938,6 +917,22 @@
         </div>
         <p class="meaning-box">
           <strong>गूढ़ भावार्थ:</strong> जब-जब धर्म की हानि और अधर्म का उत्थान होता है, तब-तब मैं स्वयं को प्रकट करता हूँ। सज्जनों की रक्षा, दुष्टों के संहार और धर्म की पुनर्स्थापना के लिए मैं प्रत्येक युग में अवतरित होता हूँ।
+        </p>
+        <div class="card-footer-actions">
+          <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
+          <button class="util-btn" onclick="shareWhatsApp(this)">🟢 WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="verse-card">
+        <span class="verse-badge">अध्याय २ • श्लोक ५६ • स्थितप्रज्ञ लक्षण</span>
+        <h2>दुःखेष्वनुद्विग्नमनाः</h2>
+        <div class="sanskrit-box">
+          दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः।<br>
+          वीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते॥
+        </div>
+        <p class="meaning-box">
+          <strong>गूढ़ भावार्थ:</strong> दुःखों की प्राप्ति होने पर जिसके मन में उद्वेग नहीं होता, सुखों की प्राप्ति में जो सर्वथा निःस्पृह है, तथा जिसके राग, भय और क्रोध नष्ट हो चुके हैं—ऐसा मुनि 'स्थितप्रज्ञ' कहा जाता है।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -1150,7 +1145,7 @@
   </div>
 
   <script>
-    // 1. SAFE STORAGE WRAPPER (Brave/Incognito Shield-Proof)
+    // 1. SAFE STORAGE WRAPPER (Shield-Proof)
     const SafeStorage = {
       get: (key, fallback = '') => {
         try {
@@ -1279,7 +1274,9 @@
 
     function checkUserOnboarding() {
       if (!userName) {
-        document.getElementById('onboardingModal').classList.add('active');
+        const modal = document.getElementById('onboardingModal');
+        modal.style.display = 'flex';
+        modal.classList.add('active');
       } else {
         updateUserUI();
       }
@@ -1294,7 +1291,9 @@
       }
       userName = val;
       SafeStorage.set('SANATAN_USER_NAME', userName);
-      document.getElementById('onboardingModal').classList.remove('active');
+      const modal = document.getElementById('onboardingModal');
+      modal.classList.remove('active');
+      modal.style.display = 'none';
       playCalmMalaSound();
       updateUserUI();
     }
@@ -1331,7 +1330,7 @@
       }
     }
 
-    // 5. 108 MILESTONE CELEBRATION
+    // 5. 108 MILESTONE CELEBRATION (DISMISS ON TAP ANYWHERE OR ✕)
     const milestoneHolyShloks = [
       {
         shlok: "कलयुग केवल नाम अधारा।<br>सुमिरि सुमिरि नर उतरहिं पारा॥",
@@ -1354,7 +1353,6 @@
       const curtain = document.getElementById('milestoneCurtain');
       const malas = Math.floor(dailyJaap / 108);
       const rank = getSpiritualRank(dailyJaap);
-
       const shlokData = milestoneHolyShloks[(malas - 1) % milestoneHolyShloks.length];
 
       document.getElementById('milestoneTitle').innerText = '🌸 ' + malas + ' माला पूर्ण! (' + dailyJaap + ' जाप) 🌸';
@@ -1362,48 +1360,118 @@
       document.getElementById('milestoneShlok').innerHTML = shlokData.shlok;
       document.getElementById('milestoneMeaning').innerText = shlokData.meaning;
 
+      curtain.style.display = 'flex';
+      void curtain.offsetWidth;
       curtain.classList.add('active');
 
-      for (let i = 0; i < 40; i++) {
+      for (let i = 0; i < 35; i++) {
         sparks.push(new Sparkle(window.innerWidth / 2, window.innerHeight / 2));
       }
 
       clearTimeout(milestoneTimer);
       milestoneTimer = setTimeout(() => {
         closeMilestoneModal();
-      }, 5500);
+      }, 6000);
     }
 
     function closeMilestoneModal() {
       const curtain = document.getElementById('milestoneCurtain');
       curtain.classList.remove('active');
       clearTimeout(milestoneTimer);
+      setTimeout(() => {
+        curtain.style.display = 'none';
+      }, 250);
     }
 
-    // 6. NAAM JAAP & SMOOTH TOUCH ENGINE
-    const holyWords = ["राम राम", "जय श्री राम", "ॐ नमः शिवाय", "हरि ॐ", "नारायण", "श्री कृष्ण"];
-    const holyColors = ["#ffd700", "#ff6a00", "#ff1e56", "#00f0ff", "#ffe680"];
-    const jaapOrb = document.getElementById('jaapOrb');
+    // 6. GESTURE-SAFE TAP VS SCROLL ENGINE (ZERO ACCIDENTAL JAAP)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartTime = 0;
+    let isScrollGesture = false;
+
+    window.addEventListener('touchstart', (e) => {
+      if (e.touches.length > 1) {
+        isScrollGesture = true;
+        return;
+      }
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
+      isScrollGesture = false;
+    }, { passive: true });
+
+    window.addEventListener('touchmove', (e) => {
+      const dx = Math.abs(e.touches[0].clientX - touchStartX);
+      const dy = Math.abs(e.touches[0].clientY - touchStartY);
+      // Distance threshold: if finger moves > 8px, it is a scroll/drag
+      if (dx > 8 || dy > 8) {
+        isScrollGesture = true;
+      }
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      if (isScrollGesture) return;
+      const timeElapsed = Date.now() - touchStartTime;
+      if (timeElapsed > 550) return; // Ignore long presses
+
+      const touch = e.changedTouches[0];
+      const target = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (!target) return;
+
+      // Filter out all non-jaap targets
+      if (
+        document.getElementById('onboardingModal').classList.contains('active') ||
+        document.getElementById('milestoneCurtain').classList.contains('active') ||
+        document.getElementById('naradBackdrop').classList.contains('active') ||
+        target.closest('#naradEntity') || 
+        target.closest('header') ||
+        target.closest('.jaap-hud-bar') ||
+        target.closest('.search-sanctum') ||
+        target.closest('.tag-cluster') ||
+        target.closest('.nav-tabs-wrapper') ||
+        target.closest('.card-footer-actions') ||
+        target.closest('input') || 
+        target.closest('button') ||
+        target.closest('a')
+      ) {
+        return;
+      }
+
+      triggerJaap(touch.clientX, touch.clientY);
+    });
+
+    // Support Desktop Clicks
+    window.addEventListener('click', (e) => {
+      if ('ontouchstart' in window) return;
+      const target = e.target;
+      if (
+        document.getElementById('onboardingModal').classList.contains('active') ||
+        document.getElementById('milestoneCurtain').classList.contains('active') ||
+        document.getElementById('naradBackdrop').classList.contains('active') ||
+        target.closest('#naradEntity') || 
+        target.closest('header') ||
+        target.closest('.jaap-hud-bar') ||
+        target.closest('.search-sanctum') ||
+        target.closest('.tag-cluster') ||
+        target.closest('.nav-tabs-wrapper') ||
+        target.closest('.card-footer-actions') ||
+        target.closest('input') || 
+        target.closest('button') ||
+        target.closest('a')
+      ) {
+        return;
+      }
+      triggerJaap(e.clientX, e.clientY);
+    });
 
     function handleManualJaap() {
       const rect = jaapOrb.getBoundingClientRect();
       triggerJaap(rect.left + rect.width / 2, rect.top + 80);
     }
 
-    window.addEventListener('pointerdown', (e) => {
-      if (document.getElementById('onboardingModal').classList.contains('active') ||
-          document.getElementById('milestoneCurtain').classList.contains('active') ||
-          document.getElementById('naradBackdrop').classList.contains('active') ||
-          e.target.closest('#naradEntity') || 
-          e.target.closest('header') ||
-          e.target.closest('.jaap-hud-bar') ||
-          e.target.closest('.nav-tabs-wrapper') ||
-          e.target.closest('.verse-card') ||
-          e.target.closest('input') || 
-          e.target.closest('button')) return;
-
-      triggerJaap(e.clientX, e.clientY);
-    }, { passive: true });
+    const holyWords = ["राम राम", "जय श्री राम", "ॐ नमः शिवाय", "हरि ॐ", "नारायण", "श्री कृष्ण"];
+    const holyColors = ["#ffd700", "#ff6a00", "#ff1e56", "#00f0ff", "#ffe680"];
+    const jaapOrb = document.getElementById('jaapOrb');
 
     function triggerJaap(x, y) {
       dailyJaap++;
@@ -1416,13 +1484,13 @@
       playCalmMalaSound();
 
       if (navigator.vibrate) {
-        navigator.vibrate(10);
+        navigator.vibrate(12);
       }
 
-      for (let i = 0; i < 10; i++) sparks.push(new Sparkle(x, y));
+      for (let i = 0; i < 9; i++) sparks.push(new Sparkle(x, y));
 
       jaapOrb.classList.add('pulse-burst');
-      setTimeout(() => jaapOrb.classList.remove('pulse-burst'), 140);
+      setTimeout(() => jaapOrb.classList.remove('pulse-burst'), 130);
 
       const span = document.createElement('span');
       span.className = 'divine-float-text';
@@ -1440,7 +1508,7 @@
       }
     }
 
-    // 7. SMART PERIPHERY ROAMING FOR NARADMUNI (Avoids blocking text)
+    // 7. SMART PERIPHERY ROAMING FOR NARADMUNI (Avoids blocking center text)
     const naradWrap = document.getElementById('naradEntity');
     let pX = 16, pY = 150, targetX = pX, targetY = pY, isNaradRoaming = true;
 
@@ -1449,11 +1517,12 @@
       const w = window.innerWidth;
       const h = window.innerHeight;
 
+      // Stay exclusively on Left strip or Right strip
       const preferRight = Math.random() > 0.5;
       if (preferRight) {
-        targetX = Math.max(10, w - 95 - Math.random() * 20);
+        targetX = Math.max(10, w - 90 - Math.random() * 15);
       } else {
-        targetX = 10 + Math.random() * 25;
+        targetX = 10 + Math.random() * 20;
       }
       targetY = 140 + Math.random() * (h - 260);
     }
@@ -1475,10 +1544,10 @@
       requestAnimationFrame(roamLoop);
     }
     pickSmartPeripheryWaypoint();
-    setInterval(pickSmartPeripheryWaypoint, 5000);
+    setInterval(pickSmartPeripheryWaypoint, 4800);
     roamLoop();
 
-    // 8. BACKGROUND ENGINE (Dual Chakras & Rays)
+    // 8. BACKGROUND ENGINE (Dual Chakras & Radiant Rays)
     const bgCanvas = document.getElementById('divineCanvas');
     const bgCtx = bgCanvas.getContext('2d');
     function resizeBgCanvas() { bgCanvas.width = window.innerWidth; bgCanvas.height = window.innerHeight; }
@@ -1592,14 +1661,24 @@
     }
     loopSparks();
 
-    // 10. CATEGORY SWITCH WITH SOUND & SEARCH
+    // 10. CATEGORY SWITCH WITH AUDIO & SEARCH
     function switchCategory(catId, btnElement) {
       playTabSound();
-      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.tab-section').forEach(sec => {
+        sec.classList.remove('active');
+        sec.style.display = 'none';
+      });
       document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
       const targetSec = document.getElementById(catId);
-      if (targetSec) targetSec.classList.add('active');
-      if (btnElement) btnElement.classList.add('active');
+      if (targetSec) {
+        targetSec.style.display = 'block';
+        targetSec.classList.add('active');
+      }
+      if (btnElement) {
+        btnElement.classList.add('active');
+      }
+      executeSearch();
     }
 
     function executeSearch() {
@@ -1633,7 +1712,7 @@
       window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
     }
 
-    // Daily Wisdom
+    // Daily Wisdom Engine
     const dailyScriptures = [
       {
         title: "कर्मण्येवाधिकारस्ते (गीता २.४७)",
@@ -1668,39 +1747,55 @@
       window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
     }
 
-    // 11. NARAD TAP PORTAL SHOCKWAVE & AI SAMVAAD
+    // 11. NARAD TAP PORTAL SHOCKWAVE & AI SAMVAAD MODAL
     function handleNaradClick(e) {
-      e.stopPropagation();
-
-      // Golden Shockwave Animation
-      const shockwave = document.createElement('div');
-      shockwave.className = 'golden-portal-shockwave';
-      shockwave.style.left = e.clientX + 'px';
-      shockwave.style.top = e.clientY + 'px';
-      document.body.appendChild(shockwave);
-      setTimeout(() => shockwave.remove(), 750);
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
 
       playSingingBowlBell();
+
+      // Trigger Golden Aura Shockwave
+      const rect = naradWrap.getBoundingClientRect();
+      const wave = document.createElement('div');
+      wave.className = 'golden-portal-shockwave';
+      wave.style.left = (rect.left + rect.width / 2) + 'px';
+      wave.style.top = (rect.top + rect.height / 2) + 'px';
+      document.body.appendChild(wave);
+      setTimeout(() => wave.remove(), 700);
 
       // Open AI Chat with smooth divine transition
       setTimeout(() => {
         openNaradWindow();
-      }, 250);
+      }, 200);
     }
 
     function openNaradWindow() {
       isNaradRoaming = false;
-      document.getElementById('naradBackdrop').classList.add('active');
-      setTimeout(() => document.getElementById('userQueryInput').focus(), 250);
+      const backdrop = document.getElementById('naradBackdrop');
+      backdrop.style.display = 'flex';
+      void backdrop.offsetWidth;
+      backdrop.classList.add('active');
+      setTimeout(() => {
+        const input = document.getElementById('userQueryInput');
+        if (input) input.focus();
+      }, 150);
     }
 
     function closeNaradWindow() {
-      document.getElementById('naradBackdrop').classList.remove('active');
-      isNaradRoaming = true;
+      const backdrop = document.getElementById('naradBackdrop');
+      backdrop.classList.remove('active');
+      setTimeout(() => {
+        backdrop.style.display = 'none';
+        isNaradRoaming = true;
+      }, 300);
     }
 
     function handleBackdropClick(e) {
-      closeNaradWindow();
+      if (e.target.id === 'naradBackdrop') {
+        closeNaradWindow();
+      }
     }
 
     async function executeNaradChat() {
