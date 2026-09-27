@@ -18,7 +18,7 @@
       --saffron-fire: #ff6600;
       --saffron-amber: #ff9900;
       --bg-darkness: #050302;
-      --card-glass: rgba(18, 11, 5, 0.92);
+      --card-glass: rgba(18, 11, 5, 0.94);
       --font-hindi: 'Tiro Devanagari Hindi', serif;
       --font-title: 'Yatra One', cursive;
       --font-ancient: 'Cinzel', serif;
@@ -38,10 +38,10 @@
       font-family: var(--font-hindi);
       min-height: 100vh;
       overflow-x: hidden;
-      perspective: 1200px;
+      perspective: 1000px;
     }
 
-    /* 1. CINEMATIC CANVASES */
+    /* 1. CINEMATIC CANVASES (Zero Interaction Blocking) */
     #divineCanvas {
       position: fixed;
       inset: 0;
@@ -57,7 +57,7 @@
       width: 100%;
       height: 100%;
       pointer-events: none;
-      z-index: 250;
+      z-index: 150;
     }
 
     /* 2. SACRED HEADER */
@@ -201,24 +201,29 @@
       cursor: pointer;
     }
 
-    /* 4. REAL 3D PROCEDURAL NARADMUNI AVATAR */
+    /* 4. REAL 3D-STYLED NARADMUNI AVATAR */
     #naradEntity {
       position: fixed;
-      width: 84px;
-      height: 84px;
+      width: 82px;
+      height: 82px;
       z-index: 5000;
       cursor: pointer;
       touch-action: none;
       filter: drop-shadow(0 0 18px rgba(255, 140, 0, 0.95));
-      transform: translate3d(20px, 160px, 0);
+      transform: translate3d(16px, 150px, 0);
       will-change: transform;
+      transition: filter 0.2s ease;
     }
 
-    #narad3DCanvas {
+    .narad-svg-art {
       width: 100%;
       height: 100%;
-      display: block;
-      pointer-events: none;
+      animation: levitateFloat 3s infinite ease-in-out;
+    }
+
+    @keyframes levitateFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-8px) scale(1.03); }
     }
 
     .narad-bubble {
@@ -244,23 +249,23 @@
       50% { transform: translate3d(-50%, -5px, 0); }
     }
 
-    /* Divine Portal Shockwave Effect for Narad muni tap */
-    .portal-shockwave {
+    /* Divine Aura Shockwave on Narad Tap */
+    .golden-portal-shockwave {
       position: fixed;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 15000;
       border-radius: 50%;
       border: 3px solid var(--gold-pure);
-      box-shadow: 0 0 40px var(--gold-pure), inset 0 0 30px var(--saffron-fire);
-      animation: portalExpand 0.65s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
+      box-shadow: 0 0 50px var(--gold-pure), inset 0 0 35px var(--saffron-fire);
+      animation: portalExpand 0.7s cubic-bezier(0.1, 0.8, 0.2, 1) forwards;
     }
 
     @keyframes portalExpand {
       0% { width: 10px; height: 10px; opacity: 1; transform: translate(-50%, -50%) scale(1); }
-      100% { width: 600px; height: 600px; opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
+      100% { width: 700px; height: 700px; opacity: 0; transform: translate(-50%, -50%) scale(1.6); }
     }
 
-    /* 5. FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap anywhere to close + Cross Icon) */
+    /* 5. FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap Anywhere or ✕ to Dismiss) */
     .milestone-blur-curtain {
       position: fixed;
       inset: 0;
@@ -268,18 +273,21 @@
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       z-index: 20000;
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: center;
       padding: 24px;
       opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
       cursor: pointer;
-      transition: opacity 0.35s ease;
     }
 
     .milestone-blur-curtain.active {
-      display: flex;
       opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .milestone-holy-card {
@@ -293,7 +301,7 @@
       position: relative;
       cursor: default;
       box-shadow: 0 0 60px rgba(255, 140, 0, 0.8), 0 0 100px rgba(255, 215, 0, 0.4);
-      animation: holyPop 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      animation: holyPop 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28);
     }
 
     @keyframes holyPop {
@@ -372,12 +380,20 @@
       background: rgba(2, 1, 0, 0.94);
       backdrop-filter: blur(18px);
       z-index: 30000;
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
     }
-    .onboarding-curtain.active { display: flex; }
+    .onboarding-curtain.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
 
     .onboarding-card {
       background: #140c06;
@@ -445,7 +461,7 @@
       100% { opacity: 0; transform: translate3d(-50%, -120px, 0) scale(0.85); }
     }
 
-    /* 8. 3D COSMIC DIMENSIONAL VIEWPORT & CARDS (Bhavya Visuals) */
+    /* 8. 3D COSMIC DIMENSIONAL VIEWPORT & CARDS */
     .app-viewport {
       position: relative;
       z-index: 10;
@@ -467,11 +483,11 @@
       position: relative;
       overflow: hidden;
       transform: translateZ(0);
-      transition: transform 0.3s cubic-bezier(0.18, 0.85, 0.35, 1), box-shadow 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.18, 0.85, 0.35, 1), box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
     .verse-card:hover {
-      transform: translateY(-4px) rotateX(1.5deg) scale(1.008);
+      transform: translateY(-4px) scale(1.008);
       box-shadow: 0 18px 45px rgba(255, 140, 0, 0.25), 0 0 25px rgba(255, 215, 0, 0.3);
       border-color: var(--gold-pure);
     }
@@ -573,12 +589,12 @@
     .tab-section { display: none; }
     .tab-section.active {
       display: block;
-      animation: dimensionalWarp 0.45s cubic-bezier(0.18, 0.85, 0.35, 1);
+      animation: dimensionalWarp 0.4s cubic-bezier(0.18, 0.85, 0.35, 1);
     }
 
     @keyframes dimensionalWarp {
-      from { opacity: 0; transform: perspective(800px) rotateX(4deg) translateY(14px) scale(0.98); }
-      to { opacity: 1; transform: perspective(800px) rotateX(0deg) translateY(0) scale(1); }
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     /* Search & Topics */
@@ -645,13 +661,21 @@
       position: fixed;
       inset: 0;
       background: rgba(0,0,0,0.88);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(14px);
       z-index: 10000;
-      display: none;
+      display: flex;
       justify-content: center;
       align-items: flex-end;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.35s ease, visibility 0.35s ease;
     }
-    .chat-backdrop.active { display: flex; }
+    .chat-backdrop.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
 
     .chat-frame {
       background: #120b06;
@@ -758,8 +782,8 @@
     </div>
   </div>
 
-  <!-- FULLSCREEN CINEMATIC BLUR SHLOK MODAL -->
-  <div class="milestone-blur-curtain" id="milestoneCurtain" onclick="dismissMilestoneModal(event)">
+  <!-- FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap anywhere to close) -->
+  <div class="milestone-blur-curtain" id="milestoneCurtain" onclick="closeMilestoneModal()">
     <div class="milestone-holy-card" onclick="event.stopPropagation()">
       <button class="milestone-close-btn" onclick="closeMilestoneModal()">✕</button>
       <div style="font-size: 2.2rem; margin-bottom: 4px;">🌸 ॐ 🌸</div>
@@ -776,10 +800,50 @@
     </div>
   </div>
 
-  <!-- 3D REAL PROCEDURAL NARADMUNI AVATAR (Edge Floating) -->
+  <!-- REAL 3D-STYLED NARADMUNI AVATAR (Edge Floating) -->
   <div id="naradEntity" onclick="handleNaradClick(event)">
     <div class="narad-bubble" id="naradDialogue">नारायण! नारायण!</div>
-    <canvas id="narad3DCanvas" width="168" height="168"></canvas>
+    <svg class="narad-svg-art" viewBox="0 0 100 100">
+      <defs>
+        <radialGradient id="naradHalo">
+          <stop offset="0%" stop-color="#ffffff" />
+          <stop offset="50%" stop-color="#ffd700" />
+          <stop offset="100%" stop-color="transparent" />
+        </radialGradient>
+      </defs>
+      <!-- Golden Sun Aura -->
+      <circle cx="50" cy="46" r="38" fill="url(#naradHalo)" opacity="0.8" />
+      <g stroke="#ffd700" stroke-width="1.2" opacity="0.6">
+        <line x1="50" y1="6" x2="50" y2="14" />
+        <line x1="50" y1="78" x2="50" y2="86" />
+        <line x1="14" y1="46" x2="22" y2="46" />
+        <line x1="78" y1="46" x2="86" y2="46" />
+        <line x1="24" y1="20" x2="30" y2="26" />
+        <line x1="70" y1="66" x2="76" y2="72" />
+        <line x1="24" y1="72" x2="30" y2="66" />
+        <line x1="70" y1="26" x2="76" y2="20" />
+      </g>
+      <!-- Face & Crown -->
+      <circle cx="50" cy="42" r="20" fill="#ffdfba" stroke="#e0853d" stroke-width="1.4" />
+      <path d="M47,23 Q52,10 65,14 Q55,19 49,24" fill="#2d1c10" />
+      <!-- Tripundra Tilak -->
+      <path d="M47,31 Q50,38 53,31" stroke="#ff9500" stroke-width="1.8" fill="none" />
+      <circle cx="50" cy="35" r="1.4" fill="#cc0000" />
+      <!-- Eyes & Smile -->
+      <circle cx="44" cy="41" r="2.2" fill="#221105" />
+      <circle cx="56" cy="41" r="2.2" fill="#221105" />
+      <path d="M46,48 Q50,53 54,48" stroke="#993d00" stroke-width="1.8" fill="none" stroke-linecap="round" />
+      <!-- Saffron Body -->
+      <path d="M30,62 Q50,56 70,62 L74,90 Q50,94 26,90 Z" fill="#ff6a00" stroke="#b33c00" stroke-width="1.5" />
+      <!-- Veena / Tanpura -->
+      <g transform="rotate(-26 50 68)">
+        <rect x="47" y="36" width="5.5" height="44" rx="2" fill="#8b4513" stroke="#ffd700" stroke-width="0.8" />
+        <circle cx="49.5" cy="80" r="11" fill="#b85c14" stroke="#ffd700" stroke-width="1.2" />
+        <circle cx="49.5" cy="40" r="6" fill="#b85c14" stroke="#ffd700" stroke-width="1" />
+        <line x1="48.5" y1="40" x2="48.5" y2="82" stroke="#fff" stroke-width="0.8" />
+        <line x1="51" y1="40" x2="51" y2="82" stroke="#fff" stroke-width="0.8" />
+      </g>
+    </svg>
   </div>
 
   <!-- HEADER -->
@@ -855,7 +919,7 @@
           मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥
         </div>
         <p class="meaning-box">
-          <strong>गूढ़ भावार्थ:</strong> तुम्हारा अधिकार केवल कर्म करने में है, उसके फल पर कभी नहीं। फल की वासना से प्रेरित होकर कर्म मत करो, और अकर्मण्यता (कर्म न करने) में भी तुम्हारी आसक्ति न हो।
+          <strong>गूढ़ भावार्थ:</strong> तुम्हारा अधिकार केवल कर्तव्य-कर्म करने में है, उसके फल पर कभी नहीं। फल की वासना से प्रेरित होकर कर्म मत करो, और अकर्मण्यता (कर्महीनता) में भी तुम्हारा अनुराग न हो।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -873,7 +937,7 @@
           धर्मसंस्थापनार्थाय संभवामि युगे युगे॥
         </div>
         <p class="meaning-box">
-          <strong>गूढ़ भावार्थ:</strong> जब-जब धर्म की हानि और अधर्म का उत्थान होता है, तब-तब मैं स्वयं को प्रकट करता हूँ। सज्जनों की रक्षा, दुष्टों के संहार और धर्म की पुनर्स्थापना के लिए मैं प्रत्येक युग में प्रकट होता हूँ।
+          <strong>गूढ़ भावार्थ:</strong> जब-जब धर्म की हानि और अधर्म का उत्थान होता है, तब-तब मैं स्वयं को प्रकट करता हूँ। सज्जनों की रक्षा, दुष्टों के संहार और धर्म की पुनर्स्थापना के लिए मैं प्रत्येक युग में अवतरित होता हूँ।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -889,7 +953,23 @@
           अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥
         </div>
         <p class="meaning-box">
-          <strong>गूढ़ भावार्थ:</strong> समस्त सांसारिक धर्मों व आश्रयों को त्याग कर केवल मेरी अनन्य शरण में आ जाओ। मैं तुम्हें समस्त पापों और बंधनों से मुक्त कर दूँगा, तनिक भी शोक मत करो।
+          <strong>गूढ़ भावार्थ:</strong> समस्त सांसारिक आश्रयों को त्याग कर केवल मेरी अनन्य शरण में आ जाओ। मैं तुम्हें समस्त पापों और बंधनों से मुक्त कर दूँगा, तनिक भी शोक मत करो।
+        </p>
+        <div class="card-footer-actions">
+          <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
+          <button class="util-btn" onclick="shareWhatsApp(this)">🟢 WhatsApp</button>
+        </div>
+      </div>
+
+      <div class="verse-card">
+        <span class="verse-badge">अध्याय ९ • श्लोक २२ • योगक्षेम</span>
+        <h2>अनन्याश्चिन्तयन्तो मां</h2>
+        <div class="sanskrit-box">
+          अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।<br>
+          तेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥
+        </div>
+        <p class="meaning-box">
+          <strong>गूढ़ भावार्थ:</strong> जो अनन्य भक्त केवल मेरा ही चिंतन करते हुए निष्काम भाव से मेरी उपासना करते हैं, उनके योग (अप्राप्त की प्राप्ति) और क्षेम (प्राप्त की रक्षा) का वहन मैं स्वयं करता हूँ।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -908,7 +988,7 @@
           भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥
         </div>
         <p class="meaning-box">
-          <strong>गूढ़ भावार्थ:</strong> उस प्राणस्वरूप, दुःखनाशक, सुखस्वरूप, श्रेष्ठ, तेजस्वी और पापनाशक परमात्मा को हम अपनी अन्तरात्मा में धारण करें। वह परमेश्वर हमारी बुद्धि को निरंतर सन्मार्ग पर प्रेरित करे।
+          <strong>गूढ़ भावार्थ:</strong> उस प्राणस्वरूप, दुःखनाशक, सुखस्वरूप, तेजस्वी और पापनाशक परमात्मा को हम अपनी अन्तरात्मा में धारण करें। वह परमेश्वर हमारी बुद्धि को निरंतर सन्मार्ग पर प्रेरित करे।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -924,7 +1004,7 @@
           उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥
         </div>
         <p class="meaning-box">
-          <strong>गूढ़ भावार्थ:</strong> हम त्रिनेत्रधारी देवाधिदेव महादेव शिव की उपासना करते हैं, जो समस्त जगत में सुगन्ध और पुष्टि का विस्तार करते हैं। जिस प्रकार पका खरबूजा बेल से मुक्त होता है, वैसे ही हम मृत्यु व जन्म-मरण के बंधन से मुक्त होकर अमरत्व को प्राप्त हों।
+          <strong>गूढ़ भावार्थ:</strong> हम त्रिनेत्रधारी देवाधिदेव महादेव शिव की उपासना करते हैं, जो समस्त संसार में सुगन्ध और पुष्टि का विस्तार करते हैं। जिस प्रकार पका खरबूजा बेल से मुक्त होता है, वैसे ही हम मृत्यु व जन्म-मरण के बंधन से मुक्त होकर अमरत्व को प्राप्त हों।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -940,7 +1020,7 @@
           तेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम्॥
         </div>
         <p class="meaning-box">
-          <strong>गूढ़ भावार्थ:</strong> इस संपूर्ण चराचर ब्रह्माण्ड में जो कुछ भी गतिमान है, वह सब परमेश्वर से ही ओत-प्रोत है। अतः त्यागभाव से उसका भोग करो, किसी अन्य के धन या वस्तु की लालसा मत करो।
+          <strong>गूढ़ भावार्थ:</strong> इस संपूर्ण चराचर ब्रह्माण्ड में जो कुछ भी गतिमान है, वह सब परमेश्वर से ही व्याप्त है। अतः त्यागभाव से उसका भोग करो, किसी अन्य के धन या वस्तु की लालसा मत करो।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -949,14 +1029,14 @@
       </div>
 
       <div class="verse-card">
-        <span class="verse-badge">माण्डूक्योपनिषद् • प्रणव रहस्य</span>
-        <h2>अयमात्मा ब्रह्म (ॐ)</h2>
+        <span class="verse-badge">बृहदारण्यकोपनिषद् • पावन प्रार्थना</span>
+        <h2>असतो मा सद्गमय</h2>
         <div class="sanskrit-box">
-          ओमित्येतदक्षरमिदं सर्वं तस्योपव्याख्यानम्।<br>
-          भूतं भवद्भविष्यदिति सर्वमोंकार एव॥
+          असतो मा सद्गमय। तमसो मा ज्योतिर्गमय।<br>
+          मृत्योर्मा अमृतं गमय॥ ॐ शान्तिः शान्तिः शान्तिः॥
         </div>
         <p class="meaning-box">
-          <strong>गूढ़ भावार्थ:</strong> ॐ यह अविनाशी अक्षर ही यह संपूर्ण ब्रह्माण्ड है। जो भूतकाल था, जो वर्तमान है और जो भविष्य होगा—वह सब केवल ओंकार की ही अभिव्यक्ति है।
+          <strong>गूढ़ भावार्थ:</strong> हे परमेश्वर! मुझे असत्य से सत्य की ओर ले चलें। मुझे अज्ञान रूपी अंधकार से ज्ञान रूपी प्रकाश की ओर ले चलें। मुझे मृत्यु के नश्वर बंधन से अमरत्व की ओर ले चलें।
         </p>
         <div class="card-footer-actions">
           <button class="util-btn" onclick="copyCardData(this)">📋 Copy</button>
@@ -1047,7 +1127,7 @@
 
   <!-- NARAD MUNI AI CHAT WINDOW -->
   <div class="chat-backdrop" id="naradBackdrop" onclick="handleBackdropClick(event)">
-    <div class="chat-frame">
+    <div class="chat-frame" onclick="event.stopPropagation()">
       <div class="chat-header">
         <div>
           <h3>देवर्षि नारद मुनि</h3>
@@ -1070,10 +1150,27 @@
   </div>
 
   <script>
-    // 1. CLOUDFLARE WORKER BRIDGE URL
+    // 1. SAFE STORAGE WRAPPER (Brave/Incognito Shield-Proof)
+    const SafeStorage = {
+      get: (key, fallback = '') => {
+        try {
+          const val = localStorage.getItem(key);
+          return val !== null ? val : fallback;
+        } catch (e) {
+          return fallback;
+        }
+      },
+      set: (key, val) => {
+        try {
+          localStorage.setItem(key, String(val));
+        } catch (e) {}
+      }
+    };
+
+    // 2. CLOUDFLARE WORKER BRIDGE URL
     const CLOUDFLARE_WORKER_URL = "https://divine-bush-fa24.rangiladevi9598.workers.dev";[span_0](start_span)[span_0](end_span)
 
-    // 2. CALM & PROFESSIONAL AUDIO ENGINE
+    // 3. CALM & PROFESSIONAL AUDIO ENGINE
     let audioCtx = null;
     let isSoundMuted = false;
 
@@ -1167,17 +1264,17 @@
       }
     }
 
-    // 3. USER ONBOARDING & DAILY VS LIFETIME RANK
-    let userName = localStorage.getItem('SANATAN_USER_NAME') || '';
-    let lifetimeJaap = parseInt(localStorage.getItem('SANATAN_LIFETIME_JAAP') || '0', 10);
-    let dailyJaap = parseInt(localStorage.getItem('SANATAN_DAILY_JAAP') || '0', 10);
-    let lastDate = localStorage.getItem('SANATAN_LAST_ACTIVE_DATE') || '';
+    // 4. USER ONBOARDING & DAILY VS LIFETIME RANK
+    let userName = SafeStorage.get('SANATAN_USER_NAME', '');
+    let lifetimeJaap = parseInt(SafeStorage.get('SANATAN_LIFETIME_JAAP', '0'), 10);
+    let dailyJaap = parseInt(SafeStorage.get('SANATAN_DAILY_JAAP', '0'), 10);
+    let lastDate = SafeStorage.get('SANATAN_LAST_ACTIVE_DATE', '');
 
     const currentDateStr = new Date().toDateString();
     if (lastDate !== currentDateStr) {
       dailyJaap = 0;
-      localStorage.setItem('SANATAN_DAILY_JAAP', '0');
-      localStorage.setItem('SANATAN_LAST_ACTIVE_DATE', currentDateStr);
+      SafeStorage.set('SANATAN_DAILY_JAAP', '0');
+      SafeStorage.set('SANATAN_LAST_ACTIVE_DATE', currentDateStr);
     }
 
     function checkUserOnboarding() {
@@ -1196,7 +1293,7 @@
         return;
       }
       userName = val;
-      localStorage.setItem('SANATAN_USER_NAME', userName);
+      SafeStorage.set('SANATAN_USER_NAME', userName);
       document.getElementById('onboardingModal').classList.remove('active');
       playCalmMalaSound();
       updateUserUI();
@@ -1229,12 +1326,12 @@
     function resetDailyCounter() {
       if (confirm("क्या आप आज के दैनिक जाप को पुनः शून्य (0) करना चाहते हैं? (आजीवन कुल जाप सुरक्षित रहेगा)")) {
         dailyJaap = 0;
-        localStorage.setItem('SANATAN_DAILY_JAAP', '0');
+        SafeStorage.set('SANATAN_DAILY_JAAP', '0');
         updateUserUI();
       }
     }
 
-    // 4. 108 MILESTONE CELEBRATION (DISMISSABLE ON TAP / CROSS)
+    // 5. 108 MILESTONE CELEBRATION
     const milestoneHolyShloks = [
       {
         shlok: "कलयुग केवल नाम अधारा।<br>सुमिरि सुमिरि नर उतरहिं पारा॥",
@@ -1283,11 +1380,7 @@
       clearTimeout(milestoneTimer);
     }
 
-    function dismissMilestoneModal(e) {
-      closeMilestoneModal();
-    }
-
-    // 5. NAAM JAAP & SMOOTH TOUCH ENGINE
+    // 6. NAAM JAAP & SMOOTH TOUCH ENGINE
     const holyWords = ["राम राम", "जय श्री राम", "ॐ नमः शिवाय", "हरि ॐ", "नारायण", "श्री कृष्ण"];
     const holyColors = ["#ffd700", "#ff6a00", "#ff1e56", "#00f0ff", "#ffe680"];
     const jaapOrb = document.getElementById('jaapOrb');
@@ -1300,8 +1393,8 @@
     window.addEventListener('pointerdown', (e) => {
       if (document.getElementById('onboardingModal').classList.contains('active') ||
           document.getElementById('milestoneCurtain').classList.contains('active') ||
+          document.getElementById('naradBackdrop').classList.contains('active') ||
           e.target.closest('#naradEntity') || 
-          e.target.closest('.chat-backdrop') || 
           e.target.closest('header') ||
           e.target.closest('.jaap-hud-bar') ||
           e.target.closest('.nav-tabs-wrapper') ||
@@ -1315,14 +1408,13 @@
     function triggerJaap(x, y) {
       dailyJaap++;
       lifetimeJaap++;
-      localStorage.setItem('SANATAN_DAILY_JAAP', dailyJaap);
-      localStorage.setItem('SANATAN_LIFETIME_JAAP', lifetimeJaap);
-      localStorage.setItem('SANATAN_LAST_ACTIVE_DATE', new Date().toDateString());
+      SafeStorage.set('SANATAN_DAILY_JAAP', dailyJaap);
+      SafeStorage.set('SANATAN_LIFETIME_JAAP', lifetimeJaap);
+      SafeStorage.set('SANATAN_LAST_ACTIVE_DATE', new Date().toDateString());
 
       updateUserUI();
       playCalmMalaSound();
 
-      // Mobile Haptic Feedback (Gentle Vibration)
       if (navigator.vibrate) {
         navigator.vibrate(10);
       }
@@ -1348,152 +1440,15 @@
       }
     }
 
-    // 6. 3D PROCEDURAL NARADMUNI AVATAR
-    const naradCanvas = document.getElementById('narad3DCanvas');
-    const nCtx = naradCanvas.getContext('2d');
-    let naradAngle3D = 0;
-
-    function render3DNaradAvatar() {
-      nCtx.clearRect(0, 0, 168, 168);
-      const cx = 84;
-      const cy = 84;
-
-      // 3D Rotating Golden Rays
-      nCtx.save();
-      nCtx.translate(cx, cy - 6);
-      nCtx.rotate(naradAngle3D * 0.8);
-      for (let i = 0; i < 16; i++) {
-        const rad = (i * Math.PI * 2) / 16;
-        nCtx.beginPath();
-        nCtx.moveTo(Math.cos(rad) * 42, Math.sin(rad) * 42);
-        nCtx.lineTo(Math.cos(rad) * 62, Math.sin(rad) * 62);
-        nCtx.strokeStyle = 'rgba(255, 215, 0, 0.4)';
-        nCtx.lineWidth = 2.4;
-        nCtx.stroke();
-      }
-      nCtx.restore();
-
-      // Halo Disc
-      const haloGrad = nCtx.createRadialGradient(cx, cy - 6, 20, cx, cy - 6, 56);
-      haloGrad.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
-      haloGrad.addColorStop(0.5, 'rgba(255, 215, 0, 0.7)');
-      haloGrad.addColorStop(1, 'rgba(255, 102, 0, 0)');
-      nCtx.fillStyle = haloGrad;
-      nCtx.beginPath();
-      nCtx.arc(cx, cy - 6, 56, 0, Math.PI * 2);
-      nCtx.fill();
-
-      // Robe
-      const bodyGrad = nCtx.createLinearGradient(cx - 30, cy, cx + 30, cy + 60);
-      bodyGrad.addColorStop(0, '#ff7700');
-      bodyGrad.addColorStop(1, '#b33600');
-      nCtx.fillStyle = bodyGrad;
-      nCtx.beginPath();
-      nCtx.moveTo(cx - 28, cy + 20);
-      nCtx.quadraticCurveTo(cx, cy + 12, cx + 28, cy + 20);
-      nCtx.lineTo(cx + 34, cy + 64);
-      nCtx.quadraticCurveTo(cx, cy + 72, cx - 34, cy + 64);
-      nCtx.closePath();
-      nCtx.fill();
-
-      // Garland
-      nCtx.strokeStyle = '#662200';
-      nCtx.lineWidth = 3;
-      nCtx.beginPath();
-      nCtx.ellipse(cx, cy + 28, 16, 20, 0, 0, Math.PI);
-      nCtx.stroke();
-
-      // Head
-      const headGrad = nCtx.createRadialGradient(cx - 6, cy - 14, 4, cx, cy - 10, 26);
-      headGrad.addColorStop(0, '#fff0dd');
-      headGrad.addColorStop(0.65, '#f7c59f');
-      headGrad.addColorStop(1, '#c98450');
-      nCtx.fillStyle = headGrad;
-      nCtx.beginPath();
-      nCtx.arc(cx, cy - 8, 25, 0, Math.PI * 2);
-      nCtx.fill();
-
-      // Topknot (Jata)
-      nCtx.fillStyle = '#221108';
-      nCtx.beginPath();
-      nCtx.arc(cx, cy - 35, 12, 0, Math.PI * 2);
-      nCtx.fill();
-
-      // Tripundra
-      nCtx.strokeStyle = '#fff';
-      nCtx.lineWidth = 1.8;
-      nCtx.beginPath();
-      nCtx.moveTo(cx - 8, cy - 18);
-      nCtx.lineTo(cx + 8, cy - 18);
-      nCtx.stroke();
-      nCtx.strokeStyle = '#ff9900';
-      nCtx.beginPath();
-      nCtx.moveTo(cx - 6, cy - 15);
-      nCtx.lineTo(cx + 6, cy - 15);
-      nCtx.stroke();
-      nCtx.fillStyle = '#cc0000';
-      nCtx.beginPath();
-      nCtx.arc(cx, cy - 12, 2.2, 0, Math.PI * 2);
-      nCtx.fill();
-
-      // Face Features
-      nCtx.fillStyle = '#221108';
-      nCtx.beginPath();
-      nCtx.ellipse(cx - 8, cy - 6, 2.6, 3.5, 0, 0, Math.PI * 2);
-      nCtx.ellipse(cx + 8, cy - 6, 2.6, 3.5, 0, 0, Math.PI * 2);
-      nCtx.fill();
-
-      nCtx.strokeStyle = '#8a2b00';
-      nCtx.lineWidth = 2;
-      nCtx.beginPath();
-      nCtx.arc(cx, cy + 3, 7, 0.15 * Math.PI, 0.85 * Math.PI);
-      nCtx.stroke();
-
-      // Veena (Tanpura)
-      nCtx.save();
-      nCtx.translate(cx, cy + 18);
-      nCtx.rotate(-0.55 + Math.sin(naradAngle3D * 1.5) * 0.05);
-
-      nCtx.fillStyle = '#8b4513';
-      nCtx.fillRect(-3, -38, 6, 75);
-
-      nCtx.fillStyle = '#ffd700';
-      nCtx.fillRect(-4, -15, 8, 30);
-
-      const tumbaGrad = nCtx.createRadialGradient(-3, 35, 4, 0, 36, 18);
-      tumbaGrad.addColorStop(0, '#ffd700');
-      tumbaGrad.addColorStop(0.5, '#b85c14');
-      tumbaGrad.addColorStop(1, '#572200');
-      nCtx.fillStyle = tumbaGrad;
-      nCtx.beginPath();
-      nCtx.arc(0, 36, 17, 0, Math.PI * 2);
-      nCtx.fill();
-
-      nCtx.strokeStyle = '#ffffff';
-      nCtx.lineWidth = 1;
-      nCtx.beginPath();
-      nCtx.moveTo(-1.5, -36);
-      nCtx.lineTo(-1.5, 36);
-      nCtx.moveTo(1.5, -36);
-      nCtx.lineTo(1.5, 36);
-      nCtx.stroke();
-      nCtx.restore();
-
-      naradAngle3D += 0.025;
-      requestAnimationFrame(render3DNaradAvatar);
-    }
-    render3DNaradAvatar();
-
-    // 7. SMART PERIPHERY ROAMING (Avoids Blocking Reading Content)
+    // 7. SMART PERIPHERY ROAMING FOR NARADMUNI (Avoids blocking text)
     const naradWrap = document.getElementById('naradEntity');
-    let pX = 20, pY = 160, targetX = pX, targetY = pY, isNaradRoaming = true;
+    let pX = 16, pY = 150, targetX = pX, targetY = pY, isNaradRoaming = true;
 
     function pickSmartPeripheryWaypoint() {
       if (!isNaradRoaming) return;
       const w = window.innerWidth;
       const h = window.innerHeight;
 
-      // Smart Edge zones: Stay either on left strip, right strip, or lower screen
       const preferRight = Math.random() > 0.5;
       if (preferRight) {
         targetX = Math.max(10, w - 95 - Math.random() * 20);
@@ -1523,7 +1478,7 @@
     setInterval(pickSmartPeripheryWaypoint, 5000);
     roamLoop();
 
-    // 8. BACKGROUND ENGINE
+    // 8. BACKGROUND ENGINE (Dual Chakras & Rays)
     const bgCanvas = document.getElementById('divineCanvas');
     const bgCtx = bgCanvas.getContext('2d');
     function resizeBgCanvas() { bgCanvas.width = window.innerWidth; bgCanvas.height = window.innerHeight; }
@@ -1592,7 +1547,7 @@
     }
     renderDivineBackground();
 
-    // 9. STARDUST PARTICLES ENGINE
+    // 9. GOLDEN STARDUST PARTICLES ENGINE
     const pCanvas = document.getElementById('particleCanvas');
     const pCtx = pCanvas.getContext('2d');
     function resizePCanvas() { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; }
@@ -1689,6 +1644,11 @@
         title: "तितिक्षा और धैर्य (गीता २.१४)",
         shlok: "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥",
         meaning: "सुख और दुःख ऋतुओं की तरह क्षणभंगुर हैं। ज्ञानी मनुष्य विचलित हुए बिना धैर्यपूर्वक इन्हें सहता है।"
+      },
+      {
+        title: "अभय और आत्म-साक्षात्कार (गीता २.२०)",
+        shlok: "न जायते म्रियते वा कदाचिन्नायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे॥",
+        meaning: "यह आत्मा न कभी जन्म लेती है और न कभी मरती है। यह अजन्मा, नित्य, सनातन और पुरातन है। शरीर के नष्ट होने पर भी आत्मा कभी नष्ट नहीं होती।"
       }
     ];
 
@@ -1708,21 +1668,24 @@
       window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
     }
 
-    // 11. NARAD TAP PORTAL EFFECT & MULTILINGUAL AI SAMVAAD
+    // 11. NARAD TAP PORTAL SHOCKWAVE & AI SAMVAAD
     function handleNaradClick(e) {
-      // Trigger Divine Golden Shockwave Portal
+      e.stopPropagation();
+
+      // Golden Shockwave Animation
       const shockwave = document.createElement('div');
-      shockwave.className = 'portal-shockwave';
+      shockwave.className = 'golden-portal-shockwave';
       shockwave.style.left = e.clientX + 'px';
       shockwave.style.top = e.clientY + 'px';
       document.body.appendChild(shockwave);
-      setTimeout(() => shockwave.remove(), 700);
+      setTimeout(() => shockwave.remove(), 750);
 
       playSingingBowlBell();
 
+      // Open AI Chat with smooth divine transition
       setTimeout(() => {
         openNaradWindow();
-      }, 200);
+      }, 250);
     }
 
     function openNaradWindow() {
@@ -1737,9 +1700,7 @@
     }
 
     function handleBackdropClick(e) {
-      if (e.target.id === 'naradBackdrop') {
-        closeNaradWindow();
-      }
+      closeNaradWindow();
     }
 
     async function executeNaradChat() {
@@ -1775,7 +1736,7 @@
       stream.scrollTop = stream.scrollHeight;
     }
 
-    // App Initialization
+    // Initialize App Safely
     window.addEventListener('DOMContentLoaded', () => {
       checkUserOnboarding();
     });
