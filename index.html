@@ -40,21 +40,21 @@
       perspective: 1000px;
     }
 
-    /* Unified Root for Smooth Background Blur */
+    /* Main Container for Smooth Background Blur */
     #appRoot {
       position: relative;
       width: 100%;
       min-height: 100vh;
-      transition: filter 0.4s ease, transform 0.4s ease, opacity 0.4s ease;
+      transition: filter 0.35s ease, transform 0.35s ease;
     }
 
     #appRoot.cosmic-blurred {
-      filter: blur(22px) brightness(0.65);
+      filter: blur(20px) brightness(0.65);
       transform: scale(0.98);
       pointer-events: none;
     }
 
-    /* 1. CINEMATIC CANVASES */
+    /* 1. CINEMATIC CANVASES (Never Blocks Clicks) */
     #divineCanvas, #particleCanvas {
       position: fixed;
       inset: 0;
@@ -83,8 +83,8 @@
       height: 250vmax;
       background: repeating-conic-gradient(
         from 0deg,
-        rgba(255, 255, 255, 0.9) 0deg 10deg,
-        rgba(255, 215, 0, 0.75) 10deg 20deg,
+        rgba(255, 255, 255, 0.85) 0deg 10deg,
+        rgba(255, 215, 0, 0.7) 10deg 20deg,
         rgba(255, 120, 0, 0) 20deg 30deg
       );
       border-radius: 50%;
@@ -106,7 +106,7 @@
       background: radial-gradient(circle, #ffffff 0%, #fff2a3 30%, #ffd700 65%, transparent 100%);
       box-shadow: 0 0 100px 50px #ffffff, 0 0 180px 100px var(--gold-pure), 0 0 260px 150px var(--saffron-fire);
       transform: translate(-50%, -50%) scale(0.2);
-      animation: explodeSuryaFlash 0.65s cubic-bezier(0.12, 0.85, 0.35, 1) forwards;
+      animation: explodeSuryaFlash 0.55s cubic-bezier(0.12, 0.85, 0.35, 1) forwards;
     }
 
     @keyframes explodeSuryaFlash {
@@ -115,40 +115,7 @@
       100% { transform: translate(-50%, -50%) scale(6.5); opacity: 0; }
     }
 
-    /* 3. WATER RIPPLE & BUBBLING SPLASH ENGINE */
-    .water-ripple {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      border: 2px solid rgba(255, 215, 0, 0.95);
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.6), inset 0 0 10px rgba(255, 140, 0, 0.4);
-      animation: waterRippleExpand 0.7s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
-    }
-
-    @keyframes waterRippleExpand {
-      0% { width: 0px; height: 0px; opacity: 1; border-width: 3px; }
-      60% { border-width: 1.5px; opacity: 0.85; }
-      100% { width: 140px; height: 140px; opacity: 0; border-width: 0.5px; }
-    }
-
-    .water-bubble {
-      position: fixed;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ffd700 40%, #ff6600 100%);
-      box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
-      animation: bubbleSplashAnim 0.6s cubic-bezier(0.15, 0.85, 0.35, 1) forwards;
-    }
-
-    @keyframes bubbleSplashAnim {
-      0% { transform: translate(-50%, -50%) scale(0.3); opacity: 1; }
-      100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1.1); opacity: 0; }
-    }
-
-    /* 4. SACRED HEADER */
+    /* 3. SACRED HEADER */
     header {
       position: sticky;
       top: 0;
@@ -222,7 +189,7 @@
     }
     .audio-switch-btn:active { transform: scale(0.95); }
 
-    /* 5. STICKY NAAM JAAP HUD */
+    /* 4. STICKY NAAM JAAP HUD */
     .jaap-hud-bar {
       background: linear-gradient(180deg, rgba(22, 13, 6, 0.96) 0%, rgba(10, 6, 2, 0.98) 100%);
       border-bottom: 1.5px solid rgba(255, 215, 0, 0.3);
@@ -288,7 +255,7 @@
       cursor: pointer;
     }
 
-    /* 6. REAL 3D-STYLED NARADMUNI AVATAR */
+    /* 5. REAL 3D-STYLED NARADMUNI AVATAR */
     #naradEntity {
       position: fixed;
       width: 80px;
@@ -334,7 +301,7 @@
       50% { transform: translate3d(-50%, -5px, 0); }
     }
 
-    /* 7. FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap anywhere to dismiss) */
+    /* 6. FULLSCREEN CINEMATIC BLUR SHLOK MODAL (Tap Anywhere to Dismiss) */
     .milestone-blur-curtain {
       position: fixed;
       inset: 0;
@@ -432,7 +399,7 @@
       opacity: 0.85;
     }
 
-    /* 8. USER ONBOARDING MODAL */
+    /* 7. USER ONBOARDING MODAL */
     .onboarding-curtain {
       position: fixed;
       inset: 0;
@@ -491,7 +458,7 @@
       cursor: pointer;
     }
 
-    /* 9. FLOATING SACRED CHANT PARTICLES */
+    /* 8. FLOATING SACRED CHANT PARTICLES */
     .divine-float-text {
       position: fixed;
       pointer-events: none;
@@ -511,7 +478,7 @@
       100% { opacity: 0; transform: translate3d(-50%, -120px, 0) scale(0.85); }
     }
 
-    /* 10. MAIN CONTENT & 3D CARDS */
+    /* 9. MAIN CONTENT & 3D CARDS */
     .app-viewport {
       position: relative;
       z-index: 10;
@@ -707,7 +674,7 @@
       border-radius: 20px;
     }
 
-    /* 11. NARAD CHAT MODAL */
+    /* 10. NARAD CHAT MODAL */
     .chat-backdrop {
       position: fixed;
       inset: 0;
@@ -1435,10 +1402,6 @@
 
       curtain.style.display = 'flex';
 
-      for (let i = 0; i < 35; i++) {
-        sparks.push(new Sparkle(window.innerWidth / 2, window.innerHeight / 2));
-      }
-
       clearTimeout(milestoneTimer);
       milestoneTimer = setTimeout(() => {
         closeMilestoneModal();
@@ -1452,42 +1415,136 @@
       clearTimeout(milestoneTimer);
     }
 
-    // 6. WATER STONE SPLASH RIPPLE & BUBBLING GENERATOR
-    function createWaterStoneSplash(x, y) {
-      // 1. Concentric Water Wave Rings
-      for (let r = 0; r < 2; r++) {
-        const ripple = document.createElement('div');
-        ripple.className = 'water-ripple';
-        ripple.style.left = x + 'px';
-        ripple.style.top = y + 'px';
-        if (r === 1) {
-          ripple.style.animationDelay = '0.12s';
-        }
-        document.body.appendChild(ripple);
-        setTimeout(() => ripple.remove(), 850);
+    // 6. ULTRA-SMOOTH GPU CANVAS PARTICLES (WATER RIPPLE, BUBBLES & SPARKLES)
+    const pCanvas = document.getElementById('particleCanvas');
+    const pCtx = pCanvas.getContext('2d');
+    function resizePCanvas() { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizePCanvas);
+    resizePCanvas();
+
+    let canvasRipples = [];
+    let canvasBubbles = [];
+    let canvasSparks = [];
+
+    class CanvasWaterRipple {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        this.radius = 2;
+        this.maxRadius = 65;
+        this.alpha = 1;
+        this.speed = 3.2;
+      }
+      update() {
+        this.radius += this.speed;
+        this.alpha -= 0.038;
+      }
+      draw() {
+        pCtx.save();
+        pCtx.globalAlpha = Math.max(0, this.alpha);
+        pCtx.strokeStyle = '#ffd700';
+        pCtx.lineWidth = Math.max(0.5, 2.5 * (1 - this.radius / this.maxRadius));
+        pCtx.shadowBlur = 10;
+        pCtx.shadowColor = '#ff9900';
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        pCtx.stroke();
+        pCtx.restore();
+      }
+    }
+
+    class CanvasWaterBubble {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 3.5 + 1.2;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed - 0.8;
+        this.size = Math.random() * 4.5 + 2.5;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.025 + 0.022;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += 0.04;
+        this.alpha -= this.decay;
+      }
+      draw() {
+        pCtx.save();
+        pCtx.globalAlpha = Math.max(0, this.alpha);
+        const grad = pCtx.createRadialGradient(this.x - this.size * 0.3, this.y - this.size * 0.3, this.size * 0.1, this.x, this.y, this.size);
+        grad.addColorStop(0, '#ffffff');
+        grad.addColorStop(0.4, '#ffd700');
+        grad.addColorStop(1, '#ff6600');
+        pCtx.fillStyle = grad;
+        pCtx.shadowBlur = 6;
+        pCtx.shadowColor = '#ffd700';
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        pCtx.fill();
+        pCtx.restore();
+      }
+    }
+
+    class Sparkle {
+      constructor(x, y) {
+        this.x = x; this.y = y;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 3.5 + 1.2;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed - 1.0;
+        this.size = Math.random() * 2.5 + 1.0;
+        this.alpha = 1;
+        this.decay = Math.random() * 0.028 + 0.02;
+        this.color = Math.random() > 0.4 ? '#ffd700' : '#ff7700';
+      }
+      update() { this.x += this.vx; this.y += this.vy; this.alpha -= this.decay; }
+      draw() {
+        pCtx.save();
+        pCtx.globalAlpha = Math.max(0, this.alpha);
+        pCtx.fillStyle = this.color;
+        pCtx.shadowBlur = 6;
+        pCtx.shadowColor = this.color;
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        pCtx.fill();
+        pCtx.restore();
+      }
+    }
+
+    function loopParticleCanvas() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+
+      for (let i = canvasRipples.length - 1; i >= 0; i--) {
+        canvasRipples[i].update();
+        canvasRipples[i].draw();
+        if (canvasRipples[i].alpha <= 0) canvasRipples.splice(i, 1);
       }
 
-      // 2. Outward Splashing Water Bubbles
-      const bubbleCount = 7;
-      for (let i = 0; i < bubbleCount; i++) {
-        const bubble = document.createElement('div');
-        bubble.className = 'water-bubble';
-        const angle = (i * Math.PI * 2) / bubbleCount + (Math.random() - 0.5);
-        const dist = 35 + Math.random() * 45;
-        const dx = Math.cos(angle) * dist + 'px';
-        const dy = Math.sin(angle) * dist + 'px';
-        const sz = 6 + Math.random() * 7 + 'px';
-
-        bubble.style.width = sz;
-        bubble.style.height = sz;
-        bubble.style.left = x + 'px';
-        bubble.style.top = y + 'px';
-        bubble.style.setProperty('--dx', dx);
-        bubble.style.setProperty('--dy', dy);
-
-        document.body.appendChild(bubble);
-        setTimeout(() => bubble.remove(), 650);
+      for (let i = canvasBubbles.length - 1; i >= 0; i--) {
+        canvasBubbles[i].update();
+        canvasBubbles[i].draw();
+        if (canvasBubbles[i].alpha <= 0) canvasBubbles.splice(i, 1);
       }
+
+      for (let i = canvasSparks.length - 1; i >= 0; i--) {
+        canvasSparks[i].update();
+        canvasSparks[i].draw();
+        if (canvasSparks[i].alpha <= 0) canvasSparks.splice(i, 1);
+      }
+
+      requestAnimationFrame(loopParticleCanvas);
+    }
+    loopParticleCanvas();
+
+    function triggerSmoothWaterSplash(x, y) {
+      canvasRipples.push(new CanvasWaterRipple(x, y));
+      setTimeout(() => canvasRipples.push(new CanvasWaterRipple(x, y)), 120);
+
+      for (let i = 0; i < 7; i++) canvasBubbles.push(new CanvasWaterBubble(x, y));
+      for (let i = 0; i < 5; i++) canvasSparks.push(new Sparkle(x, y));
     }
 
     // 7. SILENT SCROLL JAAP ENGINE (Zero lag while scrolling)
@@ -1500,8 +1557,7 @@
       accumulatedScroll += diff;
       lastScrollPos = currentScroll;
 
-      // Every 120px of smooth scroll, increment jaap quietly
-      if (accumulatedScroll >= 120) {
+      if (accumulatedScroll >= 130) {
         dailyJaap += 1;
         lifetimeJaap += 1;
         accumulatedScroll = 0;
@@ -1515,7 +1571,7 @@
       }
     }, { passive: true });
 
-    // 8. UNIVERSAL SCREEN TAP (JAAP EVERYWHERE + WATER BUBBLING)
+    // 8. UNIVERSAL SCREEN TAP (JAAP EVERYWHERE + ULTRA-SMOOTH WATER BUBBLES)
     const holyWords = ["राम राम", "जय श्री राम", "ॐ नमः शिवाय", "हरि ॐ", "नारायण", "श्री कृष्ण"];
     const holyColors = ["#ffd700", "#ff6a00", "#ff1e56", "#00f0ff", "#ffe680"];
     const jaapOrb = document.getElementById('jaapOrb');
@@ -1530,20 +1586,13 @@
       updateUserUI();
       playCalmMalaSound();
 
-      if (navigator.vibrate) {
-        navigator.vibrate(12);
-      }
+      if (navigator.vibrate) navigator.vibrate(12);
 
-      // Water Ripple and Stone Splash Bubbles
-      createWaterStoneSplash(x, y);
-
-      // Stardust Sparkles
-      for (let i = 0; i < 8; i++) sparks.push(new Sparkle(x, y));
+      triggerSmoothWaterSplash(x, y);
 
       jaapOrb.classList.add('pulse-burst');
       setTimeout(() => jaapOrb.classList.remove('pulse-burst'), 130);
 
-      // Floating Sacred Chant
       const span = document.createElement('span');
       span.className = 'divine-float-text';
       span.innerText = holyWords[Math.floor(Math.random() * holyWords.length)];
@@ -1560,7 +1609,6 @@
       }
     }
 
-    // Capture global taps safely
     let touchStartX = 0;
     let touchStartY = 0;
 
@@ -1572,7 +1620,7 @@
     window.addEventListener('touchend', (e) => {
       const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
       const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
-      if (dx > 10 || dy > 10) return;
+      if (dx > 12 || dy > 12) return;
 
       const x = e.changedTouches[0].clientX;
       const y = e.changedTouches[0].clientY;
@@ -1589,7 +1637,6 @@
       performJaapAt(x, y);
     }, { passive: true });
 
-    // Desktop Click Backup
     window.addEventListener('click', (e) => {
       if ('ontouchstart' in window) return;
       if (e.target.closest('.chat-frame') || e.target.closest('#onboardingModal') || e.target.closest('.search-input')) return;
@@ -1630,9 +1677,7 @@
         const tilt = Math.max(-12, Math.min(12, dx * 0.12));
         naradWrap.style.transform = 'translate3d(' + pX + 'px, ' + pY + 'px, 0) rotate(' + tilt + 'deg)';
 
-        if (Math.hypot(dx, dy) < 18) {
-          pickSmartPeripheryWaypoint();
-        }
+        if (Math.hypot(dx, dy) < 18) pickSmartPeripheryWaypoint();
       }
       requestAnimationFrame(roamLoop);
     }
@@ -1709,52 +1754,7 @@
     }
     renderDivineBackground();
 
-    // 11. GOLDEN STARDUST PARTICLES ENGINE
-    const pCanvas = document.getElementById('particleCanvas');
-    const pCtx = pCanvas.getContext('2d');
-    function resizePCanvas() { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; }
-    window.addEventListener('resize', resizePCanvas);
-    resizePCanvas();
-
-    let sparks = [];
-    class Sparkle {
-      constructor(x, y) {
-        this.x = x; this.y = y;
-        const angle = Math.random() * Math.PI * 2;
-        const speed = Math.random() * 4 + 1.5;
-        this.vx = Math.cos(angle) * speed;
-        this.vy = Math.sin(angle) * speed - 1.2;
-        this.size = Math.random() * 3 + 1.2;
-        this.alpha = 1;
-        this.decay = Math.random() * 0.025 + 0.018;
-        this.color = Math.random() > 0.4 ? '#ffd700' : '#ff7700';
-      }
-      update() { this.x += this.vx; this.y += this.vy; this.vy += 0.06; this.alpha -= this.decay; }
-      draw() {
-        pCtx.save();
-        pCtx.globalAlpha = Math.max(0, this.alpha);
-        pCtx.fillStyle = this.color;
-        pCtx.shadowBlur = 8;
-        pCtx.shadowColor = this.color;
-        pCtx.beginPath();
-        pCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        pCtx.fill();
-        pCtx.restore();
-      }
-    }
-
-    function loopSparks() {
-      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
-      for (let i = sparks.length - 1; i >= 0; i--) {
-        sparks[i].update();
-        sparks[i].draw();
-        if (sparks[i].alpha <= 0) sparks.splice(i, 1);
-      }
-      requestAnimationFrame(loopSparks);
-    }
-    loopSparks();
-
-    // 12. TAB NAVIGATION & SCRIPTURE SWITCHING (100% RELIABLE)
+    // 11. TAB NAVIGATION & SCRIPTURE SWITCHING (100% RELIABLE)
     function switchCategory(catId, btnElement, e) {
       if (e) e.stopPropagation();
       playTabSound();
@@ -1764,9 +1764,7 @@
         sec.style.display = 'none';
       });
 
-      document.querySelectorAll('.nav-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
 
       const targetSec = document.getElementById(catId);
       if (targetSec) {
@@ -1774,10 +1772,7 @@
         targetSec.classList.add('active');
       }
 
-      if (btnElement) {
-        btnElement.classList.add('active');
-      }
-
+      if (btnElement) btnElement.classList.add('active');
       executeSearch();
     }
 
@@ -1850,7 +1845,7 @@
       window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
     }
 
-    // 13. SURYA KIRAN DIVINE LIGHT BURST + BLUR + NARAD AI SAMVAAD OPEN
+    // 12. SURYA KIRAN DIVINE LIGHT BURST + BLUR + NARAD AI SAMVAAD OPEN
     function handleNaradClick(e) {
       if (e) e.stopPropagation();
 
@@ -1860,10 +1855,8 @@
       const cx = rect.left + rect.width / 2;
       const cy = rect.top + rect.height / 2;
 
-      // 1. Water Stone Splash Ripple
-      createWaterStoneSplash(cx, cy);
+      triggerSmoothWaterSplash(cx, cy);
 
-      // 2. Position Surya Kiran Light Flash
       const overlay = document.getElementById('suryaKiranOverlay');
       const raysElem = document.getElementById('suryaRaysElem');
       const flashElem = document.getElementById('suryaFlashElem');
@@ -1874,15 +1867,12 @@
       flashElem.style.top = cy + 'px';
 
       overlay.style.display = 'flex';
-
-      // 3. Deeply Blur Background App Root
       document.getElementById('appRoot').classList.add('cosmic-blurred');
 
-      // 4. Open Narad AI Interface after radiant solar flare
       setTimeout(() => {
         openNaradWindow();
         overlay.style.display = 'none';
-      }, 500);
+      }, 480);
     }
 
     function openNaradWindow() {
