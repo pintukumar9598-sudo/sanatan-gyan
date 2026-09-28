@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#050302">
+  <meta name="theme-color" content="#0d0602">
   <title>सनातन ज्ञान महासागर | The Divine Cosmic Realm</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,8 +17,8 @@
       --gold-deep: #b38600;
       --saffron-fire: #ff6600;
       --saffron-amber: #ff9900;
-      --bg-darkness: #050302;
-      --card-glass: rgba(18, 11, 5, 0.95);
+      --bg-darkness: #0d0602;
+      --card-glass: rgba(22, 13, 6, 0.95);
       --font-hindi: 'Tiro Devanagari Hindi', serif;
       --font-title: 'Yatra One', cursive;
       --font-ancient: 'Cinzel', serif;
@@ -32,7 +32,7 @@
     }
 
     body {
-      background-color: var(--bg-darkness);
+      background: radial-gradient(ellipse at top, #241105 0%, #120702 45%, #050201 100%);
       color: #fff9f0;
       font-family: var(--font-hindi);
       min-height: 100vh;
@@ -70,7 +70,7 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 9999;
+      z-index: 99999;
       display: none;
       justify-content: center;
       align-items: center;
@@ -120,7 +120,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: linear-gradient(180deg, rgba(8, 5, 2, 0.98) 0%, rgba(8, 5, 2, 0.92) 100%);
+      background: linear-gradient(180deg, rgba(14, 8, 3, 0.98) 0%, rgba(10, 5, 2, 0.95) 100%);
       backdrop-filter: blur(16px);
       border-bottom: 1.5px solid rgba(255, 215, 0, 0.35);
       padding: 10px 14px;
@@ -179,25 +179,26 @@
     }
 
     .icon-action-btn {
-      background: rgba(36, 20, 10, 0.95);
+      background: rgba(40, 22, 10, 0.95);
       border: 1.5px solid var(--gold-pure);
       color: var(--gold-bright);
-      padding: 7px 11px;
+      padding: 8px 12px;
       border-radius: 20px;
-      font-size: 0.82rem;
+      font-size: 0.9rem;
       font-family: var(--font-title);
       display: flex;
       align-items: center;
-      gap: 4px;
+      justify-content: center;
       cursor: pointer;
       box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
       transition: transform 0.15s ease;
+      touch-action: manipulation;
     }
-    .icon-action-btn:active { transform: scale(0.95); }
+    .icon-action-btn:active { transform: scale(0.92); }
 
     /* 4. STICKY NAAM JAAP HUD */
     .jaap-hud-bar {
-      background: linear-gradient(180deg, rgba(22, 13, 6, 0.96) 0%, rgba(10, 6, 2, 0.98) 100%);
+      background: linear-gradient(180deg, rgba(22, 13, 6, 0.96) 0%, rgba(12, 6, 2, 0.98) 100%);
       border-bottom: 1.5px solid rgba(255, 215, 0, 0.3);
       padding: 10px 16px;
       display: flex;
@@ -261,57 +262,177 @@
       cursor: pointer;
     }
 
-    /* 5. 3D NARADMUNI AVATAR */
+    /* 5. CELESTIAL GLOWING BLUE STARLIGHT TRACK & 2D REAL NARADMUNI AVATAR */
+    .celestial-orbit-container {
+      position: sticky;
+      top: 125px;
+      z-index: 850;
+      width: 100%;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+      margin-bottom: 6px;
+    }
+
+    .blue-star-laser-line {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      height: 2.5px;
+      background: linear-gradient(90deg, 
+        rgba(0, 229, 255, 0) 0%, 
+        rgba(0, 229, 255, 0.9) 15%, 
+        rgba(255, 255, 255, 1) 50%, 
+        rgba(0, 229, 255, 0.9) 85%, 
+        rgba(0, 229, 255, 0) 100%
+      );
+      box-shadow: 0 0 10px #00e5ff, 0 0 20px #0088ff, 0 0 35px rgba(0, 229, 255, 0.75);
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .laser-star-node {
+      color: #e0f7ff;
+      font-size: 0.65rem;
+      filter: drop-shadow(0 0 6px #00e5ff);
+      animation: twinkleStar 1.8s infinite ease-in-out alternate;
+    }
+
+    @keyframes twinkleStar {
+      0% { opacity: 0.3; transform: scale(0.7); }
+      100% { opacity: 1; transform: scale(1.35); filter: drop-shadow(0 0 10px #ffffff); }
+    }
+
+    /* Realistic 2D Narad Muni Entity */
     #naradEntity {
-      position: fixed;
-      width: 80px;
-      height: 80px;
+      position: absolute;
+      top: -46px;
+      left: 12px;
+      width: 82px;
+      height: 98px;
       z-index: 5000;
       cursor: pointer;
-      filter: drop-shadow(0 0 18px rgba(255, 140, 0, 0.95));
-      transform: translate3d(16px, 150px, 0);
+      pointer-events: auto;
+      filter: drop-shadow(0 0 16px rgba(0, 229, 255, 0.85)) drop-shadow(0 0 25px rgba(255, 140, 0, 0.65));
       will-change: transform;
+      user-select: none;
     }
 
-    .narad-svg-art {
+    .narad-avatar-canvas-wrap {
       width: 100%;
       height: 100%;
-      animation: levitateFloat 3s infinite ease-in-out;
+      position: relative;
+      animation: naradNaturalStep 1.6s infinite ease-in-out;
     }
 
-    @keyframes levitateFloat {
-      0%, 100% { transform: translateY(0) scale(1); }
-      50% { transform: translateY(-7px) scale(1.02); }
+    @keyframes naradNaturalStep {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-6px) rotate(1.2deg); }
+    }
+
+    .narad-pose-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .narad-pose-img.active {
+      opacity: 1;
+    }
+
+    /* Fallback Divine Vector if images aren't loaded yet */
+    .narad-fallback-svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
 
     .narad-bubble {
       position: absolute;
-      top: -28px;
+      top: -24px;
       left: 50%;
       transform: translate3d(-50%, 0, 0);
-      background: rgba(26, 13, 4, 0.98);
-      border: 1.5px solid var(--gold-pure);
-      color: var(--gold-bright);
-      padding: 3px 12px;
-      border-radius: 16px;
-      font-size: 0.76rem;
+      background: rgba(14, 18, 28, 0.96);
+      border: 1.5px solid #00e5ff;
+      color: #e6f9ff;
+      padding: 2px 10px;
+      border-radius: 14px;
+      font-size: 0.72rem;
       font-family: var(--font-title);
       white-space: nowrap;
-      box-shadow: 0 0 14px rgba(255, 170, 0, 0.7);
+      box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
       pointer-events: none;
-      animation: bubbleFloat 2.5s infinite ease-in-out;
     }
 
-    @keyframes bubbleFloat {
-      0%, 100% { transform: translate3d(-50%, 0, 0); }
-      50% { transform: translate3d(-50%, -5px, 0); }
+    /* Action Specific Particle Effects */
+    .music-note-particle {
+      position: absolute;
+      pointer-events: none;
+      font-size: 1.1rem;
+      color: #ffd700;
+      text-shadow: 0 0 8px #ffd700, 0 0 16px #ff6600;
+      animation: floatMusicNote 2.2s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+      z-index: 5005;
+    }
+
+    @keyframes floatMusicNote {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.6) rotate(0deg); }
+      20% { opacity: 1; transform: translate(-10px, -20px) scale(1.1) rotate(-15deg); }
+      80% { opacity: 0.9; }
+      100% { opacity: 0; transform: translate(-30px, -70px) scale(0.85) rotate(25deg); }
+    }
+
+    .chant-word-particle {
+      position: absolute;
+      pointer-events: none;
+      font-family: var(--font-title);
+      font-size: 0.92rem;
+      font-weight: bold;
+      color: #00f0ff;
+      text-shadow: 0 0 10px #00e5ff, 0 0 20px #0077ff;
+      white-space: nowrap;
+      animation: floatChantVoice 2.4s cubic-bezier(0.18, 0.85, 0.35, 1) forwards;
+      z-index: 5005;
+    }
+
+    @keyframes floatChantVoice {
+      0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+      25% { opacity: 1; transform: translate(12px, -25px) scale(1.15); }
+      75% { opacity: 0.9; }
+      100% { opacity: 0; transform: translate(25px, -65px) scale(0.9); }
+    }
+
+    .kartal-beat-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1.5px solid #ffd700;
+      box-shadow: 0 0 10px #ffd700, inset 0 0 6px #ff8800;
+      pointer-events: none;
+      animation: expandKartalBeat 1.4s ease-out forwards;
+      z-index: 5002;
+    }
+
+    @keyframes expandKartalBeat {
+      0% { width: 4px; height: 4px; opacity: 1; transform: translate(-50%, -50%) scale(0.2); }
+      100% { width: 65px; height: 65px; opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
     }
 
     /* 6. FULLSCREEN CINEMATIC BLUR SHLOK MODAL */
     .milestone-blur-curtain {
       position: fixed;
       inset: 0;
-      background: rgba(4, 2, 1, 0.88);
+      background: rgba(8, 4, 1, 0.85);
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       z-index: 20000;
@@ -323,7 +444,7 @@
     }
 
     .milestone-holy-card {
-      background: radial-gradient(circle, rgba(38, 20, 8, 0.98) 0%, rgba(12, 6, 2, 0.98) 100%);
+      background: radial-gradient(circle, rgba(38, 20, 8, 0.98) 0%, rgba(14, 7, 2, 0.98) 100%);
       border: 2px solid var(--gold-pure);
       border-radius: 28px;
       padding: 32px 22px 24px 22px;
@@ -405,34 +526,37 @@
       opacity: 0.85;
     }
 
-    /* 7. DIALOG & MODALS (ONBOARDING & SETTINGS) */
+    /* 7. DIALOG & MODALS (TRANSLUCENT & RESPONSIVE) */
     .modal-curtain {
-      position: fixed;
-      inset: 0;
-      background: rgba(2, 1, 0, 0.94);
-      backdrop-filter: blur(18px);
-      z-index: 30000;
+      position: fixed !important;
+      inset: 0 !important;
+      background: rgba(10, 5, 2, 0.82) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      z-index: 99990 !important;
       display: none;
       justify-content: center;
       align-items: center;
-      padding: 20px;
+      padding: 16px;
     }
 
     .form-card {
-      background: #140c06;
+      background: linear-gradient(180deg, #1c0e05 0%, #120702 100%);
       border: 2px solid var(--gold-pure);
       border-radius: 24px;
-      padding: 26px 20px;
+      padding: 24px 18px;
       max-width: 420px;
       width: 100%;
-      box-shadow: 0 0 45px rgba(255, 140, 0, 0.65);
+      max-height: 88vh;
+      overflow-y: auto;
+      box-shadow: 0 0 50px rgba(255, 140, 0, 0.7);
       position: relative;
     }
 
     .form-card h2 {
       font-family: var(--font-title);
       color: var(--gold-bright);
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       text-align: center;
       margin-bottom: 6px;
     }
@@ -466,7 +590,7 @@
       font-weight: bold;
       background: rgba(0, 255, 170, 0.1);
       border: 1px solid rgba(0, 255, 170, 0.35);
-      padding: 5px 12px;
+      padding: 6px 12px;
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -481,17 +605,18 @@
     }
 
     .deity-quick-chip {
-      background: rgba(36, 20, 10, 0.9);
+      background: rgba(40, 22, 10, 0.9);
       border: 1px solid rgba(255, 215, 0, 0.3);
       color: #ffe8b3;
       font-size: 0.72rem;
-      padding: 3px 8px;
+      padding: 4px 9px;
       border-radius: 12px;
       cursor: pointer;
     }
     .deity-quick-chip:hover, .deity-quick-chip:active {
       background: var(--saffron-fire);
       color: #000;
+      border-color: #fff;
     }
 
     .form-select-field {
@@ -519,10 +644,148 @@
       border: none;
       border-radius: 18px;
       cursor: pointer;
-      margin-top: 20px;
+      margin-top: 18px;
     }
 
-    /* 8. FLOATING SACRED CHANT PARTICLES */
+    .secondary-skip-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      color: #ffd899;
+      font-size: 0.84rem;
+      padding: 8px;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* 8. LOGIN DIYA SHLOK TYPEWRITER MODAL (10s AUTO-DISMISS) */
+    #dailyEntryModal {
+      position: fixed !important;
+      inset: 0 !important;
+      background: rgba(6, 3, 1, 0.88) !important;
+      backdrop-filter: blur(22px) !important;
+      -webkit-backdrop-filter: blur(22px) !important;
+      z-index: 99995 !important;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      cursor: pointer;
+    }
+
+    .diya-shlok-card {
+      background: radial-gradient(circle at 50% 15%, rgba(48, 25, 8, 0.98), rgba(16, 8, 2, 0.99));
+      border: 2px solid var(--gold-pure);
+      border-radius: 30px;
+      padding: 26px 20px 22px 20px;
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 0 55px rgba(255, 140, 0, 0.75), 0 0 100px rgba(255, 215, 0, 0.4);
+      animation: holyPop 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .divine-diya-wrap {
+      width: 90px;
+      height: 72px;
+      margin: 0 auto 8px auto;
+      filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.9));
+    }
+
+    .divine-diya-svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .diya-flame {
+      transform-origin: 50px 42px;
+      animation: diyaFlameFlicker 1.4s infinite ease-in-out alternate;
+    }
+
+    @keyframes diyaFlameFlicker {
+      0% { transform: scale(1, 1) rotate(-1deg); filter: drop-shadow(0 0 10px #ffd700); }
+      50% { transform: scale(0.95, 1.1) rotate(1.5deg); filter: drop-shadow(0 0 18px #ff6600) drop-shadow(0 0 25px #ffd700); }
+      100% { transform: scale(1.05, 0.96) rotate(-1.5deg); filter: drop-shadow(0 0 12px #fff2a3); }
+    }
+
+    .entry-badge-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
+      color: #000;
+      font-size: 0.78rem;
+      font-family: var(--font-title);
+      font-weight: bold;
+      padding: 3px 14px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+    }
+
+    .entry-shlok-title {
+      font-family: var(--font-title);
+      color: var(--gold-bright);
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+    }
+
+    .entry-sanskrit-box {
+      background: rgba(8, 4, 1, 0.85);
+      border: 1.5px solid rgba(255, 215, 0, 0.4);
+      border-radius: 16px;
+      padding: 16px 14px;
+      font-size: 1.12rem;
+      line-height: 1.85;
+      color: #fff2cc;
+      font-style: italic;
+      margin-bottom: 14px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      min-height: 75px;
+      white-space: pre-wrap;
+    }
+
+    .entry-meaning-box {
+      font-size: 0.92rem;
+      color: #e6d3ba;
+      line-height: 1.65;
+      min-height: 50px;
+      margin-bottom: 14px;
+      white-space: pre-wrap;
+    }
+
+    .entry-timer-progress {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 215, 0, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .entry-timer-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--gold-pure), var(--saffron-fire));
+      animation: entryTimerCountdown 10s linear forwards;
+    }
+
+    @keyframes entryTimerCountdown {
+      from { width: 100%; }
+      to { width: 0%; }
+    }
+
+    .entry-dismiss-hint {
+      font-size: 0.74rem;
+      color: #ffd899;
+      margin-top: 8px;
+      opacity: 0.85;
+    }
+
+    /* 9. FLOATING SACRED CHANT PARTICLES */
     .divine-float-text {
       position: fixed;
       pointer-events: none;
@@ -542,7 +805,7 @@
       100% { opacity: 0; transform: translate3d(-50%, -120px, 0) scale(0.85); }
     }
 
-    /* 9. MAIN CONTENT & 3D CARDS */
+    /* 10. MAIN CONTENT & 3D CARDS */
     .app-viewport {
       position: relative;
       z-index: 10;
@@ -677,7 +940,7 @@
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
 
-    /* 10. ADVANCED AI SEARCH SANCTUM */
+    /* 11. ADVANCED AI SEARCH SANCTUM */
     .search-sanctum {
       margin-bottom: 12px;
       display: flex;
@@ -812,6 +1075,7 @@
       padding: 18px;
       margin-bottom: 18px;
       box-shadow: 0 0 30px rgba(255, 140, 0, 0.38);
+      cursor: pointer;
     }
     .daily-head {
       display: flex;
@@ -829,7 +1093,7 @@
       border-radius: 20px;
     }
 
-    /* 11. NARAD CHAT MODAL */
+    /* 12. NARAD CHAT MODAL */
     .chat-backdrop {
       position: fixed;
       inset: 0;
@@ -952,52 +1216,6 @@
     <canvas id="divineCanvas"></canvas>
     <canvas id="particleCanvas"></canvas>
 
-    <!-- REAL 3D-STYLED NARADMUNI AVATAR -->
-    <div id="naradEntity" onclick="handleNaradClick(event)">
-      <div class="narad-bubble" id="naradDialogue">नारायण! नारायण!</div>
-      <svg class="narad-svg-art" viewBox="0 0 100 100">
-        <defs>
-          <radialGradient id="naradHalo">
-            <stop offset="0%" stop-color="#ffffff" />
-            <stop offset="50%" stop-color="#ffd700" />
-            <stop offset="100%" stop-color="transparent" />
-          </radialGradient>
-        </defs>
-        <!-- Golden Sun Aura -->
-        <circle cx="50" cy="46" r="38" fill="url(#naradHalo)" opacity="0.8" />
-        <g stroke="#ffd700" stroke-width="1.2" opacity="0.6">
-          <line x1="50" y1="6" x2="50" y2="14" />
-          <line x1="50" y1="78" x2="50" y2="86" />
-          <line x1="14" y1="46" x2="22" y2="46" />
-          <line x1="78" y1="46" x2="86" y2="46" />
-          <line x1="24" y1="20" x2="30" y2="26" />
-          <line x1="70" y1="66" x2="76" y2="72" />
-          <line x1="24" y1="72" x2="30" y2="66" />
-          <line x1="70" y1="26" x2="76" y2="20" />
-        </g>
-        <!-- Face & Crown -->
-        <circle cx="50" cy="42" r="20" fill="#ffdfba" stroke="#e0853d" stroke-width="1.4" />
-        <path d="M47,23 Q52,10 65,14 Q55,19 49,24" fill="#2d1c10" />
-        <!-- Tripundra Tilak -->
-        <path d="M47,31 Q50,38 53,31" stroke="#ff9500" stroke-width="1.8" fill="none" />
-        <circle cx="50" cy="35" r="1.4" fill="#cc0000" />
-        <!-- Eyes & Smile -->
-        <circle cx="44" cy="41" r="2.2" fill="#221105" />
-        <circle cx="56" cy="41" r="2.2" fill="#221105" />
-        <path d="M46,48 Q50,53 54,48" stroke="#993d00" stroke-width="1.8" fill="none" stroke-linecap="round" />
-        <!-- Saffron Body -->
-        <path d="M30,62 Q50,56 70,62 L74,90 Q50,94 26,90 Z" fill="#ff6a00" stroke="#b33c00" stroke-width="1.5" />
-        <!-- Veena / Tanpura -->
-        <g transform="rotate(-26 50 68)">
-          <rect x="47" y="36" width="5.5" height="44" rx="2" fill="#8b4513" stroke="#ffd700" stroke-width="0.8" />
-          <circle cx="49.5" cy="80" r="11" fill="#b85c14" stroke="#ffd700" stroke-width="1.2" />
-          <circle cx="49.5" cy="40" r="6" fill="#b85c14" stroke="#ffd700" stroke-width="1.2" />
-          <line x1="48.5" y1="40" x2="48.5" y2="82" stroke="#fff" stroke-width="0.8" />
-          <line x1="51" y1="40" x2="51" y2="82" stroke="#fff" stroke-width="0.8" />
-        </g>
-      </svg>
-    </div>
-
     <!-- HEADER -->
     <header>
       <div class="brand-section">
@@ -1011,7 +1229,7 @@
         <button class="icon-action-btn" id="soundToggleBtn" onclick="toggleDivineSound(event)">
           <span id="soundIcon">🔔</span>
         </button>
-        <button class="icon-action-btn" title="सेटिंग्स / Preferences" onclick="openSettingsModal(event)">
+        <button class="icon-action-btn" id="settingsBtn" title="सेटिंग्स / Preferences" onclick="openSettingsModal(event)">
           <span>⚙️</span>
         </button>
       </div>
@@ -1032,11 +1250,61 @@
       </div>
     </div>
 
+    <!-- CELESTIAL GLOWING BLUE STARLIGHT TRACK FOR NARADMUNI -->
+    <div class="celestial-orbit-container" id="celestialOrbitWrap">
+      <div class="blue-star-laser-line" id="blueLaserLine">
+        <span class="laser-star-node">✦</span>
+        <span class="laser-star-node">★</span>
+        <span class="laser-star-node">✧</span>
+        <span class="laser-star-node">✦</span>
+        <span class="laser-star-node">★</span>
+        <span class="laser-star-node">✧</span>
+      </div>
+
+      <!-- 2D REAL NARADMUNI AVATAR WITH MULTI-POSE ANIMATIONS -->
+      <div id="naradEntity" onclick="handleNaradClick(event)">
+        <div class="narad-bubble" id="naradDialogue">नारायण! नारायण!</div>
+        
+        <div class="narad-avatar-canvas-wrap" id="naradAvatarWrap">
+          <!-- Pose 1: Khartal / Singing -->
+          <img id="poseKartal" class="narad-pose-img active" src="narad_kartal.png" alt="देवर्षि नारद" onerror="handleImageFallback(this)">
+          
+          <!-- Pose 2: Veena Playing -->
+          <img id="poseVeena" class="narad-pose-img" src="narad_veena.png" alt="देवर्षि नारद वीणा" onerror="handleImageFallback(this)">
+          
+          <!-- Pose 3: Talking / Blessing -->
+          <img id="poseTalk" class="narad-pose-img" src="narad_talk.png" alt="देवर्षि नारद संवाद" onerror="handleImageFallback(this)">
+
+          <!-- Fallback SVG Vector (shown automatically if images not found yet) -->
+          <svg id="naradFallbackSvg" class="narad-fallback-svg" viewBox="0 0 100 100">
+            <defs>
+              <radialGradient id="fallbackHalo">
+                <stop offset="0%" stop-color="#ffffff" />
+                <stop offset="50%" stop-color="#00e5ff" />
+                <stop offset="100%" stop-color="transparent" />
+              </radialGradient>
+            </defs>
+            <circle cx="50" cy="46" r="38" fill="url(#fallbackHalo)" opacity="0.85" />
+            <circle cx="50" cy="42" r="20" fill="#ffdfba" stroke="#e0853d" stroke-width="1.4" />
+            <path d="M47,23 Q52,10 65,14 Q55,19 49,24" fill="#2d1c10" />
+            <path d="M47,31 Q50,38 53,31" stroke="#ff9500" stroke-width="1.8" fill="none" />
+            <circle cx="50" cy="35" r="1.4" fill="#cc0000" />
+            <circle cx="44" cy="41" r="2.2" fill="#221105" />
+            <circle cx="56" cy="41" r="2.2" fill="#221105" />
+            <path d="M46,48 Q50,53 54,48" stroke="#993d00" stroke-width="1.8" fill="none" stroke-linecap="round" />
+            <path d="M30,62 Q50,56 70,62 L74,90 Q50,94 26,90 Z" fill="#ff6a00" stroke="#b33c00" stroke-width="1.5" />
+            <rect x="47" y="36" width="5.5" height="44" rx="2" fill="#8b4513" stroke="#ffd700" stroke-width="0.8" />
+            <circle cx="49.5" cy="80" r="11" fill="#b85c14" stroke="#ffd700" stroke-width="1.2" />
+          </svg>
+        </div>
+      </div>
+    </div>
+
     <!-- MAIN SCRIPTURE VIEWPORT -->
     <div class="app-viewport">
       
       <!-- DAILY WISDOM CARD -->
-      <div class="daily-wisdom-card">
+      <div class="daily-wisdom-card" onclick="openDailyDiyaDarshan(event)" title="दीप दर्शन हेतु टैप करें">
         <div class="daily-head">
           <span class="daily-tag" id="dailyTagElem">☀️ आज का दिव्य श्लोक</span>
           <button class="util-btn" style="padding:2px 10px;" id="dailyShareBtn" onclick="shareDailyWhatsApp(event)">साझा करें 🟢</button>
@@ -1335,29 +1603,28 @@
 
   </div> <!-- End #appRoot -->
 
-  <!-- 1. USER ONBOARDING MODAL (Intelligent Auto-Detection) -->
+  <!-- 1. USER ONBOARDING MODAL -->
   <div class="modal-curtain" id="onboardingModal">
     <div class="form-card">
-      <div style="font-size: 2.3rem; text-align:center; margin-bottom: 4px;">📿</div>
+      <button class="milestone-close-btn" style="top:12px; right:14px;" onclick="closeOnboardingModal(event)">✕</button>
+      <div style="font-size: 2.2rem; text-align:center; margin-bottom: 4px;">📿</div>
       <h2>सनातन ज्ञान महासागर</h2>
-      <p style="color:#dfcaa7; font-size:0.86rem; text-align:center; margin-bottom:14px;">दिव्य सत्संग एवं नाम जाप में आपका स्वागत है।</p>
+      <p style="color:#dfcaa7; font-size:0.86rem; text-align:center; margin-bottom:12px;">दिव्य सत्संग एवं नाम जाप में आपका स्वागत है।</p>
       
       <label class="form-label">१. आपका शुभ नाम (Your Name):</label>
-      <input type="text" id="obNameInput" class="form-input-field" placeholder="अपना नाम दर्ज करें..." maxlength="25">
+      <input type="text" id="obNameInput" class="form-input-field" placeholder="अपना नाम दर्ज करें (उदा. राहुल)..." maxlength="25">
 
       <label class="form-label">२. आप किस भगवान को मानते हैं? (Type in any language):</label>
       <input type="text" id="obDeityInput" class="form-input-field" 
-             placeholder="जैसे: Krishna, Bholenath, Ram, Hanuman, Mata..." 
+             placeholder="जैसे: Ram, Krishna, Bholenath, Hanuman, Mata..." 
              oninput="handleDeityInput(this.value, 'obDeityPreview')">
       
-      <!-- Auto Recognized Hindi Preview -->
-      <div id="obDeityPreview" class="deity-detect-preview">✨ स्वीकृत इष्टदेव: श्री कृष्ण</div>
+      <div id="obDeityPreview" class="deity-detect-preview">✨ स्वीकृत इष्टदेव: श्री राम</div>
 
-      <!-- Quick Select Chips -->
       <div class="deity-chip-container">
-        <span class="deity-quick-chip" onclick="quickSelectDeity('krishna', 'obDeityInput', 'obDeityPreview')">श्री कृष्ण</span>
-        <span class="deity-quick-chip" onclick="quickSelectDeity('shiva', 'obDeityInput', 'obDeityPreview')">महादेव शिव</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('ram', 'obDeityInput', 'obDeityPreview')">श्री राम</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('shiva', 'obDeityInput', 'obDeityPreview')">महादेव शिव</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('krishna', 'obDeityInput', 'obDeityPreview')">श्री कृष्ण</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('hanuman', 'obDeityInput', 'obDeityPreview')">हनुमान जी</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('durga', 'obDeityInput', 'obDeityPreview')">माँ दुर्गा</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('ganesh', 'obDeityInput', 'obDeityPreview')">श्री गणेश</span>
@@ -1374,13 +1641,67 @@
       </select>
 
       <button class="enter-btn" onclick="submitOnboarding()">प्रवेश करें ॐ</button>
+      <button class="secondary-skip-btn" onclick="closeOnboardingModal(event)">सीधे दर्शन करें (Explore First) ➔</button>
     </div>
   </div>
 
-  <!-- 2. SETTINGS EDIT MODAL (⚙️) -->
+  <!-- 2. LOGIN DIYA SHLOK TYPEWRITER MODAL (10s AUTO-DISMISS) -->
+  <div id="dailyEntryModal" onclick="dismissDailyEntryShlok()">
+    <div class="diya-shlok-card" onclick="event.stopPropagation()">
+      <button class="milestone-close-btn" style="top:12px; right:14px;" onclick="dismissDailyEntryShlok()">✕</button>
+      
+      <!-- Animated Golden Diya -->
+      <div class="divine-diya-wrap">
+        <svg class="divine-diya-svg" viewBox="0 0 100 80">
+          <defs>
+            <radialGradient id="diyaGlow" cx="50%" cy="30%" r="60%">
+              <stop offset="0%" stop-color="#fff5cc" stop-opacity="1" />
+              <stop offset="30%" stop-color="#ffd700" stop-opacity="0.8" />
+              <stop offset="70%" stop-color="#ff6600" stop-opacity="0.3" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+            <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff2a3" />
+              <stop offset="45%" stop-color="#d4af37" />
+              <stop offset="100%" stop-color="#8a5a00" />
+            </linearGradient>
+            <radialGradient id="flameCore" cx="50%" cy="60%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="40%" stop-color="#fff2a3" />
+              <stop offset="75%" stop-color="#ff6a00" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="30" r="30" fill="url(#diyaGlow)" />
+          <path class="diya-flame" d="M50,10 Q58,28 50,42 Q42,28 50,10 Z" fill="url(#flameCore)" />
+          <ellipse cx="50" cy="46" rx="28" ry="8" fill="url(#brassGrad)" />
+          <path d="M22,46 Q50,72 78,46 Q70,62 50,65 Q30,62 22,46 Z" fill="url(#brassGrad)" stroke="#ffd700" stroke-width="0.8" />
+          <ellipse cx="50" cy="67" rx="14" ry="4" fill="url(#brassGrad)" />
+          <rect x="47" y="62" width="6" height="5" fill="#8a5a00" />
+        </svg>
+      </div>
+
+      <span class="entry-badge-tag">🪔 आज का पावन दैनिक महाश्लोक</span>
+      <h3 class="entry-shlok-title" id="entryShlokTitle">श्रीमद्भगवद्गीता</h3>
+      
+      <!-- Live Sanskrit Typewriter Output -->
+      <div class="entry-sanskrit-box" id="entryShlokSanskrit"></div>
+
+      <!-- Live Hindi Meaning Typewriter Output -->
+      <div class="entry-meaning-box" id="entryShlokMeaning"></div>
+
+      <!-- 10-Second Countdown Progress Bar -->
+      <div class="entry-timer-progress">
+        <div class="entry-timer-fill" id="entryTimerBar"></div>
+      </div>
+      <div class="entry-dismiss-hint">१० सेकंड में स्वतः बंद होगा अथवा कहीं भी टैप करें</div>
+    </div>
+  </div>
+
+  <!-- 3. SETTINGS EDIT MODAL -->
   <div class="modal-curtain" id="settingsModal" onclick="closeSettingsModal(event)">
     <div class="form-card" onclick="event.stopPropagation()">
-      <button class="milestone-close-btn" style="top:12px; right:14px;" onclick="closeSettingsModal(event)">✕</button>
+      <button class="milestone-close-btn" style="top:12px; right:14px;" onclick="forceCloseSettings()">✕</button>
       <h2>⚙️ आपकी पसंद (Settings)</h2>
       <p style="color:#dfcaa7; font-size:0.85rem; text-align:center; margin-bottom:14px;">अपनी जानकारी व इष्टदेव कभी भी बदलें</p>
 
@@ -1392,12 +1713,12 @@
              placeholder="Type deity name..." 
              oninput="handleDeityInput(this.value, 'setDeityPreview')">
       
-      <div id="setDeityPreview" class="deity-detect-preview">✨ स्वीकृत इष्टदेव: श्री कृष्ण</div>
+      <div id="setDeityPreview" class="deity-detect-preview">✨ स्वीकृत इष्टदेव: श्री राम</div>
 
       <div class="deity-chip-container">
-        <span class="deity-quick-chip" onclick="quickSelectDeity('krishna', 'setCustDeity', 'setDeityPreview')">श्री कृष्ण</span>
-        <span class="deity-quick-chip" onclick="quickSelectDeity('shiva', 'setCustDeity', 'setDeityPreview')">महादेव शिव</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('ram', 'setCustDeity', 'setDeityPreview')">श्री राम</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('shiva', 'setCustDeity', 'setDeityPreview')">महादेव शिव</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('krishna', 'setCustDeity', 'setDeityPreview')">श्री कृष्ण</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('hanuman', 'setCustDeity', 'setDeityPreview')">हनुमान जी</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('durga', 'setCustDeity', 'setDeityPreview')">माँ दुर्गा</span>
         <span class="deity-quick-chip" onclick="quickSelectDeity('ganesh', 'setCustDeity', 'setDeityPreview')">श्री गणेश</span>
@@ -1473,8 +1794,14 @@
     // 2. LIVE CLOUDFLARE WORKER ENDPOINT
     const CLOUDFLARE_WORKER_URL = "https://divine-bush-fa24.rangiladevi9598.workers.dev";
 
-    // 3. COMPREHENSIVE MULTI-LINGUAL DEITY CATALOG & RECOGNITION
+    // 3. COMPREHENSIVE MULTI-LINGUAL DEITY CATALOG & CHANTS
     const deityCatalog = [
+      {
+        id: "ram",
+        hindiName: "श्री राम",
+        aliases: ["ram", "rama", "raghav", "sitaram", "ramchandra", "raghunath", "maryada purushottam", "ram ji", "ayodhyapati", "राम", "श्रीराम", "राघव", "सियाराम", "सिया राम"],
+        chants: ["राम राम", "जय श्री राम", "सिया राम", "रघुपति राघव", "जय जानकीनाथ"]
+      },
       {
         id: "krishna",
         hindiName: "श्री कृष्ण",
@@ -1486,12 +1813,6 @@
         hindiName: "महादेव शिव",
         aliases: ["shiva", "shiv", "mahadev", "bholenath", "bhole", "shankar", "neelkanth", "shambhu", "rudra", "mahakal", "trikaldarshi", "nataraj", "शिव", "महादेव", "भोलेनाथ", "शंकर", "भोले"],
         chants: ["ॐ नमः शिवाय", "हर हर महादेव", "जय भोलेनाथ", "शम्भो", "त्रिनेत्र", "बम बम भोले"]
-      },
-      {
-        id: "ram",
-        hindiName: "श्री राम",
-        aliases: ["ram", "rama", "raghav", "sitaram", "ramchandra", "raghunath", "maryada purushottam", "ram ji", "ayodhyapati", "राम", "श्रीराम", "राघव", "सियाराम"],
-        chants: ["जय श्री राम", "सिया राम", "राम राम", "रघुपति राघव", "जय जानकीनाथ"]
       },
       {
         id: "hanuman",
@@ -1531,10 +1852,11 @@
       }
     ];
 
-    // Intelligent Deity Matcher
+    const universalChants = ["राम राम", "जय श्री राम", "ॐ नमः शिवाय", "राधे राधे", "हरे कृष्ण", "ॐ नमो भगवते वासुदेवाय", "हरि ॐ", "नारायण"];
+
     function detectDeity(inputStr) {
       if (!inputStr || !inputStr.trim()) {
-        return { id: "krishna", hindiName: "श्री कृष्ण", chants: deityCatalog[0].chants };
+        return { id: "ram", hindiName: "श्री राम", chants: deityCatalog[0].chants };
       }
       const clean = inputStr.toLowerCase().trim();
 
@@ -1546,11 +1868,10 @@
         }
       }
 
-      // If user typed custom name, format it respectfully in Hindi
       return {
         id: "custom",
         hindiName: "श्री " + inputStr.trim(),
-        chants: ["जय " + inputStr.trim(), "ॐ", "प्रभु शरणम्", "नारायण"]
+        chants: ["राम राम", "जय " + inputStr.trim(), "ॐ", "प्रभु शरणम्", "नारायण"]
       };
     }
 
@@ -1662,7 +1983,7 @@
         ranks: ["سالک", "مخلص بھکت", "عاشقِ الٰہی", "سدھ سادھک", "پرم ویشنو", "مہا تپسوی", "برہم رشی", "پرم ہنس"],
         dailyTag: "☀️ آج کا متبرک شلوک",
         shareBtn: "شیئر کریں 🟢",
-        searchPlaceholder: "🔍 شلوک تلاش کریں یا AI سے پوچھیں...",
+        searchPlaceholder: "🔍 شلوک تلاش کریں یا AI से पूछें...",
         aiSearchBtn: "✨ AI تلاش",
         sugHeader: "✨ روحانی تجاویز:",
         resetBtn: "آج کا صفر کریں",
@@ -1681,9 +2002,9 @@
 
     // 5. USER PROFILE & PREFERENCES
     let userName = SafeStorage.get('SANATAN_USER_NAME', '');
-    let userDeityRaw = SafeStorage.get('SANATAN_USER_DEITY_RAW', 'Krishna');
+    let userDeityRaw = SafeStorage.get('SANATAN_USER_DEITY_RAW', 'Ram');
     let activeDeityObj = detectDeity(userDeityRaw);
-    let userLang = SafeStorage.get('SANATAN_USER_LANG', 'hi'); // Default Hindi
+    let userLang = SafeStorage.get('SANATAN_USER_LANG', 'hi');
 
     let lifetimeJaap = parseInt(SafeStorage.get('SANATAN_LIFETIME_JAAP', '0'), 10);
     let dailyJaap = parseInt(SafeStorage.get('SANATAN_DAILY_JAAP', '0'), 10);
@@ -1698,20 +2019,27 @@
 
     function checkUserOnboarding() {
       if (!userName) {
-        document.getElementById('onboardingModal').style.display = 'flex';
-      } else {
+        const modal = document.getElementById('onboardingModal');
+        if (modal) modal.style.display = 'flex';
+      }
+    }
+
+    function closeOnboardingModal(e) {
+      if (e) e.stopPropagation();
+      const modal = document.getElementById('onboardingModal');
+      if (modal) modal.style.display = 'none';
+      if (!userName) {
+        userName = 'साधक';
+        SafeStorage.set('SANATAN_USER_NAME', userName);
         applyLanguageAndDeity();
       }
+      triggerEntrancePortalAndDiya();
     }
 
     function submitOnboarding() {
       const name = document.getElementById('obNameInput').value.trim();
-      if (!name) {
-        alert("कृपया अपना शुभ नाम दर्ज करें!");
-        return;
-      }
-      userName = name;
-      const deityTyped = document.getElementById('obDeityInput').value.trim() || 'Krishna';
+      userName = name || 'साधक';
+      const deityTyped = document.getElementById('obDeityInput').value.trim() || 'Ram';
       userDeityRaw = deityTyped;
       activeDeityObj = detectDeity(userDeityRaw);
       userLang = document.getElementById('obLangInput').value || 'hi';
@@ -1720,29 +2048,139 @@
       SafeStorage.set('SANATAN_USER_DEITY_RAW', userDeityRaw);
       SafeStorage.set('SANATAN_USER_LANG', userLang);
 
-      document.getElementById('onboardingModal').style.display = 'none';
+      const modal = document.getElementById('onboardingModal');
+      if (modal) modal.style.display = 'none';
       applyLanguageAndDeity();
-      playCalmMalaSound();
+      
+      triggerEntrancePortalAndDiya();
     }
 
-    function openSettingsModal(e) {
+    // 6. LOGIN ENTRANCE EFFECT & LIVE DIYA SHLOK TYPEWRITER ENGINE
+    let entryShlokTimer = null;
+    let typeWriterInterval1 = null;
+    let typeWriterInterval2 = null;
+
+    function triggerEntrancePortalAndDiya() {
+      playSingingBowlBell();
+
+      const overlay = document.getElementById('suryaKiranOverlay');
+      const raysElem = document.getElementById('suryaRaysElem');
+      const flashElem = document.getElementById('suryaFlashElem');
+
+      const cx = window.innerWidth / 2;
+      const cy = window.innerHeight / 2;
+
+      raysElem.style.left = cx + 'px';
+      raysElem.style.top = cy + 'px';
+      flashElem.style.left = cx + 'px';
+      flashElem.style.top = cy + 'px';
+
+      overlay.style.display = 'flex';
+
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        openDailyDiyaDarshan();
+      }, 520);
+    }
+
+    function openDailyDiyaDarshan(e) {
       if (e) e.stopPropagation();
-      document.getElementById('setCustName').value = userName;
-      document.getElementById('setCustDeity').value = userDeityRaw;
-      handleDeityInput(userDeityRaw, 'setDeityPreview');
-      document.getElementById('setCustLang').value = userLang;
-      document.getElementById('settingsModal').style.display = 'flex';
+      dismissDailyEntryShlok();
+
+      const modal = document.getElementById('dailyEntryModal');
+      const titleElem = document.getElementById('entryShlokTitle');
+      const sanskritElem = document.getElementById('entryShlokSanskrit');
+      const meaningElem = document.getElementById('entryShlokMeaning');
+      const timerBar = document.getElementById('entryTimerBar');
+
+      const todayData = dailyScriptures[new Date().getDate() % dailyScriptures.length];
+
+      titleElem.innerText = todayData.title;
+      sanskritElem.innerText = "";
+      meaningElem.innerText = "";
+
+      timerBar.style.animation = 'none';
+      void timerBar.offsetWidth;
+      timerBar.style.animation = 'entryTimerCountdown 10s linear forwards';
+
+      modal.style.display = 'flex';
+
+      let idx1 = 0;
+      const shlokStr = todayData.shlok;
+      typeWriterInterval1 = setInterval(() => {
+        if (idx1 < shlokStr.length) {
+          sanskritElem.innerText += shlokStr.charAt(idx1);
+          idx1++;
+        } else {
+          clearInterval(typeWriterInterval1);
+          
+          let idx2 = 0;
+          const meaningStr = "भावार्थ: " + todayData.meaning;
+          typeWriterInterval2 = setInterval(() => {
+            if (idx2 < meaningStr.length) {
+              meaningElem.innerText += meaningStr.charAt(idx2);
+              idx2++;
+            } else {
+              clearInterval(typeWriterInterval2);
+            }
+          }, 18);
+        }
+      }, 26);
+
+      entryShlokTimer = setTimeout(() => {
+        dismissDailyEntryShlok();
+      }, 10000);
+    }
+
+    function dismissDailyEntryShlok() {
+      clearTimeout(entryShlokTimer);
+      clearInterval(typeWriterInterval1);
+      clearInterval(typeWriterInterval2);
+      const modal = document.getElementById('dailyEntryModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    // 7. SETTINGS MODAL (GHOST-CLICK PROOF)
+    let settingsOpenTimestamp = 0;
+
+    function openSettingsModal(e) {
+      if (e) {
+        e.stopPropagation();
+        if (e.cancelable) e.preventDefault();
+      }
+      settingsOpenTimestamp = Date.now();
+
+      const nameEl = document.getElementById('setCustName');
+      const deityEl = document.getElementById('setCustDeity');
+      const langEl = document.getElementById('setCustLang');
+
+      if (nameEl) nameEl.value = (userName === 'साधक' ? '' : userName);
+      if (deityEl) deityEl.value = userDeityRaw || 'Ram';
+      handleDeityInput(userDeityRaw || 'Ram', 'setDeityPreview');
+      if (langEl) langEl.value = userLang || 'hi';
+
+      const modal = document.getElementById('settingsModal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function forceCloseSettings() {
+      const modal = document.getElementById('settingsModal');
+      if (modal) modal.style.display = 'none';
     }
 
     function closeSettingsModal(e) {
-      if (e) e.stopPropagation();
-      document.getElementById('settingsModal').style.display = 'none';
+      if (e) {
+        e.stopPropagation();
+        if (Date.now() - settingsOpenTimestamp < 350) return;
+        if (e.target !== document.getElementById('settingsModal')) return;
+      }
+      forceCloseSettings();
     }
 
     function saveSettings() {
       const name = document.getElementById('setCustName').value.trim();
-      if (name) userName = name;
-      userDeityRaw = document.getElementById('setCustDeity').value.trim() || 'Krishna';
+      userName = name || 'साधक';
+      userDeityRaw = document.getElementById('setCustDeity').value.trim() || 'Ram';
       activeDeityObj = detectDeity(userDeityRaw);
       userLang = document.getElementById('setCustLang').value;
 
@@ -1750,7 +2188,7 @@
       SafeStorage.set('SANATAN_USER_DEITY_RAW', userDeityRaw);
       SafeStorage.set('SANATAN_USER_LANG', userLang);
 
-      closeSettingsModal();
+      forceCloseSettings();
       applyLanguageAndDeity();
       playCalmMalaSound();
     }
@@ -1771,9 +2209,9 @@
     function applyLanguageAndDeity() {
       const t = i18n[userLang] || i18n.hi;
       const deityName = activeDeityObj.hindiName;
+      const displayName = (userName && userName !== 'साधक') ? userName : t.siteTitle;
 
-      // Header & Ranks
-      document.getElementById('headerUserGreeting').innerText = userName ? userName : t.siteTitle;
+      document.getElementById('headerUserGreeting').innerText = displayName;
       document.getElementById('headerUserRank').innerText = t.rankPrefix + getSpiritualRank(dailyJaap) + ` • ${deityName}`;
       document.getElementById('dailyJaapDisplay').innerText = dailyJaap.toLocaleString('hi-IN');
       const malas = Math.floor(dailyJaap / 108);
@@ -1782,28 +2220,24 @@
       document.getElementById('lifetimeJaapDisplay').innerText = `Total: ${lifetimeJaap.toLocaleString('hi-IN')}`;
       document.getElementById('resetBtnElem').innerText = t.resetBtn;
 
-      // Search & Suggestion
       document.getElementById('liveSearch').placeholder = t.searchPlaceholder;
       document.getElementById('aiSearchBtnElem').innerText = t.aiSearchBtn;
       document.getElementById('sugHeaderElem').innerText = t.sugHeader;
       document.getElementById('aiCardBadgeElem').innerText = t.aiCardBadge;
 
-      // Tabs
       document.getElementById('btn-gita').innerText = t.tabGita;
       document.getElementById('btn-veda').innerText = t.tabVeda;
       document.getElementById('btn-puran').innerText = t.tabPuran;
       document.getElementById('btn-katha').innerText = t.tabKatha;
 
-      // Daily Card
       document.getElementById('dailyTagElem').innerText = t.dailyTag;
       document.getElementById('dailyShareBtn').innerText = t.shareBtn;
 
-      // Narad Chat
       document.getElementById('naradHeaderTitle').innerText = t.naradTitle;
       document.getElementById('naradHeaderSubtitle').innerText = t.naradSub;
       document.getElementById('userQueryInput').placeholder = t.chatPlaceholder;
       document.getElementById('chatSendBtnElem').innerText = t.chatSend;
-      document.getElementById('naradDefaultWelcome').innerText = t.welcomeMsg(userName, deityName);
+      document.getElementById('naradDefaultWelcome').innerText = t.welcomeMsg(userName === 'साधक' ? '' : userName, deityName);
     }
 
     function resetDailyCounter(e) {
@@ -1815,7 +2249,7 @@
       }
     }
 
-    // 6. AUDIO SYNTHESIS
+    // 8. AUDIO SYNTHESIS
     let audioCtx = null;
     let isSoundMuted = false;
 
@@ -1902,7 +2336,7 @@
       if (!isSoundMuted) playCalmMalaSound();
     }
 
-    // 7. 108 MILESTONE CELEBRATION (Tap anywhere to close)
+    // 9. 108 MILESTONE CELEBRATION
     const milestoneHolyShloks = [
       {
         shlok: "कलयुग केवल नाम अधारा।<br>सुमिरि सुमिरि नर उतरहिं पारा॥",
@@ -1943,45 +2377,35 @@
       clearTimeout(milestoneTimer);
     }
 
-    // 8. BUTTERY SMOOTH GOLDEN AURA ENGINE (SPLASH REMOVED)
+    // 10. BUTTERY SMOOTH GOLDEN AURA ENGINE
     const pCanvas = document.getElementById('particleCanvas');
     const pCtx = pCanvas.getContext('2d');
-    function resizePCanvas() { pCanvas.width = window.innerWidth; pCanvas.height = window.innerHeight; }
+    function resizePCanvas() { 
+      pCanvas.width = window.innerWidth || 360; 
+      pCanvas.height = window.innerHeight || 640; 
+    }
     window.addEventListener('resize', resizePCanvas);
     resizePCanvas();
 
     let divineAuras = [];
     let divineSparks = [];
 
-    // Smooth Golden Ethereal Aura Ring (Soft Expanding Wave)
     class DivineAuraWave {
       constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.radius = 4;
-        this.maxRadius = 55;
-        this.alpha = 0.9;
-        this.speed = 2.8;
+        this.x = x; this.y = y; this.radius = 4; this.maxRadius = 55; this.alpha = 0.9; this.speed = 2.8;
       }
-      update() {
-        this.radius += this.speed;
-        this.alpha -= 0.035;
-      }
+      update() { this.radius += this.speed; this.alpha -= 0.035; }
       draw() {
         pCtx.save();
         pCtx.globalAlpha = Math.max(0, this.alpha);
-        
-        // Soft divine glowing ring
         const grad = pCtx.createRadialGradient(this.x, this.y, this.radius * 0.7, this.x, this.y, this.radius);
         grad.addColorStop(0, 'rgba(255, 215, 0, 0)');
         grad.addColorStop(0.8, 'rgba(255, 242, 163, 0.6)');
         grad.addColorStop(1, 'rgba(255, 140, 0, 0)');
-        
         pCtx.fillStyle = grad;
         pCtx.beginPath();
         pCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
         pCtx.fill();
-
         pCtx.strokeStyle = 'rgba(255, 215, 0, ' + Math.max(0, this.alpha * 0.8) + ')';
         pCtx.lineWidth = 1.5;
         pCtx.stroke();
@@ -1989,7 +2413,6 @@
       }
     }
 
-    // Gentle Golden Stardust Motes (Floats softly upward like sacred incense)
     class DivineStardust {
       constructor(x, y) {
         this.x = x + (Math.random() - 0.5) * 16;
@@ -2003,11 +2426,7 @@
         this.decay = Math.random() * 0.03 + 0.02;
         this.color = Math.random() > 0.4 ? '#ffd700' : '#fff2a3';
       }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.alpha -= this.decay;
-      }
+      update() { this.x += this.vx; this.y += this.vy; this.alpha -= this.decay; }
       draw() {
         pCtx.save();
         pCtx.globalAlpha = Math.max(0, this.alpha);
@@ -2024,13 +2443,11 @@
     function loopParticleCanvas() {
       pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
       for (let i = divineAuras.length - 1; i >= 0; i--) {
-        divineAuras[i].update();
-        divineAuras[i].draw();
+        divineAuras[i].update(); divineAuras[i].draw();
         if (divineAuras[i].alpha <= 0) divineAuras.splice(i, 1);
       }
       for (let i = divineSparks.length - 1; i >= 0; i--) {
-        divineSparks[i].update();
-        divineSparks[i].draw();
+        divineSparks[i].update(); divineSparks[i].draw();
         if (divineSparks[i].alpha <= 0) divineSparks.splice(i, 1);
       }
       requestAnimationFrame(loopParticleCanvas);
@@ -2043,7 +2460,7 @@
       for (let i = 0; i < 5; i++) divineSparks.push(new DivineStardust(x, y));
     }
 
-    // 9. CLEAN TAP-ONLY JAAP ENGINE (ZERO SCROLL JAAP)
+    // 11. CLEAN TAP-ONLY JAAP ENGINE (WITH "राम राम" & UNIVERSAL CHANTS)
     const holyColors = ["#ffd700", "#ff6a00", "#ff1e56", "#00f0ff", "#ffe680"];
     const jaapOrb = document.getElementById('jaapOrb');
 
@@ -2063,11 +2480,13 @@
       jaapOrb.classList.add('pulse-burst');
       setTimeout(() => jaapOrb.classList.remove('pulse-burst'), 130);
 
-      // Personalized chants based on chosen Deity
-      const currentDeityChants = activeDeityObj.chants || ["ॐ", "राम राम", "हरे कृष्ण"];
+      const currentDeityChants = activeDeityObj.chants || ["राम राम", "जय श्री राम"];
+      const combinedPool = [...currentDeityChants, ...universalChants];
+      const selectedChant = combinedPool[Math.floor(Math.random() * combinedPool.length)];
+
       const span = document.createElement('span');
       span.className = 'divine-float-text';
-      span.innerText = currentDeityChants[Math.floor(Math.random() * currentDeityChants.length)];
+      span.innerText = selectedChant;
       span.style.color = holyColors[Math.floor(Math.random() * holyColors.length)];
       span.style.left = x + 'px';
       span.style.top = y + 'px';
@@ -2093,7 +2512,6 @@
       const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
       const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
 
-      // STRICT GESTURE GUARD: If finger moved > 8px, it is a scroll/drag. IGNORE!
       if (dx > 8 || dy > 8) return;
 
       const x = e.changedTouches[0].clientX;
@@ -2103,6 +2521,7 @@
       if (target && (
         target.closest('.chat-frame') ||
         target.closest('.modal-curtain') ||
+        target.closest('#dailyEntryModal') ||
         target.closest('.search-sanctum') ||
         target.closest('#aiSearchResultCard') ||
         target.closest('button') ||
@@ -2121,6 +2540,7 @@
       if (
         e.target.closest('.chat-frame') || 
         e.target.closest('.modal-curtain') || 
+        e.target.closest('#dailyEntryModal') ||
         e.target.closest('.search-sanctum') || 
         e.target.closest('#aiSearchResultCard') ||
         e.target.closest('button') || 
@@ -2137,7 +2557,7 @@
       performJaapAt(rect.left + rect.width / 2, rect.top + 75);
     }
 
-    // 10. ADVANCED AI SEARCH & SUGGESTIONS
+    // 12. ADVANCED AI SEARCH & SUGGESTIONS
     function openSuggestions() {
       document.getElementById('suggestionsBox').classList.add('active');
     }
@@ -2230,54 +2650,134 @@ Format:
       window.open('https://api.whatsapp.com/send?text=' + url, '_blank');
     }
 
-    // 11. SMART PERIPHERY ROAMING FOR NARADMUNI
+    // 13. REAL 2D NARADMUNI MULTI-ACTION STATE MACHINE (15-20s CYCLES)
+    // Modes: 'kartal' -> 'veena' -> 'talk'
+    let currentNaradMode = 'kartal';
+    const naradActions = ['kartal', 'veena', 'talk'];
+    let actionIndex = 0;
+
+    function handleImageFallback(imgEl) {
+      // If user hasn't uploaded PNGs to repo yet, reveal SVG seamlessly
+      imgEl.style.display = 'none';
+      const svgEl = document.getElementById('naradFallbackSvg');
+      if (svgEl) svgEl.style.opacity = '1';
+    }
+
+    function switchNaradAction(mode) {
+      currentNaradMode = mode;
+      const poseKartal = document.getElementById('poseKartal');
+      const poseVeena = document.getElementById('poseVeena');
+      const poseTalk = document.getElementById('poseTalk');
+      const bubble = document.getElementById('naradDialogue');
+
+      // Cross fade poses
+      [poseKartal, poseVeena, poseTalk].forEach(img => { if (img) img.classList.remove('active'); });
+
+      if (mode === 'kartal') {
+        if (poseKartal) poseKartal.classList.add('active');
+        bubble.innerText = "हरि बोल!";
+      } else if (mode === 'veena') {
+        if (poseVeena) poseVeena.classList.add('active');
+        bubble.innerText = "🎶 वीणा वादन";
+      } else if (mode === 'talk') {
+        if (poseTalk) poseTalk.classList.add('active');
+        bubble.innerText = "नारायण! नारायण!";
+      }
+    }
+
+    // Continuous dynamic particle generation based on current mode
+    setInterval(() => {
+      const naradWrap = document.getElementById('naradEntity');
+      if (!naradWrap) return;
+      const rect = naradWrap.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top + rect.height / 2;
+
+      if (currentNaradMode === 'veena') {
+        // Veena Playing: Floating Musical Notes
+        const notes = ['🎵', '🎶', '♩', '♪', '♫', '𝅘𝅥𝅯'];
+        const noteEl = document.createElement('div');
+        noteEl.className = 'music-note-particle';
+        noteEl.innerText = notes[Math.floor(Math.random() * notes.length)];
+        noteEl.style.left = (x - 12 + (Math.random() - 0.5) * 16) + 'px';
+        noteEl.style.top = (y - 5 + (Math.random() - 0.5) * 10) + 'px';
+        document.body.appendChild(noteEl);
+        setTimeout(() => noteEl.remove(), 2200);
+      } else if (currentNaradMode === 'talk') {
+        // Narayan Chanting: Divine words emitting from mouth
+        const chantWords = ["नारायण!", "हरि ॐ!", "गोविन्द!", "श्रीमन नारायण!"];
+        const wordEl = document.createElement('div');
+        wordEl.className = 'chant-word-particle';
+        wordEl.innerText = chantWords[Math.floor(Math.random() * chantWords.length)];
+        wordEl.style.left = (x + 8) + 'px';
+        wordEl.style.top = (y - 25) + 'px';
+        document.body.appendChild(wordEl);
+        setTimeout(() => wordEl.remove(), 2400);
+      } else if (currentNaradMode === 'kartal') {
+        // Khartal Beats: Sound Wave Expanding Rings
+        const ringEl = document.createElement('div');
+        ringEl.className = 'kartal-beat-ring';
+        ringEl.style.left = (x + 22) + 'px';
+        ringEl.style.top = (y - 18) + 'px';
+        document.body.appendChild(ringEl);
+        setTimeout(() => ringEl.remove(), 1400);
+      }
+    }, 1100);
+
+    // Auto-cycle through states every 16 to 20 seconds
+    setInterval(() => {
+      actionIndex = (actionIndex + 1) % naradActions.length;
+      switchNaradAction(naradActions[actionIndex]);
+    }, 18000);
+
+    // 14. CELESTIAL BLUE LINE SMOOTH GLIDING ENGINE
     const naradWrap = document.getElementById('naradEntity');
-    let pX = 16, pY = 150, targetX = pX, targetY = pY, isNaradRoaming = true;
+    let naradX = 12;
+    let naradDirection = 1;
+    const naradSpeed = 0.52;
+    let isNaradGlideActive = true;
 
-    function pickSmartPeripheryWaypoint() {
-      if (!isNaradRoaming) return;
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      const preferRight = Math.random() > 0.5;
-      if (preferRight) {
-        targetX = Math.max(10, w - 90 - Math.random() * 15);
-      } else {
-        targetX = 10 + Math.random() * 20;
+    function glideAlongBlueLine() {
+      if (isNaradGlideActive && naradWrap) {
+        const screenW = window.innerWidth || 360;
+        const maxTrackWidth = Math.max(120, screenW - 95);
+        const minTrackWidth = 10;
+
+        naradX += naradSpeed * naradDirection;
+
+        if (naradX >= maxTrackWidth) {
+          naradX = maxTrackWidth;
+          naradDirection = -1;
+        } else if (naradX <= minTrackWidth) {
+          naradX = minTrackWidth;
+          naradDirection = 1;
+        }
+
+        naradWrap.style.transform = `translate3d(${naradX}px, 0, 0)`;
       }
-      targetY = 140 + Math.random() * (h - 260);
+      requestAnimationFrame(glideAlongBlueLine);
     }
+    requestAnimationFrame(glideAlongBlueLine);
 
-    function roamLoop() {
-      if (isNaradRoaming) {
-        const dx = targetX - pX;
-        const dy = targetY - pY;
-        pX += dx * 0.015;
-        pY += dy * 0.015;
-        const tilt = Math.max(-12, Math.min(12, dx * 0.12));
-        naradWrap.style.transform = 'translate3d(' + pX + 'px, ' + pY + 'px, 0) rotate(' + tilt + 'deg)';
-        if (Math.hypot(dx, dy) < 18) pickSmartPeripheryWaypoint();
-      }
-      requestAnimationFrame(roamLoop);
-    }
-    pickSmartPeripheryWaypoint();
-    setInterval(pickSmartPeripheryWaypoint, 4800);
-    roamLoop();
-
-    // 12. BACKGROUND SACRED GEOMETRY (Dual Chakras & God Rays)
+    // 15. BACKGROUND SACRED GEOMETRY
     const bgCanvas = document.getElementById('divineCanvas');
     const bgCtx = bgCanvas.getContext('2d');
-    function resizeBgCanvas() { bgCanvas.width = window.innerWidth; bgCanvas.height = window.innerHeight; }
+    function resizeBgCanvas() { 
+      bgCanvas.width = window.innerWidth || 360; 
+      bgCanvas.height = window.innerHeight || 640; 
+    }
     window.addEventListener('resize', resizeBgCanvas);
     resizeBgCanvas();
 
     let bgRot = 0;
     function renderDivineBackground() {
-      const w = bgCanvas.width, h = bgCanvas.height, cx = w / 2, cy = h / 2;
+      const w = bgCanvas.width || 360, h = bgCanvas.height || 640, cx = w / 2, cy = h / 2;
       bgCtx.clearRect(0, 0, w, h);
 
-      const nebula = bgCtx.createRadialGradient(cx, cy * 0.8, 20, cx, cy * 0.8, Math.min(w, h) * 0.7);
-      nebula.addColorStop(0, 'rgba(80, 32, 0, 0.45)');
-      nebula.addColorStop(0.5, 'rgba(30, 12, 2, 0.25)');
+      const gradRadius = Math.max(40, Math.min(w, h) * 0.7);
+      const nebula = bgCtx.createRadialGradient(cx, cy * 0.8, 10, cx, cy * 0.8, gradRadius);
+      nebula.addColorStop(0, 'rgba(120, 50, 0, 0.4)');
+      nebula.addColorStop(0.5, 'rgba(40, 16, 2, 0.2)');
       nebula.addColorStop(1, 'rgba(0, 0, 0, 0)');
       bgCtx.fillStyle = nebula;
       bgCtx.fillRect(0, 0, w, h);
@@ -2309,30 +2809,12 @@ Format:
       bgCtx.stroke();
       bgCtx.restore();
 
-      bgCtx.save();
-      bgCtx.translate(cx, cy);
-      bgCtx.rotate(bgRot * 0.6);
-      bgCtx.strokeStyle = 'rgba(255, 215, 0, 0.14)';
-      bgCtx.lineWidth = 1.4;
-      bgCtx.setLineDash([]);
-      const innerR = baseRadius * 0.72;
-      bgCtx.beginPath();
-      bgCtx.arc(0, 0, innerR, 0, Math.PI * 2);
-      bgCtx.stroke();
-      for (let i = 0; i < 24; i++) {
-        const ang = (i * Math.PI * 2) / 24;
-        bgCtx.moveTo(0, 0);
-        bgCtx.lineTo(Math.cos(ang) * innerR, Math.sin(ang) * innerR);
-      }
-      bgCtx.stroke();
-      bgCtx.restore();
-
       bgRot += 0.0035;
       requestAnimationFrame(renderDivineBackground);
     }
     renderDivineBackground();
 
-    // 13. TAB NAVIGATION & SCRIPTURE SWITCHING
+    // 16. TAB NAVIGATION & SCRIPTURE SWITCHING
     function switchCategory(catId, btnElement, e) {
       if (e) e.stopPropagation();
       playTabSound();
@@ -2380,34 +2862,45 @@ Format:
       window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
     }
 
-    // Daily Wisdom
+    // 17. DAILY SCRIPTURES POOL
     const dailyScriptures = [
       {
-        title: "कर्मण्येवाधिकारस्ते (गीता २.४७)",
+        title: "कर्मण्येवाधिकारस्ते (श्रीमद्भगवद्गीता २.४७)",
         shlok: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
-        meaning: "केवल कर्म में अधिकार रखो, फल में कभी नहीं। फल की आसक्ति छोड़कर अनासक्त भाव से कर्तव्य पूरा करो।"
+        meaning: "तुम्हारा अधिकार केवल कर्तव्य-कर्म करने में है, उसके फल पर कभी नहीं। फल की वासना से कर्म मत करो, और अकर्मण्यता में भी अनुराग न हो।"
       },
       {
-        title: "तितिक्षा और धैर्य (गीता २.१४)",
+        title: "तितिक्षा और धैर्य (श्रीमद्भगवद्गीता २.१४)",
         shlok: "मात्रास्पर्शास्तु कौन्तेय शीतोष्णसुखदुःखदाः।\nआगमापायिनोऽनित्यास्तांस्तितिक्षस्व भारत॥",
-        meaning: "सुख और दुःख ऋतुओं की तरह क्षणभंगुर हैं। ज्ञानी मनुष्य विचलित हुए बिना धैर्यपूर्वक इन्हें सहता है।"
+        meaning: "सुख और दुःख सर्दी-गर्मी की तरह अनित्य और क्षणभंगुर हैं। ज्ञानी पुरुष अविचलित रहकर धैर्यपूर्वक इन्हें सहन करते हैं।"
       },
       {
-        title: "अभय और आत्म-साक्षात्कार (गीता २.२०)",
+        title: "अमर आत्मा का सत्य (श्रीमद्भगवद्गीता २.२०)",
         shlok: "न जायते म्रियते वा कदाचिन्नायं भूत्वा भविता वा न भूयः।\nअजो नित्यः शाश्वतोऽयं पुराणो न हन्यते हन्यमाने शरीरे॥",
-        meaning: "यह आत्मा न कभी जन्म लेती है और न कभी मरती है। यह अजन्मा, नित्य, सनातन और पुरातन है। शरीर के नष्ट होने पर भी आत्मा कभी नष्ट नहीं होती।"
+        meaning: "यह आत्मा न कभी जन्म लेती है और न कभी मरती है। यह अजन्मा, नित्य, सनातन और पुरातन है। शरीर के नष्ट होने पर भी इसका नाश नहीं होता।"
+      },
+      {
+        title: "गायत्री महामंत्र (ऋग्वेद ३.६२.१०)",
+        shlok: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं\nभर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥",
+        meaning: "उस प्राणस्वरूप, दुःखनाशक, सुखस्वरूप, तेजस्वी और पापनाशक परमात्मा का हम ध्यान करें, वह हमारी बुद्धि को सन्मार्ग पर प्रेरित करे।"
+      },
+      {
+        title: "महामृत्युंजय महामंत्र (ऋग्वेद ७.५९.१२)",
+        shlok: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥",
+        meaning: "हम त्रिनेत्रधारी महादेव की उपासना करते हैं जो पुष्टि का विस्तार करते हैं। हम मृत्यु के बंधन से मुक्त होकर अमरत्व को प्राप्त हों।"
       }
     ];
 
     function loadDailyWisdom() {
       const data = dailyScriptures[new Date().getDate() % dailyScriptures.length];
       const container = document.getElementById('dailyVerseContainer');
-      container.innerHTML = 
-        '<h3 style="color:var(--gold-bright); font-family:var(--font-title); font-size:1.15rem; margin-bottom:4px;">' + data.title + '</h3>' +
-        '<p style="color:#ffe8b3; font-style:italic; font-size:0.95rem; margin-bottom:6px; white-space:pre-line;">' + data.shlok + '</p>' +
-        '<p style="color:#dfcaa7; font-size:0.88rem;">' + data.meaning + '</p>';
+      if (container) {
+        container.innerHTML = 
+          '<h3 style="color:var(--gold-bright); font-family:var(--font-title); font-size:1.15rem; margin-bottom:4px;">' + data.title + '</h3>' +
+          '<p style="color:#ffe8b3; font-style:italic; font-size:0.95rem; margin-bottom:6px; white-space:pre-line;">' + data.shlok + '</p>' +
+          '<p style="color:#dfcaa7; font-size:0.88rem;">' + data.meaning + '</p>';
+      }
     }
-    loadDailyWisdom();
 
     function shareDailyWhatsApp(e) {
       if (e) e.stopPropagation();
@@ -2416,7 +2909,7 @@ Format:
       window.open('https://api.whatsapp.com/send?text=' + text, '_blank');
     }
 
-    // 14. SURYA KIRAN LIGHT FLARE + BLUR + NARAD AI SAMVAAD OPEN
+    // 18. SURYA KIRAN LIGHT FLARE + BLUR + NARAD AI SAMVAAD OPEN
     function handleNaradClick(e) {
       if (e) e.stopPropagation();
 
@@ -2447,7 +2940,7 @@ Format:
     }
 
     function openNaradWindow() {
-      isNaradRoaming = false;
+      isNaradGlideActive = false;
       const backdrop = document.getElementById('naradBackdrop');
       backdrop.style.display = 'flex';
       setTimeout(() => {
@@ -2461,7 +2954,7 @@ Format:
       const backdrop = document.getElementById('naradBackdrop');
       backdrop.style.display = 'none';
       document.getElementById('appRoot').classList.remove('cosmic-blurred');
-      isNaradRoaming = true;
+      isNaradGlideActive = true;
     }
 
     function handleBackdropClick(e) {
@@ -2489,7 +2982,6 @@ Format:
 
       const deityName = activeDeityObj.hindiName;
 
-      // Personalized Contextual Prompt
       const fullContextQuery = `[User Context - Name: "${userName}", Beloved Deity: "${deityName}", Language: "${userLang}"]
 User says: ${query}`;
 
@@ -2507,11 +2999,19 @@ User says: ${query}`;
       stream.scrollTop = stream.scrollHeight;
     }
 
-    // Initialize App Safely
-    window.addEventListener('DOMContentLoaded', () => {
-      checkUserOnboarding();
+    // 19. INSTANT BULLETPROOF INITIALIZATION
+    function initSanatanApp() {
+      applyLanguageAndDeity();
       loadDailyWisdom();
-    });
+      checkUserOnboarding();
+      switchNaradAction('kartal');
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSanatanApp);
+    } else {
+      initSanatanApp();
+    }
   </script>
 </body>
 </html>
