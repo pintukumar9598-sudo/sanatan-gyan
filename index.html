@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0a0502">
+  <meta name="theme-color" content="#0d0602">
   <title>सनातन ज्ञान महासागर | The Divine Cosmic Realm</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,16 +17,11 @@
       --gold-deep: #b38600;
       --saffron-fire: #ff6600;
       --saffron-amber: #ff9900;
-      --bg-darkness: #080301;
-      --card-glass: rgba(26, 14, 7, 0.94);
+      --bg-darkness: #0d0602;
+      --card-glass: rgba(22, 13, 6, 0.95);
       --font-hindi: 'Tiro Devanagari Hindi', serif;
       --font-title: 'Yatra One', cursive;
       --font-ancient: 'Cinzel', serif;
-
-      /* Dynamic Section Themes */
-      --theme-glow: #ffd700;
-      --theme-border: rgba(255, 215, 0, 0.38);
-      --theme-accent: #ff6600;
     }
 
     * {
@@ -37,36 +32,22 @@
     }
 
     body {
-      background-color: var(--bg-darkness);
+      background: radial-gradient(ellipse at top, #241105 0%, #120702 45%, #050201 100%);
       color: #fff9f0;
       font-family: var(--font-hindi);
       min-height: 100vh;
       overflow-x: hidden;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    body.modal-locked {
-      overflow: hidden !important;
-      height: 100vh !important;
-      touch-action: none;
-    }
-
-    .selectable-text, input, textarea {
-      user-select: text !important;
-      -webkit-user-select: text !important;
     }
 
     #appRoot {
       position: relative;
       width: 100%;
       min-height: 100vh;
-      transition: filter 0.4s ease, transform 0.4s ease;
+      transition: filter 0.35s ease;
     }
 
     #appRoot.cosmic-blurred {
-      filter: blur(22px) brightness(0.5);
-      transform: scale(0.98);
+      filter: blur(20px) brightness(0.7);
       pointer-events: none;
     }
 
@@ -81,74 +62,44 @@
     #divineCanvas { z-index: 1; }
     #particleCanvas { z-index: 250; }
 
-    /* 2. CINEMATIC GOLDEN SUNLIGHT BURST */
-    #suryaKiranOverlay {
+    #chantLayer {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 999999;
-      opacity: 0;
-      background: radial-gradient(circle at center, #ffffff 0%, #ffd700 35%, #ff6600 65%, #0d0602 100%);
-      transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      z-index: 9999;
       overflow: hidden;
     }
 
-    #suryaKiranOverlay.active { opacity: 1; }
-
-    .surya-kiran-rays {
-      position: absolute;
-      width: 280vmax;
-      height: 280vmax;
-      background: repeating-conic-gradient(
-        from 0deg,
-        rgba(255, 255, 255, 0.95) 0deg 8deg,
-        rgba(255, 215, 0, 0.8) 8deg 18deg,
-        rgba(255, 120, 0, 0) 18deg 30deg
-      );
-      border-radius: 50%;
-      animation: spinSuryaRays 4s linear infinite;
-      mix-blend-mode: screen;
-    }
-
-    @keyframes spinSuryaRays {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    /* 3. HEADER & HUDS */
+    /* 2. SACRED HEADER */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: linear-gradient(180deg, rgba(14, 7, 3, 0.98) 0%, rgba(10, 5, 2, 0.95) 100%);
+      background: linear-gradient(180deg, rgba(14, 8, 3, 0.98) 0%, rgba(10, 5, 2, 0.95) 100%);
       backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1.5px solid var(--theme-border);
-      padding: 10px 16px;
+      border-bottom: 1.5px solid rgba(255, 215, 0, 0.35);
+      padding: 10px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       box-shadow: 0 4px 30px rgba(0,0,0,0.85);
-      transition: border-color 0.5s ease;
     }
 
     .brand-section {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .brand-om {
       font-size: 2.1rem;
       font-family: var(--font-title);
-      background: radial-gradient(circle, #ffffff 0%, var(--theme-glow) 50%, var(--theme-accent) 100%);
+      background: radial-gradient(circle, #ffffff 0%, #ffd700 45%, #ff5500 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       filter: drop-shadow(0 0 14px rgba(255, 140, 0, 0.9));
-      animation: divinePulse 3.5s infinite ease-in-out;
+      display: inline-block;
+      animation: divinePulse 3s infinite ease-in-out;
     }
 
     @keyframes divinePulse {
@@ -160,13 +111,14 @@
       font-size: 1.15rem;
       font-family: var(--font-title);
       color: var(--gold-bright);
-      line-height: 1.15;
+      line-height: 1.1;
+      text-shadow: 0 0 10px rgba(255, 200, 0, 0.4);
     }
 
     .user-rank-badge {
       display: inline-block;
       background: linear-gradient(135deg, rgba(255, 102, 0, 0.3), rgba(255, 215, 0, 0.2));
-      border: 1px solid var(--theme-border);
+      border: 1px solid rgba(255, 215, 0, 0.55);
       color: var(--gold-bright);
       font-size: 0.68rem;
       padding: 1px 9px;
@@ -194,13 +146,13 @@
       justify-content: center;
       cursor: pointer;
       box-shadow: 0 0 12px rgba(255, 215, 0, 0.3);
-      transition: transform 0.15s ease;
+      touch-action: manipulation;
     }
-    .icon-action-btn:active { transform: scale(0.92); }
 
+    /* 3. STICKY NAAM JAAP HUD */
     .jaap-hud-bar {
-      background: linear-gradient(180deg, rgba(22, 11, 5, 0.96) 0%, rgba(12, 6, 2, 0.98) 100%);
-      border-bottom: 1.5px solid var(--theme-border);
+      background: linear-gradient(180deg, rgba(22, 13, 6, 0.96) 0%, rgba(12, 6, 2, 0.98) 100%);
+      border-bottom: 1.5px solid rgba(255, 215, 0, 0.3);
       padding: 10px 16px;
       display: flex;
       justify-content: space-between;
@@ -209,9 +161,7 @@
       top: 59px;
       z-index: 900;
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       box-shadow: 0 4px 20px rgba(0,0,0,0.6);
-      transition: border-color 0.5s ease;
     }
 
     .jaap-interactive-box {
@@ -225,19 +175,14 @@
       width: 48px;
       height: 48px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fff2a3 0%, var(--theme-accent) 65%, transparent 100%);
+      background: radial-gradient(circle, #fff2a3 0%, #ff8c00 65%, transparent 100%);
       border: 2px solid var(--gold-bright);
       display: flex;
       justify-content: center;
       align-items: center;
       font-size: 1.45rem;
-      box-shadow: 0 0 18px var(--theme-border);
+      box-shadow: 0 0 18px rgba(255, 215, 0, 0.65);
       transition: transform 0.12s cubic-bezier(0.2, 0.9, 0.3, 1);
-    }
-
-    .jaap-mandala-orb.pulse-burst {
-      transform: scale(1.25);
-      box-shadow: 0 0 35px rgba(255, 255, 255, 1), 0 0 50px var(--theme-accent);
     }
 
     .jaap-counter-num {
@@ -246,6 +191,7 @@
       color: var(--gold-bright);
       line-height: 1;
       letter-spacing: 1px;
+      text-shadow: 0 0 12px rgba(255, 215, 0, 0.65);
     }
 
     .jaap-sub-info {
@@ -264,617 +210,355 @@
       cursor: pointer;
     }
 
-    /* 4. PERSISTENT FIXED FLOATING 'ॐ' AVATAR */
-    #divineFloatingOm {
+    /* 4. DRAGGABLE & INHALE/EXHALE BREATHING BHAVYA "ॐ" AVATAR */
+    #omDivineEntity {
       position: fixed;
-      bottom: 25px;
-      right: 25px;
-      width: 76px;
-      height: 76px;
-      z-index: 9990;
+      top: 0;
+      left: 0;
+      width: 82px;
+      height: 82px;
+      z-index: 5000;
       cursor: grab;
       touch-action: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      filter: drop-shadow(0 0 22px rgba(255, 140, 0, 0.95));
+      will-change: transform;
       user-select: none;
     }
 
-    #divineFloatingOm:active { cursor: grabbing; }
-
-    .om-breathing-sphere {
-      width: 68px;
-      height: 68px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #ffffff 0%, #ffd700 45%, #ff5500 80%, #301000 100%);
-      border: 2.2px solid #fff2a3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      animation: pranayamaBreathing 5.2s ease-in-out infinite;
-      box-shadow: 0 0 30px rgba(255, 140, 0, 0.85), inset 0 0 16px rgba(255, 255, 255, 0.8);
+    #omDivineEntity:active {
+      cursor: grabbing;
+      transform: scale(1.08);
     }
 
-    @keyframes pranayamaBreathing {
+    .om-breathing-wrap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: omPranayama 4.5s infinite ease-in-out;
+    }
+
+    /* Slow Rhythmic Breathing (Inhaling & Exhaling) Animation */
+    @keyframes omPranayama {
       0%, 100% {
-        transform: scale(0.93);
-        box-shadow: 0 0 20px rgba(255, 140, 0, 0.6), inset 0 0 10px rgba(255, 255, 200, 0.4);
+        transform: scale(0.92);
+        filter: drop-shadow(0 0 12px rgba(255, 140, 0, 0.75)) drop-shadow(0 0 25px rgba(255, 215, 0, 0.4));
       }
       50% {
-        transform: scale(1.12);
-        box-shadow: 0 0 50px rgba(255, 215, 0, 1), 0 0 80px rgba(255, 102, 0, 0.75), inset 0 0 22px #ffffff;
+        transform: scale(1.10);
+        filter: drop-shadow(0 0 26px rgba(255, 170, 0, 0.95)) drop-shadow(0 0 45px rgba(255, 240, 160, 0.85));
       }
     }
 
-    .om-glyph-svg {
-      width: 44px;
-      height: 44px;
-      fill: #ffffff;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8)) drop-shadow(0 0 10px #ffd700);
+    .om-svg-art {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
       pointer-events: none;
     }
 
-    .om-tag-bubble {
+    /* Active Radiant Aura (when AI Agent is Open) */
+    .om-active-halo {
       position: absolute;
-      top: -24px;
-      left: 50%;
-      transform: translate3d(-50%, 0, 0);
-      background: rgba(18, 10, 4, 0.96);
-      border: 1.5px solid var(--gold-pure);
-      color: var(--gold-bright);
-      padding: 2px 10px;
-      border-radius: 14px;
-      font-size: 0.72rem;
-      font-family: var(--font-title);
-      white-space: nowrap;
-      box-shadow: 0 0 14px rgba(255, 140, 0, 0.6);
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 242, 163, 0.8) 0%, rgba(255, 140, 0, 0.5) 45%, rgba(0, 229, 255, 0.25) 75%, transparent 100%);
+      box-shadow: 0 0 50px #ffd700, 0 0 80px #ff6600, 0 0 120px rgba(0, 229, 255, 0.6);
       pointer-events: none;
+      display: none;
+      animation: activeHaloBurst 2s infinite ease-in-out alternate;
     }
 
-    /* 5. MAIN HOME VIEWPORT */
-    .app-viewport {
-      position: relative;
-      z-index: 10;
-      max-width: 960px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 16px;
-      padding-bottom: 120px;
+    @keyframes activeHaloBurst {
+      0% { transform: scale(0.95); opacity: 0.8; }
+      100% { transform: scale(1.25); opacity: 1; filter: drop-shadow(0 0 35px #fff); }
     }
 
-    .daily-wisdom-card {
-      background: linear-gradient(135deg, rgba(46, 24, 7, 0.95), rgba(18, 10, 3, 0.95));
-      border: 1.8px solid var(--gold-pure);
-      border-radius: 22px;
-      padding: 20px 24px;
-      margin-bottom: 22px;
-      box-shadow: 0 0 30px rgba(255, 140, 0, 0.38);
-      cursor: pointer;
-    }
-    .daily-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    .daily-tag {
-      background: var(--saffron-fire);
-      color: #000;
-      font-size: 0.76rem;
-      font-weight: bold;
-      font-family: var(--font-title);
-      padding: 3px 14px;
-      border-radius: 20px;
-    }
-
-    /* SEARCH SANCTUM */
-    .search-sanctum {
-      margin-bottom: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .search-input-group {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .search-input {
-      flex: 1;
-      background: rgba(20, 13, 7, 0.95);
-      border: 1.5px solid var(--theme-border);
-      border-radius: 25px;
-      padding: 12px 18px;
-      color: #fff;
-      font-size: 16px !important;
-      outline: none;
-      font-family: inherit;
-      transition: border-color 0.4s, box-shadow 0.4s;
-    }
-    .search-input:focus {
-      border-color: var(--gold-pure);
-      box-shadow: 0 0 16px rgba(255, 215, 0, 0.4);
-    }
-
-    .ai-search-btn {
-      background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
-      border: none;
-      color: #0b0502;
-      font-weight: bold;
-      font-family: var(--font-title);
-      padding: 11px 22px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-size: 0.92rem;
-      white-space: nowrap;
-      box-shadow: 0 0 12px rgba(255, 140, 0, 0.4);
-    }
-
-    .search-suggestions-box {
-      background: rgba(24, 14, 7, 0.95);
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      border-radius: 16px;
-      padding: 10px 14px;
+    /* 5. COSMIC VOICE AGENT MODAL (ONE TAP OPEN / ANYWHERE TAP CLOSE) */
+    #voiceAgentModal {
+      position: fixed !important;
+      inset: 0 !important;
+      background: radial-gradient(circle at center, rgba(32, 16, 6, 0.95) 0%, rgba(8, 4, 1, 0.98) 100%) !important;
+      backdrop-filter: blur(25px) !important;
+      -webkit-backdrop-filter: blur(25px) !important;
+      z-index: 99998 !important;
       display: none;
       flex-direction: column;
-      gap: 6px;
-      backdrop-filter: blur(10px);
-    }
-    .search-suggestions-box.active { display: flex; }
-    .suggestion-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .sug-chip {
-      background: rgba(38, 22, 10, 0.85);
-      border: 1px solid rgba(255, 215, 0, 0.25);
-      color: #ffe8b3;
-      font-size: 0.78rem;
-      padding: 5px 12px;
-      border-radius: 14px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 20px;
       cursor: pointer;
     }
-    .sug-chip:hover {
-      background: var(--saffron-fire);
-      color: #000;
-    }
 
-    /* 6. ROW-WISE SCRIPTURE SHELVES */
-    .section-shelf-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin: 32px 0 14px 0;
-      border-bottom: 1.5px solid var(--theme-border);
-      padding-bottom: 6px;
-    }
-
-    .section-shelf-header h2 {
-      font-family: var(--font-title);
-      font-size: 1.4rem;
-      color: var(--gold-bright);
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.35);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-shelf-header span {
-      font-size: 0.82rem;
-      color: #dfcaa7;
-    }
-
-    .shelf-scroll-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 18px;
-      margin-bottom: 28px;
-    }
-
-    .scripture-portal-card {
-      background: linear-gradient(145deg, rgba(32, 17, 8, 0.94) 0%, rgba(18, 9, 4, 0.96) 100%);
-      border: 1.5px solid var(--theme-border);
-      border-radius: 20px;
-      padding: 20px 18px;
-      cursor: pointer;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.32s cubic-bezier(0.18, 0.85, 0.35, 1);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 155px;
-    }
-
-    .scripture-portal-card:hover {
-      transform: translateY(-6px) scale(1.02);
-      border-color: var(--theme-glow);
-      box-shadow: 0 16px 36px rgba(255, 140, 0, 0.4), 0 0 20px var(--theme-glow);
-    }
-
-    .portal-card-badge {
-      display: inline-block;
-      font-size: 0.72rem;
-      background: rgba(255, 215, 0, 0.12);
-      border: 1px solid var(--theme-border);
-      color: var(--gold-bright);
-      padding: 2px 10px;
-      border-radius: 12px;
-      width: fit-content;
-      margin-bottom: 8px;
-    }
-
-    .portal-card-title {
-      font-family: var(--font-title);
-      font-size: 1.22rem;
-      color: #fff9f0;
-      line-height: 1.3;
-      margin-bottom: 6px;
-    }
-
-    .portal-card-desc {
-      font-size: 0.84rem;
-      color: #cfbc9f;
-      line-height: 1.5;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .portal-open-tag {
-      margin-top: 12px;
-      font-size: 0.8rem;
-      color: var(--gold-bright);
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    /* 7. DEDICATED SCRIPTURE FULL-SCREEN PORTAL */
-    #dedicatedPortalView {
-      position: fixed;
-      inset: 0;
-      z-index: 15000;
-      background: radial-gradient(ellipse at top, #1e0d05 0%, #0c0502 60%, #030101 100%);
-      overflow-y: auto;
-      display: none;
-      flex-direction: column;
-      padding: 24px 20px 100px 20px;
-      animation: portalWarpIn 0.45s cubic-bezier(0.18, 0.89, 0.32, 1.2);
-    }
-
-    @keyframes portalWarpIn {
-      0% { opacity: 0; transform: scale(0.94); filter: brightness(2); }
-      100% { opacity: 1; transform: scale(1); filter: brightness(1); }
-    }
-
-    .portal-top-nav {
-      max-width: 860px;
+    .voice-agent-header {
       width: 100%;
-      margin: 0 auto 24px auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      max-width: 500px;
+      pointer-events: auto;
     }
 
-    .portal-back-btn {
-      background: rgba(45, 24, 10, 0.9);
+    .voice-agent-title {
+      font-family: var(--font-title);
+      color: var(--gold-bright);
+      font-size: 1.3rem;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    }
+
+    .agent-close-btn {
+      background: rgba(60, 30, 10, 0.85);
       border: 1.5px solid var(--gold-pure);
       color: var(--gold-bright);
-      font-family: var(--font-title);
-      font-size: 0.95rem;
-      padding: 8px 20px;
-      border-radius: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 0 14px rgba(255, 140, 0, 0.4);
-    }
-
-    .portal-content-wrap {
-      max-width: 860px;
-      width: 100%;
-      margin: 0 auto;
-    }
-
-    .portal-hero-banner {
-      background: linear-gradient(135deg, rgba(46, 24, 8, 0.95), rgba(18, 9, 3, 0.98));
-      border: 2px solid var(--theme-border);
-      border-radius: 26px;
-      padding: 30px 26px;
-      margin-bottom: 26px;
-      box-shadow: 0 0 45px rgba(255, 140, 0, 0.35);
-      position: relative;
-    }
-
-    .portal-hero-banner h1 {
-      font-family: var(--font-title);
-      font-size: 2.1rem;
-      color: var(--gold-bright);
-      margin-bottom: 10px;
-      text-shadow: 0 0 16px rgba(255, 215, 0, 0.6);
-    }
-
-    .portal-meta-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-      gap: 12px;
-      margin: 18px 0;
-    }
-
-    .portal-meta-item {
-      background: rgba(14, 7, 2, 0.88);
-      border: 1px solid rgba(255, 215, 0, 0.25);
-      padding: 10px 14px;
-      border-radius: 14px;
-    }
-
-    .portal-meta-item small {
-      display: block;
-      color: #dfcaa7;
-      font-size: 0.74rem;
-      margin-bottom: 2px;
-    }
-
-    .portal-meta-item strong {
-      color: #fff2cc;
-      font-size: 0.94rem;
-    }
-
-    .portal-verse-block {
-      background: var(--card-glass);
-      border: 1.5px solid var(--theme-border);
-      border-radius: 22px;
-      padding: 22px 24px;
-      margin-bottom: 22px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-    }
-
-    .portal-verse-block h3 {
-      font-family: var(--font-title);
-      font-size: 1.25rem;
-      color: var(--gold-bright);
-      margin-bottom: 10px;
-    }
-
-    .sanskrit-box {
-      background: radial-gradient(circle at top left, rgba(32, 17, 8, 0.95), rgba(12, 6, 2, 0.98));
-      border-left: 4px solid var(--theme-glow);
-      border-radius: 0 14px 14px 0;
-      padding: 16px 20px;
-      margin: 14px 0;
-      font-size: 1.14rem;
-      line-height: 1.88;
-      color: #ffe8b3;
-      text-shadow: 0 0 8px rgba(255, 215, 0, 0.25);
-    }
-
-    .meaning-box {
-      font-size: 0.96rem;
-      color: #e0d4c5;
-      line-height: 1.75;
-      margin-top: 12px;
-    }
-
-    .util-btn {
-      background: rgba(28, 18, 9, 0.85);
-      border: 1px solid rgba(255, 215, 0, 0.35);
-      color: var(--gold-bright);
-      font-size: 0.82rem;
-      padding: 6px 14px;
-      border-radius: 16px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .util-btn:active { transform: scale(0.94); }
-
-    /* 8. SANATAN CHATBOT / GEMINI MODAL */
-    .chat-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(6, 3, 1, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 100000;
-      display: none;
-      justify-content: center;
-      align-items: center;
-      padding: 12px;
-    }
-
-    .chat-frame {
-      background: #110904;
-      width: 100%;
-      max-width: 660px;
-      height: 90vh;
-      height: 90dvh;
-      border-radius: 28px;
-      border: 1.8px solid var(--gold-pure);
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      box-shadow: 0 0 65px rgba(255, 140, 0, 0.6);
-      animation: modalPopIn 0.35s cubic-bezier(0.18, 0.85, 0.35, 1);
-    }
-
-    @keyframes modalPopIn {
-      0% { transform: scale(0.85); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    .chat-header {
-      padding: 14px 18px;
-      background: rgba(22, 12, 6, 0.98);
-      border-bottom: 1.5px solid rgba(255, 215, 0, 0.3);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .chat-header-title-wrap {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .chat-header-om {
       width: 38px;
       height: 38px;
       border-radius: 50%;
-      background: radial-gradient(circle, #fff2a3, #ff6600);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-title);
-      font-size: 1.4rem;
-      color: #fff;
-      box-shadow: 0 0 12px rgba(255, 140, 0, 0.7);
-    }
-
-    .chat-header h3 {
-      font-family: var(--font-title);
-      color: var(--gold-bright);
       font-size: 1.2rem;
-      line-height: 1.1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
     }
 
-    .chat-scroll-area {
-      flex: 1;
-      padding: 18px;
-      overflow-y: auto;
+    /* Pulsating Circular Aura in Center */
+    .cosmic-aura-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      pointer-events: auto;
+    }
+
+    .aura-wave-ring {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .aura-ring-1 {
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, #fff2a3 0%, #ffd700 50%, #ff6600 100%);
+      box-shadow: 0 0 45px #ffd700, 0 0 90px #ff6600, 0 0 140px rgba(0, 229, 255, 0.5);
+      animation: pulseGeminiAura 2.2s infinite ease-in-out;
+    }
+
+    .aura-ring-2 {
+      width: 175px;
+      height: 175px;
+      border: 2px solid rgba(0, 229, 255, 0.6);
+      box-shadow: 0 0 35px #00e5ff;
+      animation: expandAuraWave 3s infinite linear;
+    }
+
+    .aura-ring-3 {
+      width: 215px;
+      height: 215px;
+      border: 1.5px dashed rgba(255, 215, 0, 0.5);
+      animation: spinAuraOrbit 8s infinite linear;
+    }
+
+    @keyframes pulseGeminiAura {
+      0%, 100% { transform: scale(0.92); opacity: 0.85; filter: hue-rotate(0deg); }
+      50% { transform: scale(1.15); opacity: 1; filter: hue-rotate(25deg) drop-shadow(0 0 35px #fff); }
+    }
+
+    @keyframes expandAuraWave {
+      0% { transform: scale(0.8); opacity: 0.9; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    @keyframes spinAuraOrbit {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .aura-center-mic {
+      position: relative;
+      z-index: 10;
+      font-size: 2.8rem;
+      filter: drop-shadow(0 0 10px #000);
+      user-select: none;
+    }
+
+    .agent-caption-box {
+      width: 100%;
+      max-width: 480px;
+      background: rgba(18, 10, 4, 0.92);
+      border: 1.5px solid rgba(255, 215, 0, 0.4);
+      border-radius: 20px;
+      padding: 18px 20px;
+      text-align: center;
+      margin-bottom: 15px;
+      box-shadow: 0 0 35px rgba(0,0,0,0.8);
+      min-height: 90px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-    }
-
-    .chat-bubble {
-      max-width: 85%;
-      padding: 12px 18px;
-      border-radius: 20px;
-      font-size: 0.96rem;
-      line-height: 1.6;
-    }
-
-    .chat-bubble.narad {
-      background: #22140a;
-      border-left: 3.5px solid var(--gold-pure);
-      border-top: 1px solid rgba(255, 215, 0, 0.2);
-      color: #fff5e3;
-      align-self: flex-start;
-      white-space: pre-wrap;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-    }
-
-    .chat-bubble.user {
-      background: linear-gradient(135deg, var(--saffron-fire), #a83800);
-      color: #fff;
-      align-self: flex-end;
-      box-shadow: 0 4px 15px rgba(255, 102, 0, 0.35);
-    }
-
-    .chat-control-bar {
-      padding: 12px 14px;
-      background: #180d06;
-      border-top: 1px solid rgba(255, 215, 0, 0.3);
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .chat-input-field {
-      flex: 1;
-      background: #090502;
-      border: 1px solid rgba(255, 215, 0, 0.35);
-      padding: 11px 16px;
-      border-radius: 22px;
-      color: #fff;
-      font-size: 16px !important;
-      outline: none;
-      font-family: inherit;
-    }
-    .chat-input-field:focus { border-color: var(--gold-pure); }
-
-    .chat-mic-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(45, 24, 10, 0.95);
-      border: 1.5px solid var(--gold-pure);
-      color: var(--gold-bright);
-      font-size: 1.15rem;
-      display: flex;
-      align-items: center;
       justify-content: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
+      align-items: center;
+      pointer-events: auto;
     }
 
-    .chat-mic-btn.listening {
-      background: #ff2200;
-      border-color: #ffffff;
-      color: #fff;
-      animation: micPulse 1.2s infinite;
-      box-shadow: 0 0 20px #ff2200;
-    }
-
-    @keyframes micPulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
-
-    .chat-send-btn {
-      background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
-      color: #000;
-      border: none;
-      padding: 11px 18px;
-      border-radius: 22px;
-      font-family: var(--font-title);
+    .agent-status-tag {
+      font-size: 0.78rem;
+      color: #00ffc8;
       font-weight: bold;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .agent-live-text {
+      font-size: 1.05rem;
+      color: #fff2cc;
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    .agent-mic-toggle-btn {
+      background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
+      border: none;
+      color: #000;
+      font-family: var(--font-title);
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 12px 28px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 0 25px rgba(255, 140, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      pointer-events: auto;
+    }
+
+    .agent-tap-hint {
+      color: #ffd899;
+      font-size: 0.75rem;
+      margin-top: 8px;
+      opacity: 0.85;
+    }
+
+    /* 6. FULLSCREEN CINEMATIC BLUR SHLOK MODAL */
+    .milestone-blur-curtain {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 4, 1, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      z-index: 20000;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
       cursor: pointer;
     }
 
-    /* 9. ONBOARDING & SETTINGS MODALS */
+    .milestone-holy-card {
+      background: radial-gradient(circle, rgba(38, 20, 8, 0.98) 0%, rgba(14, 7, 2, 0.98) 100%);
+      border: 2px solid var(--gold-pure);
+      border-radius: 28px;
+      padding: 32px 22px 24px 22px;
+      text-align: center;
+      max-width: 440px;
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 0 60px rgba(255, 140, 0, 0.8), 0 0 100px rgba(255, 215, 0, 0.4);
+    }
+
+    .milestone-close-btn {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      background: rgba(60, 30, 10, 0.85);
+      border: 1px solid var(--gold-pure);
+      color: var(--gold-bright);
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .milestone-holy-card h2 {
+      font-family: var(--font-title);
+      color: var(--gold-bright);
+      font-size: 1.55rem;
+      margin-bottom: 6px;
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+    }
+
+    .milestone-rank-up {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--saffron-fire), #b32d00);
+      color: #fff;
+      font-family: var(--font-title);
+      font-size: 0.9rem;
+      padding: 4px 16px;
+      border-radius: 20px;
+      margin-bottom: 18px;
+    }
+
+    .milestone-shlok-text {
+      background: rgba(10, 5, 2, 0.85);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 16px;
+      padding: 16px;
+      font-size: 1.12rem;
+      line-height: 1.8;
+      color: #ffe8b3;
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+
+    .milestone-shlok-meaning {
+      font-size: 0.88rem;
+      color: #dfcaa7;
+      line-height: 1.5;
+    }
+
+    .milestone-dismiss-hint {
+      font-size: 0.76rem;
+      color: #ffd899;
+      margin-top: 14px;
+      opacity: 0.85;
+    }
+
+    /* 7. DIALOG & MODALS (CENTERED NO-SCROLL ONBOARDING) */
     .modal-curtain {
       position: fixed !important;
-      top: 0 !important;
-      left: 0 !important;
-      width: 100vw !important;
-      height: 100vh !important;
-      height: 100dvh !important;
-      background: rgba(8, 4, 1, 0.88) !important;
-      backdrop-filter: blur(18px) !important;
-      -webkit-backdrop-filter: blur(18px) !important;
-      z-index: 100000 !important;
+      inset: 0 !important;
+      background: rgba(10, 5, 2, 0.82) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      z-index: 99990 !important;
       display: none;
       justify-content: center;
       align-items: center;
       padding: 16px;
-      box-sizing: border-box;
-      overscroll-behavior: contain;
     }
 
     .form-card {
-      background: linear-gradient(180deg, #1e0e05 0%, #120702 100%);
+      background: linear-gradient(180deg, #1c0e05 0%, #120702 100%);
       border: 2px solid var(--gold-pure);
-      border-radius: 26px;
-      padding: 24px 20px;
-      max-width: 430px;
+      border-radius: 24px;
+      padding: 22px 18px;
+      max-width: 420px;
       width: 100%;
-      max-height: 88dvh;
+      max-height: 90vh;
       overflow-y: auto;
-      box-shadow: 0 0 60px rgba(255, 140, 0, 0.7);
+      box-shadow: 0 0 50px rgba(255, 140, 0, 0.7);
       position: relative;
-      margin: auto;
-      animation: modalPopIn 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.25);
     }
 
     .voice-guide-bar {
@@ -906,6 +590,14 @@
       cursor: pointer;
     }
 
+    .form-card h2 {
+      font-family: var(--font-title);
+      color: var(--gold-bright);
+      font-size: 1.35rem;
+      text-align: center;
+      margin-bottom: 4px;
+    }
+
     .form-label {
       font-size: 0.84rem;
       color: #ffd899;
@@ -915,16 +607,31 @@
       font-weight: bold;
     }
 
-    .form-input-field, .form-select-field {
-      font-size: 16px !important;
+    .form-input-field {
       width: 100%;
       background: #080402;
       border: 1.5px solid rgba(255, 215, 0, 0.4);
       padding: 10px 14px;
       border-radius: 14px;
       color: #fff;
+      font-size: 0.95rem;
       outline: none;
       font-family: inherit;
+    }
+    .form-input-field:focus { border-color: var(--gold-pure); }
+
+    .deity-detect-preview {
+      margin-top: 6px;
+      font-size: 0.85rem;
+      color: #00ffaa;
+      font-weight: bold;
+      background: rgba(0, 255, 170, 0.1);
+      border: 1px solid rgba(0, 255, 170, 0.35);
+      padding: 6px 12px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     .deity-chip-container {
@@ -938,15 +645,25 @@
       background: rgba(40, 22, 10, 0.9);
       border: 1px solid rgba(255, 215, 0, 0.3);
       color: #ffe8b3;
-      font-size: 0.74rem;
-      padding: 4px 10px;
+      font-size: 0.72rem;
+      padding: 4px 9px;
       border-radius: 12px;
       cursor: pointer;
     }
-    .deity-quick-chip:hover {
-      background: var(--saffron-fire);
-      color: #000;
+
+    .form-select-field {
+      width: 100%;
+      background: #080402;
+      border: 1.5px solid rgba(255, 215, 0, 0.4);
+      padding: 10px 14px;
+      border-radius: 14px;
+      color: #ffe8b3;
+      font-size: 0.95rem;
+      outline: none;
+      font-family: inherit;
+      cursor: pointer;
     }
+    .form-select-field option { background: #160d06; color: #fff; }
 
     .enter-btn {
       width: 100%;
@@ -962,34 +679,319 @@
       margin-top: 18px;
     }
 
-    .milestone-close-btn {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      background: rgba(60, 30, 10, 0.85);
-      border: 1px solid var(--gold-pure);
-      color: var(--gold-bright);
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      font-size: 1.1rem;
-      display: flex;
+    .secondary-skip-btn {
+      width: 100%;
+      background: transparent;
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      color: #ffd899;
+      font-size: 0.84rem;
+      padding: 8px;
+      border-radius: 14px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    /* 8. LOGIN DIYA SHLOK TYPEWRITER MODAL */
+    #dailyEntryModal {
+      position: fixed !important;
+      inset: 0 !important;
+      background: rgba(6, 3, 1, 0.88) !important;
+      backdrop-filter: blur(22px) !important;
+      -webkit-backdrop-filter: blur(22px) !important;
+      z-index: 99995 !important;
+      display: none;
       justify-content: center;
       align-items: center;
+      padding: 20px;
       cursor: pointer;
     }
+
+    .diya-shlok-card {
+      background: radial-gradient(circle at 50% 15%, rgba(48, 25, 8, 0.98), rgba(16, 8, 2, 0.99));
+      border: 2px solid var(--gold-pure);
+      border-radius: 30px;
+      padding: 26px 20px 22px 20px;
+      max-width: 460px;
+      width: 100%;
+      position: relative;
+      cursor: pointer;
+      box-shadow: 0 0 55px rgba(255, 140, 0, 0.75);
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .divine-diya-wrap {
+      width: 90px;
+      height: 72px;
+      margin: 0 auto 8px auto;
+      filter: drop-shadow(0 0 15px rgba(255, 140, 0, 0.9));
+    }
+
+    .entry-badge-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
+      color: #000;
+      font-size: 0.78rem;
+      font-family: var(--font-title);
+      font-weight: bold;
+      padding: 3px 14px;
+      border-radius: 14px;
+      margin-bottom: 12px;
+    }
+
+    .entry-shlok-title {
+      font-family: var(--font-title);
+      color: var(--gold-bright);
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .entry-sanskrit-box {
+      background: rgba(8, 4, 1, 0.85);
+      border: 1.5px solid rgba(255, 215, 0, 0.4);
+      border-radius: 16px;
+      padding: 16px 14px;
+      font-size: 1.12rem;
+      line-height: 1.85;
+      color: #fff2cc;
+      font-style: italic;
+      margin-bottom: 14px;
+      min-height: 75px;
+      white-space: pre-wrap;
+    }
+
+    .entry-meaning-box {
+      font-size: 0.92rem;
+      color: #e6d3ba;
+      line-height: 1.65;
+      min-height: 50px;
+      margin-bottom: 14px;
+      white-space: pre-wrap;
+    }
+
+    .entry-timer-progress {
+      width: 100%;
+      height: 3px;
+      background: rgba(255, 215, 0, 0.2);
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .entry-timer-fill {
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, var(--gold-pure), var(--saffron-fire));
+      animation: entryTimerCountdown 10s linear forwards;
+    }
+
+    @keyframes entryTimerCountdown {
+      from { width: 100%; }
+      to { width: 0%; }
+    }
+
+    .entry-dismiss-hint {
+      font-size: 0.74rem;
+      color: #ffd899;
+      margin-top: 8px;
+      opacity: 0.85;
+    }
+
+    /* 9. FLOATING CHANTS */
+    .divine-float-text {
+      position: absolute;
+      pointer-events: none;
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      font-weight: bold;
+      white-space: nowrap;
+      transform: translate3d(-50%, -50%, 0);
+      animation: floatDivineSky 1.1s cubic-bezier(0.18, 0.85, 0.35, 1) forwards;
+    }
+
+    @keyframes floatDivineSky {
+      0% { opacity: 0; transform: translate3d(-50%, -50%, 0) scale(0.6); }
+      20% { opacity: 1; transform: translate3d(-50%, -45px, 0) scale(1.15); }
+      75% { opacity: 0.9; }
+      100% { opacity: 0; transform: translate3d(-50%, -100px, 0) scale(0.85); }
+    }
+
+    /* 10. MAIN CONTENT & CARDS */
+    .app-viewport {
+      position: relative;
+      z-index: 10;
+      max-width: 680px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 16px;
+      padding-bottom: 95px;
+    }
+
+    .verse-card {
+      background: var(--card-glass);
+      border: 1.5px solid rgba(255, 215, 0, 0.35);
+      border-radius: 22px;
+      padding: 22px;
+      margin-bottom: 20px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.7);
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .verse-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-pure);
+    }
+
+    .verse-badge {
+      display: inline-block;
+      font-size: 0.74rem;
+      background: linear-gradient(135deg, rgba(255, 102, 0, 0.3), rgba(255, 215, 0, 0.15));
+      border: 1px solid rgba(255, 140, 0, 0.6);
+      color: var(--gold-bright);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+      font-family: var(--font-ancient);
+    }
+
+    .verse-card h2 {
+      font-family: var(--font-title);
+      font-size: 1.35rem;
+      color: var(--gold-bright);
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    }
+
+    .sanskrit-box {
+      background: radial-gradient(circle at top left, rgba(28, 16, 7, 0.95), rgba(10, 6, 2, 0.98));
+      border-left: 4px solid var(--gold-pure);
+      border-radius: 0 14px 14px 0;
+      padding: 16px 20px;
+      margin: 14px 0;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #ffe8b3;
+      text-shadow: 0 0 8px rgba(255, 215, 0, 0.25);
+    }
+
+    .meaning-box {
+      font-size: 0.96rem;
+      color: #e0d4c5;
+      line-height: 1.75;
+      margin-top: 12px;
+    }
+    .meaning-box strong { color: var(--gold-bright); }
+
+    .card-footer-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255, 215, 0, 0.15);
+    }
+
+    .util-btn {
+      background: rgba(28, 18, 9, 0.85);
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      color: var(--gold-bright);
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 16px;
+      cursor: pointer;
+    }
+
+    .nav-tabs-wrapper {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 18px;
+      scrollbar-width: none;
+    }
+    .nav-tabs-wrapper::-webkit-scrollbar { display: none; }
+
+    .nav-btn {
+      background: rgba(24, 16, 9, 0.88);
+      border: 1.2px solid rgba(255, 215, 0, 0.3);
+      color: #d8c4ae;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-size: 0.92rem;
+      font-family: var(--font-title);
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .nav-btn.active {
+      color: #120700;
+      background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
+      border-color: #fff;
+      font-weight: bold;
+    }
+
+    .tab-section { display: none; }
+    .tab-section.active { display: block; }
+
+    /* Search & Suggestions */
+    .search-sanctum { margin-bottom: 12px; display: flex; flex-direction: column; gap: 8px; }
+    .search-input-group { display: flex; gap: 8px; align-items: center; }
+    .search-input {
+      flex: 1; background: rgba(20, 13, 7, 0.95);
+      border: 1.5px solid rgba(255, 215, 0, 0.4);
+      border-radius: 25px; padding: 12px 18px;
+      color: #fff; font-size: 0.95rem; outline: none;
+    }
+    .ai-search-btn {
+      background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
+      border: none; color: #0b0502; font-weight: bold; font-family: var(--font-title);
+      padding: 11px 18px; border-radius: 25px; cursor: pointer;
+    }
+    .search-suggestions-box {
+      background: rgba(24, 14, 7, 0.95); border: 1px solid rgba(255, 215, 0, 0.3);
+      border-radius: 16px; padding: 10px 14px; display: none; flex-direction: column; gap: 6px;
+    }
+    .search-suggestions-box.active { display: flex; }
+    .suggestion-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+    .sug-chip {
+      background: rgba(38, 22, 10, 0.85); border: 1px solid rgba(255, 215, 0, 0.25);
+      color: #ffe8b3; font-size: 0.76rem; padding: 4px 10px; border-radius: 14px; cursor: pointer;
+    }
+
+    #aiSearchResultCard {
+      display: none; background: radial-gradient(circle at top, rgba(46, 24, 8, 0.98), rgba(16, 9, 3, 0.98));
+      border: 2px solid var(--gold-pure); border-radius: 22px; padding: 20px; margin-bottom: 18px;
+    }
+    .ai-card-badge {
+      display: inline-block; background: linear-gradient(135deg, var(--gold-pure), var(--saffron-fire));
+      color: #000; font-size: 0.75rem; font-weight: bold; font-family: var(--font-title);
+      padding: 3px 12px; border-radius: 14px; margin-bottom: 10px;
+    }
+
+    .tag-cluster { display: flex; gap: 6px; overflow-x: auto; margin-bottom: 16px; scrollbar-width: none; }
+    .tag-cluster::-webkit-scrollbar { display: none; }
+    .topic-tag {
+      background: rgba(28, 18, 10, 0.85); border: 1px solid rgba(255, 215, 0, 0.25);
+      color: #dfcaa7; padding: 5px 14px; border-radius: 16px; font-size: 0.78rem; cursor: pointer;
+    }
+
+    .daily-wisdom-card {
+      background: linear-gradient(135deg, rgba(46, 24, 7, 0.95), rgba(18, 10, 3, 0.95));
+      border: 1.8px solid var(--gold-pure); border-radius: 22px; padding: 18px; margin-bottom: 18px; cursor: pointer;
+    }
+    .daily-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+    .daily-tag { background: var(--saffron-fire); color: #000; font-size: 0.74rem; font-weight: bold; padding: 3px 12px; border-radius: 20px; }
   </style>
 </head>
 <body>
 
-  <!-- SUNLIGHT BURST OVERLAY -->
-  <div id="suryaKiranOverlay">
-    <div class="surya-kiran-rays" id="suryaRaysElem"></div>
-  </div>
+  <!-- DEDICATED CHANT LAYER -->
+  <div id="chantLayer"></div>
 
+  <!-- MAIN APP ROOT -->
   <div id="appRoot">
-
-    <!-- CANVAS LAYERS -->
     <canvas id="divineCanvas"></canvas>
     <canvas id="particleCanvas"></canvas>
 
@@ -1012,7 +1014,7 @@
       </div>
     </header>
 
-    <!-- NAAM JAAP HUD -->
+    <!-- STICKY NAAM JAAP HUD -->
     <div class="jaap-hud-bar">
       <div class="jaap-interactive-box" onclick="handleOrbClick(event)">
         <div class="jaap-mandala-orb" id="jaapOrb">📿</div>
@@ -1027,165 +1029,434 @@
       </div>
     </div>
 
-    <!-- MAIN HOME VIEWPORT -->
+    <!-- DRAGGABLE & INHALE/EXHALE BREATHING BHAVYA "ॐ" AVATAR -->
+    <div id="omDivineEntity">
+      <div class="om-active-halo" id="omActiveHalo"></div>
+      <div class="om-breathing-wrap" id="omBreathingWrap">
+        <!-- Pure Divine Glowing Vector ॐ -->
+        <svg class="om-svg-art" viewBox="0 0 100 100">
+          <defs>
+            <radialGradient id="omGoldGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="35%" stop-color="#ffd700" />
+              <stop offset="75%" stop-color="#ff6600" />
+              <stop offset="100%" stop-color="#8a4000" />
+            </radialGradient>
+            <radialGradient id="omDiscHalo" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="rgba(255, 215, 0, 0.45)" />
+              <stop offset="60%" stop-color="rgba(255, 102, 0, 0.2)" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+          </defs>
+          <!-- Divine Backing Halo -->
+          <circle cx="50" cy="50" r="44" fill="url(#omDiscHalo)" />
+          <circle cx="50" cy="50" r="42" stroke="rgba(255, 215, 0, 0.55)" stroke-width="1.2" stroke-dasharray="4 3" fill="none" />
+          
+          <!-- Sacred Devanagari ॐ Typography -->
+          <text x="50" y="68" font-family="'Yatra One', cursive, serif" font-size="58" font-weight="bold" fill="url(#omGoldGlow)" text-anchor="middle" filter="drop-shadow(0 0 8px #ffd700)">ॐ</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- MAIN SCRIPTURE VIEWPORT -->
     <div class="app-viewport">
       
       <!-- DAILY WISDOM CARD -->
-      <div class="daily-wisdom-card selectable-text" onclick="openDailyDiyaDarshan(event)">
+      <div class="daily-wisdom-card" onclick="openDailyDiyaDarshan(event)" title="दीप दर्शन हेतु टैप करें">
         <div class="daily-head">
-          <span class="daily-tag">☀️ आज का दिव्य श्लोक</span>
-          <button class="util-btn" onclick="shareDailyWhatsApp(event)">साझा करें 🟢</button>
+          <span class="daily-tag" id="dailyTagElem">☀️ आज का दिव्य श्लोक</span>
+          <button class="util-btn" style="padding:2px 10px;" id="dailyShareBtn" onclick="shareDailyWhatsApp(event)">साझा करें 🟢</button>
         </div>
         <div id="dailyVerseContainer"></div>
       </div>
 
-      <!-- AI SEARCH SANCTUM -->
+      <!-- ADVANCED AI SEARCH SANCTUM -->
       <div class="search-sanctum">
         <div class="search-input-group">
           <input type="text" id="liveSearch" class="search-input" 
-                 placeholder="🔍 वेद, पुराण या गीता से कुछ भी पूछें..." 
+                 placeholder="🔍 श्लोक खोजें या AI से पूछें..." 
                  onfocus="openSuggestions()" 
-                 onkeyup="if(event.key==='Enter') executeAISearch(event)">
-          <button class="ai-search-btn" onclick="executeAISearch(event)">✨ AI खोजें</button>
+                 onkeyup="handleSearchKey(event)">
+          <button class="ai-search-btn" id="aiSearchBtnElem" onclick="executeAISearch(event)">✨ AI खोजें</button>
         </div>
 
         <div class="search-suggestions-box" id="suggestionsBox">
+          <div class="suggestion-header">
+            <span id="sugHeaderElem">✨ दिव्य सुझाव (Tap to explore):</span>
+            <span style="cursor:pointer;" onclick="closeSuggestions()">✕</span>
+          </div>
           <div class="suggestion-chips">
-            <span class="sug-chip" onclick="applySuggestion('कर्म और भाग्य में क्या अंतर है?')">कर्म व भाग्य</span>
-            <span class="sug-chip" onclick="applySuggestion('मन को शांत और एकाग्र कैसे करें?')">मन की शांति</span>
-            <span class="sug-chip" onclick="applySuggestion('चारों वेदों का मूल संदेश क्या है?')">वेदों का सार</span>
-            <span class="sug-chip" onclick="applySuggestion('मृत्यु के पश्चात आत्मा का क्या होता है?')">मोक्ष व आत्मा</span>
-            <span class="sug-chip" onclick="applySuggestion('भगवान शिव और विष्णु का एकात्म रहस्य')">हरिहर तत्व</span>
+            <span class="sug-chip" onclick="applySuggestion('तनाव और अशांति में मन को कैसे शांत रखें?')">तनाव व अशांति</span>
+            <span class="sug-chip" onclick="applySuggestion('कर्म और भाग्य का क्या संबंध है?')">कर्म व भाग्य</span>
+            <span class="sug-chip" onclick="applySuggestion('मन की एकाग्रता और ध्यान कैसे लगाएं?')">मन की एकाग्रता</span>
+            <span class="sug-chip" onclick="applySuggestion('मृत्यु और आत्मा का शाश्वत सत्य क्या है?')">मृत्यु व मोक्ष</span>
+            <span class="sug-chip" onclick="applySuggestion('भक्ति और ईश्वर शरणागति का मार्ग')">भक्ति योग</span>
+            <span class="sug-chip" onclick="applySuggestion('भय और चिंता से मुक्ति का वैदिक उपाय')">भय से मुक्ति</span>
           </div>
         </div>
       </div>
 
-      <!-- 1. GITA SHELF ROW -->
-      <div class="section-shelf-header">
-        <h2>📜 श्रीमद्भगवद्गीता <span>(मोक्षशास्त्र)</span></h2>
-        <span>१८ अध्याय • ७०० श्लोक</span>
-      </div>
-      <div class="shelf-scroll-row">
-        <div class="scripture-portal-card" onclick="openScripturePortal('gita')">
-          <div>
-            <span class="portal-card-badge">महाभारत भीष्मपर्व</span>
-            <h3 class="portal-card-title">श्रीमद्भगवद्गीता</h3>
-            <p class="portal-card-desc">कुरुक्षेत्र के धर्मयुद्ध में भगवान श्रीकृष्ण द्वारा अर्जुन को दिया गया अनादि ब्रह्मज्ञान, निष्काम कर्मयोग और भक्ति का अमृत।</p>
-          </div>
-          <div class="portal-open-tag">दिव्य दर्शन करें ➔</div>
+      <!-- DYNAMIC AI GENERATED SHLOK & SUMMARY CARD -->
+      <div id="aiSearchResultCard">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span class="ai-card-badge" id="aiCardBadgeElem">✨ दिव्य ओंकार AI श्लोक दर्शन</span>
+          <button class="util-btn" style="padding:2px 8px;" onclick="closeAICard(event)">✕</button>
+        </div>
+        <div id="aiCardContent" style="color:#ffe8b3; line-height:1.75; font-size:0.98rem; white-space:pre-wrap;"></div>
+        <div class="card-footer-actions">
+          <button class="util-btn" onclick="copyAIData(event)">📋 Copy</button>
+          <button class="util-btn" onclick="shareAIWhatsApp(event)">🟢 WhatsApp</button>
         </div>
       </div>
 
-      <!-- 2. THE 4 VEDAS ROW -->
-      <div class="section-shelf-header">
-        <h2>🔥 चत्वारो वेदाः <span>(अपौरुषेय श्रुति ग्रंथ)</span></h2>
-        <span>४ मूल संहिताएं</span>
+      <div class="tag-cluster">
+        <span class="topic-tag" onclick="filterByTag('कर्म')">#कर्म</span>
+        <span class="topic-tag" onclick="filterByTag('शांति')">#शांति</span>
+        <span class="topic-tag" onclick="filterByTag('भक्ति')">#भक्ति</span>
+        <span class="topic-tag" onclick="filterByTag('मोक्ष')">#मोक्ष</span>
+        <span class="topic-tag" onclick="filterByTag('सृष्टि')">#सृष्टि</span>
+        <span class="topic-tag" onclick="filterByTag('')">🔄 सभी देखें</span>
       </div>
-      <div class="shelf-scroll-row" id="vedasShelfContainer"></div>
 
-      <!-- 3. THE 18 MAHAPURANAS ROW -->
-      <div class="section-shelf-header">
-        <h2>🌺 अष्टादश महापुराणानि <span>(महर्षि व्यास विरचित)</span></h2>
-        <span>१८ महापुराण संग्रह</span>
+      <!-- Category Tabs -->
+      <div class="nav-tabs-wrapper">
+        <button class="nav-btn active" id="btn-gita" onclick="switchCategory('gita-view', this, event)">श्रीमद्भगवद्गीता</button>
+        <button class="nav-btn" id="btn-veda" onclick="switchCategory('veda-view', this, event)">वेद एवं उपनिषद</button>
+        <button class="nav-btn" id="btn-puran" onclick="switchCategory('puran-view', this, event)">महापुराण संग्रह</button>
+        <button class="nav-btn" id="btn-katha" onclick="switchCategory('katha-view', this, event)">अमर कथाएं</button>
       </div>
-      <div class="shelf-scroll-row" id="puranasShelfContainer"></div>
+
+      <!-- 1. GITA SECTION -->
+      <div id="gita-view" class="tab-section active">
+        <div class="verse-card">
+          <span class="verse-badge">अध्याय २ • श्लोक ४७ • निष्काम कर्म</span>
+          <h2>कर्मण्येवाधिकारस्ते</h2>
+          <div class="sanskrit-box">
+            कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।<br>
+            मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥
+          </div>
+          <p class="meaning-box" id="meaning-gita-1"></p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="verse-card">
+          <span class="verse-badge">अध्याय ४ • श्लोक ७-८ • अवतार रहस्य</span>
+          <h2>यदा यदा हि धर्मस्य</h2>
+          <div class="sanskrit-box">
+            यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।<br>
+            अभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥<br>
+            परित्राणाय साधूनां विनाशाय च दुष्कृताम्।<br>
+            धर्मसंस्थापनार्थाय संभवामि युगे युगे॥
+          </div>
+          <p class="meaning-box" id="meaning-gita-2"></p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="verse-card">
+          <span class="verse-badge">अध्याय २ • श्लोक ५६ • स्थितप्रज्ञ लक्षण</span>
+          <h2>दुःखेष्वनुद्विग्नमनाः</h2>
+          <div class="sanskrit-box">
+            दुःखेष्वनुद्विग्नमनाः सुखेषु विगतस्पृहः।<br>
+            वीतरागभयक्रोधः स्थितधीर्मुनिरुच्यते॥
+          </div>
+          <p class="meaning-box" id="meaning-gita-3"></p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="verse-card">
+          <span class="verse-badge">अध्याय १८ • श्लोक ६६ • चरम शरणागति</span>
+          <h2>सर्वधर्मान्परित्यज्य</h2>
+          <div class="sanskrit-box">
+            सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।<br>
+            अहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥
+          </div>
+          <p class="meaning-box" id="meaning-gita-4"></p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. VEDAS & UPANISHADS -->
+      <div id="veda-view" class="tab-section">
+        <div class="verse-card">
+          <span class="verse-badge">ऋग्वेद • मंडल ३ • सूक्त ६२ • मंत्र १०</span>
+          <h2>गायत्री महामंत्र (सावित्री मंत्र)</h2>
+          <div class="sanskrit-box">
+            ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं<br>
+            भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥
+          </div>
+          <p class="meaning-box" id="meaning-veda-1"></p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="verse-card">
+          <span class="verse-badge">ऋग्वेद • मंडल ७ • सूक्त ५९ • मंत्र १२</span>
+          <h2>महामृत्युंजय महामंत्र</h2>
+          <div class="sanskrit-box">
+            ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।<br>
+            उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥
+          </div>
+          <p class="meaning-box" id="meaning-veda-2"></p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="verse-card">
+          <span class="verse-badge">बृहदारण्यकोपनिषद् • पावन प्रार्थना</span>
+          <h2>असतो मा सद्गमय</h2>
+          <div class="sanskrit-box">
+            असतो मा सद्गमय। तमसो मा ज्योतिर्गमय।<br>
+            मृत्योर्मा अमृतं गमय॥ ॐ शान्तिः शान्तिः शान्तिः॥
+          </div>
+          <p class="meaning-box" id="meaning-veda-3"></p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. PURANAS -->
+      <div id="puran-view" class="tab-section">
+        <div class="verse-card">
+          <span class="verse-badge">वैष्णव पुराण • १८,००० श्लोक</span>
+          <h2>श्रीमद्भागवत महापुराण</h2>
+          <p class="meaning-box">
+            महर्षि वेदव्यास द्वारा विरचित वेदों का सबसे परिपक्व अमृत फल। १२ स्कंधों और ३३५ अध्यायों में नवधा भक्ति, राजा परीक्षित और शुकदेव जी का पावन संवाद, तथा भगवान श्रीकृष्ण की संपूर्ण लीलाओं का ब्रह्माण्डीय विश्लेषण।
+          </p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+
+        <div class="verse-card">
+          <span class="verse-badge">शैव पुराण • २४,००० श्लोक</span>
+          <h2>शिव महापुराण</h2>
+          <p class="meaning-box">
+            देवाधिदेव महादेव शिव के अनादि ज्योतिर्लिंग स्वरूप, १२ ज्योतिर्लिंगों के प्राकट्य, सती-पार्वती विवाह, तथा तांडव नृत्य के कॉस्मिक रहस्यों का प्रामाणिक विवरण।
+          </p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. KATHAYEN -->
+      <div id="katha-view" class="tab-section">
+        <div class="verse-card">
+          <span class="verse-badge">कठोपनिषद् प्रसंग • मृत्यु का सत्य</span>
+          <h2>नचिकेता और यमराज: आत्मज्ञान की खोज</h2>
+          <p class="meaning-box">
+            बालक नचिकेता ने तीन दिनों तक यमराज के द्वार पर प्रतीक्षा की। संसार के सारे नश्वर प्रलोभन ठुकरा कर उसने मृत्यु के पश्चात का शाश्वत आत्मज्ञान प्राप्त किया।
+          </p>
+          <div class="card-footer-actions">
+            <button class="util-btn" onclick="copyCardData(this, event)">📋 Copy</button>
+            <button class="util-btn" onclick="shareWhatsApp(this, event)">🟢 WhatsApp</button>
+          </div>
+        </div>
+      </div>
 
     </div>
 
   </div> <!-- End #appRoot -->
 
-  <!-- PERSISTENT FIXED FLOATING 'ॐ' AVATAR (STAYS FIXED TO SCREEN) -->
-  <div id="divineFloatingOm" onclick="handleOmClick(event)">
-    <div class="om-tag-bubble">ॐ तत्सत्</div>
-    <div class="om-breathing-sphere">
-      <svg class="om-glyph-svg" viewBox="0 0 100 100">
-        <path d="M48,22 Q60,10 74,22 Q86,34 74,48 Q88,56 82,74 Q74,90 52,88 Q34,86 28,68 L42,66 Q45,76 56,76 Q66,76 68,66 Q70,54 54,54 L44,54 L44,44 L54,44 Q64,44 64,34 Q64,24 54,24 Q46,24 42,32 Z M78,16 Q88,8 96,16 Q90,26 78,16 Z M88,26 Q92,20 96,26" />
-      </svg>
-    </div>
-  </div>
-
-  <!-- DEDICATED FULLSCREEN SCRIPTURE PORTAL INTERFACE -->
-  <div id="dedicatedPortalView">
-    <div class="portal-top-nav">
-      <button class="portal-back-btn" onclick="closeScripturePortal()">← मुख्य द्वार पर लौटें</button>
-      <div class="brand-om" style="font-size:1.8rem;">ॐ</div>
-    </div>
-    <div class="portal-content-wrap selectable-text" id="portalDynamicContent"></div>
-  </div>
-
-  <!-- CHATGPT / GEMINI MODERN AI CHAT REALM -->
-  <div class="chat-backdrop" id="naradBackdrop" onclick="closeNaradWindow(event)">
-    <div class="chat-frame" onclick="event.stopPropagation()">
-      <div class="chat-header">
-        <div class="chat-header-title-wrap">
-          <div class="chat-header-om">ॐ</div>
-          <div>
-            <h3 id="naradHeaderTitle">सनातन दिव्य AI</h3>
-            <small id="naradHeaderSubtitle" style="color: #dfcaa7;">ब्रह्मांडीय ज्ञान, वेद एवं पुराण समाधान</small>
-          </div>
-        </div>
-        <button class="util-btn" onclick="closeNaradWindow(event)">✕</button>
-      </div>
-
-      <div class="chat-scroll-area" id="chatStream">
-        <div class="chat-bubble narad" id="naradDefaultWelcome">
-          ॐ नमो नारायण! वत्स, चारों वेद, अष्टादश महापुराण अथवा गीता के विषय में कहो क्या संशय अथवा प्रश्न है तुम्हारे चित्त में?
-        </div>
-      </div>
-
-      <div class="chat-control-bar">
-        <button class="chat-mic-btn" id="voiceMicBtn" title="बोलकर पूछें (Voice Input)" onclick="toggleVoiceRecording(event)">
-          🎙️
-        </button>
-        <input type="text" id="userQueryInput" class="chat-input-field" placeholder="पूछें या 🎙️ दबाकर बोलें..." onkeypress="if(event.key==='Enter') executeNaradChat()">
-        <button class="chat-send-btn" onclick="executeNaradChat()">पूछें</button>
-      </div>
-    </div>
-  </div>
-
-  <!-- USER ONBOARDING MODAL -->
+  <!-- 1. USER ONBOARDING MODAL -->
   <div class="modal-curtain" id="onboardingModal">
     <div class="form-card">
-      <button class="milestone-close-btn" onclick="closeOnboardingModal(event)">✕</button>
+      <button class="milestone-close-btn" style="top:12px; right:14px;" onclick="closeOnboardingModal(event)">✕</button>
       
       <div class="voice-guide-bar">
         <span class="voice-guide-label" id="voiceGuideStatus">🎙️ दिव्य वाणी मार्गदर्शन चालू है</span>
         <button type="button" class="voice-toggle-btn" id="voiceToggleBtn" onclick="toggleSpeechGuide(event)">🔊 बंद करें</button>
       </div>
 
-      <div style="font-size: 2.3rem; text-align:center; margin-bottom: 4px;">ॐ</div>
+      <div style="font-size: 2.2rem; text-align:center; margin-bottom: 2px;">📿</div>
       <h2>सनातन ज्ञान महासागर</h2>
-      <p style="color:#dfcaa7; font-size:0.84rem; text-align:center; margin-bottom:12px;">दिव्य सत्संग, नाम जाप एवं वेद-पुराण दर्शन में आपका स्वागत है।</p>
+      <p style="color:#dfcaa7; font-size:0.84rem; text-align:center; margin-bottom:12px;">दिव्य सत्संग एवं नाम जाप में आपका स्वागत है।</p>
       
+      <!-- STEP 1: LANGUAGE FIRST -->
       <label class="form-label">१. अपनी भाषा चुनें (Choose Your Language):</label>
-      <select id="obLangInput" class="form-select-field">
-        <option value="hi" selected>हिन्दी (Hindi)</option>
+      <select id="obLangInput" class="form-select-field" onchange="handleLangSelectChange(this.value)">
+        <option value="hi" selected>हिन्दी (Hindi - Default)</option>
         <option value="en">English</option>
         <option value="hinglish">Hinglish</option>
         <option value="sa">संस्कृतम् (Sanskrit)</option>
+        <option value="ur">اردو (Urdu)</option>
       </select>
 
-      <label class="form-label">२. आपका शुभ नाम (Your Name):</label>
-      <input type="text" id="obNameInput" class="form-input-field" placeholder="अपना नाम दर्ज करें..." maxlength="25">
+      <!-- STEP 2: USER SACRED NAME -->
+      <label class="form-label" id="obNameLabel">२. आपका शुभ नाम (Your Name):</label>
+      <input type="text" id="obNameInput" class="form-input-field" placeholder="अपना नाम दर्ज करें (उदा. राहुल)..." maxlength="25">
 
-      <label class="form-label">३. आपके इष्टदेव (खाली = सभी देव स्वरूप):</label>
-      <input type="text" id="obDeityInput" class="form-input-field" placeholder="उदा. Ram, Krishna, Mahadev, Hanuman...">
+      <!-- STEP 3: BELOVED DEITY -->
+      <label class="form-label" id="obDeityLabel">३. आपके इष्टदेव (टाइप करें अथवा सभी देवों के लिए खाली छोड़ें):</label>
+      <input type="text" id="obDeityInput" class="form-input-field" 
+             placeholder="जैसे: Ram, Krishna, Mahadev, Hanuman... (खाली = सभी देव)" 
+             oninput="handleDeityInput(this.value, 'obDeityPreview')">
+      
+      <div id="obDeityPreview" class="deity-detect-preview">✨ स्वीकृत इष्टदेव: सभी देव स्वरूप (Default)</div>
 
       <div class="deity-chip-container">
-        <span class="deity-quick-chip" onclick="quickSelectDeity('ram')">श्री राम</span>
-        <span class="deity-quick-chip" onclick="quickSelectDeity('shiva')">महादेव शिव</span>
-        <span class="deity-quick-chip" onclick="quickSelectDeity('krishna')">श्री कृष्ण</span>
-        <span class="deity-quick-chip" onclick="quickSelectDeity('hanuman')">हनुमान जी</span>
-        <span class="deity-quick-chip" onclick="quickSelectDeity('durga')">माँ दुर्गा</span>
-        <span class="deity-quick-chip" onclick="quickSelectDeity('ganesh')">श्री गणेश</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('ram', 'obDeityInput', 'obDeityPreview')">श्री राम</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('shiva', 'obDeityInput', 'obDeityPreview')">महादेव शिव</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('krishna', 'obDeityInput', 'obDeityPreview')">श्री कृष्ण</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('hanuman', 'obDeityInput', 'obDeityPreview')">हनुमान जी</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('durga', 'obDeityInput', 'obDeityPreview')">माँ दुर्गा</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('ganesh', 'obDeityInput', 'obDeityPreview')">श्री गणेश</span>
+        <span class="deity-quick-chip" onclick="clearDeityInput('obDeityInput', 'obDeityPreview')">🔄 सभी देव (Default)</span>
       </div>
 
       <button class="enter-btn" onclick="submitOnboarding()">प्रवेश करें ॐ</button>
+      <button class="secondary-skip-btn" onclick="closeOnboardingModal(event)">सीधे दर्शन करें (Explore First) ➔</button>
+    </div>
+  </div>
+
+  <!-- 2. LOGIN DIYA SHLOK TYPEWRITER MODAL -->
+  <div id="dailyEntryModal" onclick="dismissDailyEntryShlok()">
+    <div class="diya-shlok-card" onclick="event.stopPropagation()">
+      <button class="milestone-close-btn" style="top:12px; right:14px;" onclick="dismissDailyEntryShlok()">✕</button>
+      
+      <div class="divine-diya-wrap">
+        <svg viewBox="0 0 100 80" style="width:100%; height:100%;">
+          <defs>
+            <radialGradient id="diyaGlow" cx="50%" cy="30%" r="60%">
+              <stop offset="0%" stop-color="#fff5cc" /><stop offset="50%" stop-color="#ffd700" /><stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+            <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fff2a3" /><stop offset="50%" stop-color="#d4af37" /><stop offset="100%" stop-color="#8a5a00" />
+            </linearGradient>
+            <radialGradient id="flameCore" cx="50%" cy="60%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" /><stop offset="50%" stop-color="#ff9900" /><stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+          </defs>
+          <circle cx="50" cy="30" r="30" fill="url(#diyaGlow)" />
+          <path d="M50,10 Q58,28 50,42 Q42,28 50,10 Z" fill="url(#flameCore)" />
+          <ellipse cx="50" cy="46" rx="28" ry="8" fill="url(#brassGrad)" />
+          <path d="M22,46 Q50,72 78,46 Q70,62 50,65 Q30,62 22,46 Z" fill="url(#brassGrad)" stroke="#ffd700" stroke-width="0.8" />
+        </svg>
+      </div>
+
+      <span class="entry-badge-tag">🪔 आज का पावन दैनिक महाश्लोक</span>
+      <h3 class="entry-shlok-title" id="entryShlokTitle">श्रीमद्भगवद्गीता</h3>
+      
+      <div class="entry-sanskrit-box" id="entryShlokSanskrit"></div>
+      <div class="entry-meaning-box" id="entryShlokMeaning"></div>
+
+      <div class="entry-timer-progress">
+        <div class="entry-timer-fill" id="entryTimerBar"></div>
+      </div>
+      <div class="entry-dismiss-hint">१० सेकंड में स्वतः बंद होगा अथवा कहीं भी टैप करें</div>
+    </div>
+  </div>
+
+  <!-- 3. COSMIC VOICE AGENT OVERLAY (ONE TAP OPEN / ANYWHERE TAP CLOSE) -->
+  <div id="voiceAgentModal" onclick="closeVoiceAgent()">
+    <div class="voice-agent-header" onclick="event.stopPropagation()">
+      <div class="voice-agent-title">दिव्य ओंकार AI संवादाता</div>
+      <button class="agent-close-btn" onclick="closeVoiceAgent()">✕</button>
+    </div>
+
+    <!-- Center Radiant Aura -->
+    <div class="cosmic-aura-container" onclick="event.stopPropagation(); handleAuraClick();">
+      <div class="aura-wave-ring aura-ring-1" id="auraCore"></div>
+      <div class="aura-wave-ring aura-ring-2"></div>
+      <div class="aura-wave-ring aura-ring-3"></div>
+      <div class="aura-center-mic" id="auraMicIcon">ॐ</div>
+    </div>
+
+    <!-- Live Subtitles / Caption Box -->
+    <div class="agent-caption-box" onclick="event.stopPropagation()">
+      <div class="agent-status-tag" id="agentStatusTag">✨ ओंकार चेतना जाग्रत...</div>
+      <div class="agent-live-text" id="agentSpeechOutput">"ॐ शान्तिः! बोलो वत्स, क्या संशय है तुम्हारे चित्त में?"</div>
+    </div>
+
+    <!-- Control Button -->
+    <div style="text-align:center;" onclick="event.stopPropagation()">
+      <button class="agent-mic-toggle-btn" id="agentMicBtn" onclick="toggleAgentListening()">
+        <span>🎤 बोलकर पूछें (Tap to Speak)</span>
+      </button>
+      <div class="agent-tap-hint">कहीं भी एक बार टैप करके बंद करें</div>
+    </div>
+  </div>
+
+  <!-- 4. SETTINGS EDIT MODAL -->
+  <div class="modal-curtain" id="settingsModal" onclick="closeSettingsModal(event)">
+    <div class="form-card" onclick="event.stopPropagation()">
+      <button class="milestone-close-btn" style="top:12px; right:14px;" onclick="forceCloseSettings()">✕</button>
+      <h2>⚙️ आपकी पसंद (Settings)</h2>
+      <p style="color:#dfcaa7; font-size:0.85rem; text-align:center; margin-bottom:14px;">अपनी जानकारी, भाषा व इष्टदेव कभी भी बदलें</p>
+
+      <label class="form-label">भाषा (Language):</label>
+      <select id="setCustLang" class="form-select-field">
+        <option value="hi">हिन्दी (Hindi)</option>
+        <option value="en">English</option>
+        <option value="hinglish">Hinglish</option>
+        <option value="sa">संस्कृतम् (Sanskrit)</option>
+        <option value="ur">اردو (Urdu)</option>
+      </select>
+
+      <label class="form-label">नाम (Name):</label>
+      <input type="text" id="setCustName" class="form-input-field" maxlength="25">
+
+      <label class="form-label">इष्टदेव (Type name for only that God, leave empty for all Gods):</label>
+      <input type="text" id="setCustDeity" class="form-input-field" 
+             placeholder="Type deity name..." 
+             oninput="handleDeityInput(this.value, 'setDeityPreview')">
+      
+      <div id="setDeityPreview" class="deity-detect-preview">✨ स्वीकृत इष्टदेव: सभी देव स्वरूप</div>
+
+      <div class="deity-chip-container">
+        <span class="deity-quick-chip" onclick="quickSelectDeity('ram', 'setCustDeity', 'setDeityPreview')">श्री राम</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('shiva', 'setCustDeity', 'setDeityPreview')">महादेव शिव</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('krishna', 'setCustDeity', 'setDeityPreview')">श्री कृष्ण</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('hanuman', 'setCustDeity', 'setDeityPreview')">हनुमान जी</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('durga', 'setCustDeity', 'setDeityPreview')">माँ दुर्गा</span>
+        <span class="deity-quick-chip" onclick="quickSelectDeity('ganesh', 'setCustDeity', 'setDeityPreview')">श्री गणेश</span>
+        <span class="deity-quick-chip" onclick="clearDeityInput('setCustDeity', 'setDeityPreview')">🔄 सभी देव (Default)</span>
+      </div>
+
+      <button class="enter-btn" onclick="saveSettings()">सुरक्षित करें (Save)</button>
+    </div>
+  </div>
+
+  <!-- FULLSCREEN CINEMATIC BLUR SHLOK MODAL -->
+  <div class="milestone-blur-curtain" id="milestoneCurtain" onclick="closeMilestoneModal()">
+    <div class="milestone-holy-card">
+      <button class="milestone-close-btn" onclick="closeMilestoneModal()">✕</button>
+      <div style="font-size: 2.2rem; margin-bottom: 4px;">🌸 ॐ 🌸</div>
+      <h2 id="milestoneTitle">१०८ दिव्य नाम पूर्ण!</h2>
+      <div class="milestone-rank-up" id="milestoneRankBanner">पदवी: अनन्य भक्त</div>
+      <div class="milestone-shlok-text" id="milestoneShlok">
+        कलयुग केवल नाम अधारा।<br>
+        सुमिरि सुमिरि नर उतरहिं पारा॥
+      </div>
+      <p class="milestone-shlok-meaning" id="milestoneMeaning">
+        कलियुग में केवल प्रभु का नाम ही समस्त भवों से पार उतारने वाला परम आधार है।
+      </p>
+      <div class="milestone-dismiss-hint">(कहीं भी टैप करें अथवा ✕ दबाएं)</div>
     </div>
   </div>
 
   <script>
-    // 1. SAFE STORAGE HELPER
+    // 1. SAFE STORAGE
     const SafeStorage = {
       get: (k, fb = '') => {
         try { const v = localStorage.getItem(k); return v !== null ? v : fb; } catch (e) { return fb; }
@@ -1195,502 +1466,678 @@
       }
     };
 
+    // 2. CLOUDFLARE WORKER ENDPOINT
     const CLOUDFLARE_WORKER_URL = "https://divine-bush-fa24.rangiladevi9598.workers.dev";
 
-    // 2. COMPLETE SCRIPTURE DATABASE (4 VEDAS, 18 PURANAS, 1 GITA)
-    const scripturesDB = {
-      gita: {
-        id: "gita",
-        title: "श्रीमद्भगवद्गीता",
-        category: "प्रस्थानत्रयी / स्मृति प्रस्थान",
-        verseCount: "७०० श्लोक",
-        divisions: "१८ अध्याय",
-        rishi: "भगवान वेदव्यास",
-        speaker: "योगेश्वर भगवान श्रीकृष्ण",
-        theme: "gita",
-        essence: "कुरुक्षेत्र के धर्मक्षेत्र में अर्जुन के विषाद को नष्ट करने हेतु भगवान श्रीकृष्ण द्वारा दिया गया शाश्वत ब्रह्मज्ञान। यह कर्मयोग, ज्ञानयोग, ध्यानयोग और भक्तियोग का अनुपम समन्वय है।",
-        highlights: [
-          {
-            title: "निष्काम कर्मयोग (अध्याय २, श्लोक ४७)",
-            sanskrit: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
-            meaning: "तुम्हारा अधिकार केवल कर्तव्य-कर्म करने में है, उसके फल पर कभी नहीं। फल की आसक्ति से कर्म मत करो, और अकर्मण्यता (आलस्य) में भी तुम्हारा अनुराग न हो।"
-          },
-          {
-            title: "अवतार का दिव्य प्रयोजन (अध्याय ४, श्लोक ७-८)",
-            sanskrit: "यदा यदा हि धर्मस्य ग्लानिर्भवति भारत।\nअभ्युत्थानमधर्मस्य तदात्मानं सृजाम्यहम्॥\nपरित्राणाय साधूनां विनाशाय च दुष्कृताम्।\nधर्मसंस्थापनार्थाय संभवामि युगे युगे॥",
-            meaning: "हे भारत! जब-जब धर्म की हानि और अधर्म का उत्थान होता है, तब-तब मैं स्वयं को प्रकट करता हूँ। सज्जनों की रक्षा, दुष्टों के विनाश और धर्म की स्थापना हेतु मैं प्रत्येक युग में अवतरित होता हूँ।"
-          },
-          {
-            title: "योगक्षेम का वहन (अध्याय ९, श्लोक २२)",
-            sanskrit: "अनन्याश्चिन्तयन्तो मां ये जनाः पर्युपासते।\nतेषां नित्याभियुक्तानां योगक्षेमं वहाम्यहम्॥",
-            meaning: "जो अनन्य भक्त केवल मेरा ही चिंतन करते हुए निष्काम भाव से मुझे भजते हैं, उन नित्य-युक्त भक्तों के अप्राप्त की प्राप्ति (योग) और प्राप्त की रक्षा (क्षेम) का भार मैं स्वयं वहन करता हूँ।"
-          },
-          {
-            title: "विश्वरूप दर्शन (अध्याय ११, श्लोक ३२)",
-            sanskrit: "कालोऽस्मि लोकक्षयकृत्प्रवृद्धो लोकान्समाहर्तुमिह प्रवृत्ततः।\nऋतेऽपि त्वां न भविष्यन्ति सर्वे येऽवस्थिताः प्रत्यनीकेषु योधाः॥",
-            meaning: "श्रीभगवान बोले: मैं लोकों का नाश करने वाला महाकाल हूँ। इस समय इन समस्त योद्धाओं का संहार करने प्रवृत्त हुआ हूँ। तुम्हारे युद्ध न करने पर भी प्रतिपक्षी योद्धा जीवित नहीं बचेंगे।"
-          },
-          {
-            title: "चरम मोक्ष प्रतिज्ञा (अध्याय १८, श्लोक ६६)",
-            sanskrit: "सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज।\nअहं त्वा सर्वपापेभ्यो मोक्षयिष्यामि मा शुचः॥",
-            meaning: "समस्त सांसारिक धर्मों और आश्रयों का परित्याग कर केवल मेरी अनन्य शरण में आ जाओ। मैं तुम्हें समस्त पापों और बंधनों से मुक्त कर दूंगा, तनिक भी शोक मत करो।"
-          }
-        ]
+    // 3. MULTI-LINGUAL SHLOKA MEANINGS
+    const verseTranslations = {
+      "gita-1": {
+        hi: "तुम्हारा अधिकार केवल कर्तव्य-कर्म करने में है, उसके फल पर कभी नहीं। फल की वासना से कर्म मत करो, और अकर्मण्यता (कर्महीनता) में भी तुम्हारा अनुराग न हो।",
+        en: "You have a right to perform your prescribed duty, but never to the fruits of action. Never consider yourself the cause of results, nor be attached to inaction.",
+        hinglish: "Tumhara adhikar keval kartavya-karm karne me hai, uske phal par kabhi nahi. Phal ki chah me karm mat karo, aur aalsya ya akarm me bhi asakti na ho.",
+        sa: "कर्मण्येव तवाधिकारः अस्ति, फलेषु कदापि मा अस्तु। कर्मफलहेतुः मा भव, अकर्मणि च ते सङ्गः मा अस्तु।",
+        ur: "آپ کا حق صرف اپنے فرض کی ادائیگی پر ہے، اس کے نتائج یا پھل پر نہیں۔"
       },
-
-      // 4 VEDAS
-      rigveda: {
-        id: "rigveda",
-        title: "ऋग्वेद संहिता",
-        category: "प्रथम वेद / ज्ञानकांड",
-        verseCount: "१०,५५२ मंत्र (१०२८ सूक्त)",
-        divisions: "१० मंडल • ८ अष्टक • ६४ अध्याय",
-        rishi: "विश्वामित्र, वसिष्ठ, भारद्वाज, वामदेव, अत्रि आदि",
-        theme: "veda",
-        essence: "संसार का सबसे प्राचीनतम ज्ञानग्रंथ। इसमें सृष्टि की उत्पत्ति, देवताओं की स्तुतियां, ब्रह्मांडीय नियम (ऋत) और विशुद्ध आध्यात्मिक चेतना का विशद वर्णन है।",
-        highlights: [
-          {
-            title: "गायत्री सावित्री महामंत्र (मंडल ३, सूक्त ६२, मंत्र १०)",
-            sanskrit: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं भर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥",
-            meaning: "उस प्राणस्वरूप, दुःखनाशक, सुखस्वरूप, श्रेष्ठ, तेजस्वी और पापनाशक परमात्मा को हम अपनी अन्तरात्मा में धारण करें। वह परमेश्वर हमारी बुद्धि को निरंतर सन्मार्ग पर प्रेरित करे।"
-          },
-          {
-            title: "नासदीय सूक्त (सृष्टि उत्पत्ति रहस्य - मंडल १०, सूक्त १२९, मंत्र १)",
-            sanskrit: "नासदासीन्नो सदासीत्तदानीं नासीद्रजो नो व्योमा परो यत्।\nकिमावरीवः कुह कस्य शर्मन्नम्भः किमासीद्गहनं गभीरम्॥",
-            meaning: "सृष्टि से पूर्व न असत्य था, न सत्य; न कोई लोक था, न परे आकाश। उस समय अंधकार से आवृत शून्य में केवल वह एक परमतत्व (ब्रह्म) अपनी ही शक्ति से स्पंदित हो रहा था।"
-          },
-          {
-            title: "महामृत्युंजय महामंत्र (मंडल ७, सूक्त ५९, मंत्र १२)",
-            sanskrit: "ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्।\nउर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥",
-            meaning: "हम त्रिनेत्रधारी महादेव शिव की उपासना करते हैं, जो समस्त संसार में जीवन-शक्ति और पुष्टि का विस्तार करते हैं। जिस प्रकार पका फल बेल से अनायास मुक्त होता है, वैसे ही हम मृत्यु के बंधन से मुक्त होकर अमरत्व को प्राप्त हों।"
-          },
-          {
-            title: "पुरुष सूक्त (ब्रह्मांडीय पुरुष - मंडल १०, सूक्त ९०, मंत्र १)",
-            sanskrit: "सहस्रशीर्षा पुरुषः सहस्राक्षः सहस्रपात्।\nस भूमिं विश्वतो वृत्वात्यतिष्ठद्दशाङ्गुलम्॥",
-            meaning: "उस विराट् परमपुरुष के सहस्रों (अनंत) सिर, सहस्रों नेत्र और सहस्रों चरण हैं। वह इस संपूर्ण दृश्यमान ब्रह्मांड को सब ओर से व्याप्त करके भी दस अंगुल परे (अनंत में) स्थित है।"
-          }
-        ]
+      "gita-2": {
+        hi: "जब-जब धर्म की हानि और अधर्म का उत्थान होता है, तब-तब मैं स्वयं को प्रकट करता हूँ। सज्जनों की रक्षा, दुष्टों के संहार और धर्म की पुनर्स्थापना के लिए मैं प्रत्येक युग में अवतरित होता हूँ।",
+        en: "Whenever there is a decline in righteousness and an increase in unrighteousness, I manifest Myself on earth.",
+        hinglish: "Jab-jab dharm ki haani aur adharm ka utthan hota hai, tab-tab main swayam prakat hota hoon.",
+        sa: "यदा यदा धर्मस्य ग्लानिः अधर्मस्य च अभ्युत्थानं भवति, तदा अहं आत्मानं सृजामि।",
+        ur: "جب جب دھرم کو زوال آتا ہے اور ناانصافی بڑھتی ہے، تب تب میں خود کو ظاہر کرتا ہوں۔"
       },
-      yajurveda: {
-        id: "yajurveda",
-        title: "यजुर्वेद संहिता",
-        category: "द्वितीय वेद / कर्मकांड",
-        verseCount: "१,९७५ मंत्र",
-        divisions: "शुक्ल यजुर्वेद (वाजसनेयी ४० अध्याय) व कृष्ण यजुर्वेद (तैत्तिरीय)",
-        rishi: "महर्षि याज्ञवल्क्य, वैशम्पायन",
-        theme: "veda",
-        essence: "यज्ञ, आहुति, सामाजिक कर्तव्य, राष्ट्रीय चेतना और आत्मिक समर्पण का वेद। इसका ४०वां अध्याय ही विख्यात 'ईशावास्योपनिषद्' है जो उपनिषद् ज्ञान का मुकुटमणि है।",
-        highlights: [
-          {
-            title: "ईशावास्य महामंत्र (अध्याय ४०, मंत्र १)",
-            sanskrit: "ईशा वास्यमिदं सर्वं यत्किञ्च जगत्यां जगत्।\nतेन त्यक्तेन भुञ्जीथा मा गृधः कस्यस्विद्धनम्॥",
-            meaning: "इस परिवर्तनशील संसार में जो कुछ भी जड़-चेतन जगत है, वह सब ईश्वर से आच्छादित (व्याप्त) है। अतः त्यागपूर्वक इसका उपभोग करो; किसी के धन-वैभव की लालसा मत करो।"
-          },
-          {
-            title: "शिवसंकल्प सूक्त (अध्याय ३४, मंत्र १)",
-            sanskrit: "येनेदं भूतं भुवनं भविष्यत् परिगृहीतममृतेन सर्वम्।\nयेन यज्ञस्तायते सप्तहोता तन्मे मनः शिवसङ्कल्पमस्तु॥",
-            meaning: "जिस अमर ज्योतिर्मय मन के द्वारा भूत, वर्तमान और भविष्य की समस्त वस्तुएं जानी जाती हैं, जिससे सात होताओं वाला ज्ञानयज्ञ संपन्न होता है—मेरा वह मन कल्याणकारी और पावन संकल्पों से युक्त हो।"
-          },
-          {
-            title: "शांति पाठ (अध्याय ३६, मंत्र १७)",
-            sanskrit: "ॐ द्यौः शान्तिरन्तरिक्षं शान्तिः पृथिवी शान्तिरापः शान्तिरोषधयः शान्तिः।\nवनस्पतयः शान्तिर्विश्वेदेवाः शान्तिर्ब्रह्म शान्तिः सर्वं शान्तिः शान्तिरेव शान्तिः सा मा शान्तिरेधि॥",
-            meaning: "द्युलोक शांत हो, अंतरिक्ष शांत हो, पृथ्वी, जल, औषधियां और वनस्पतियां शांत हों। समस्त देव, परब्रह्म और संपूर्ण सृष्टि में शांति का वास हो; वह परम शांति मुझे प्राप्त हो।"
-          }
-        ]
+      "gita-3": {
+        hi: "दुःखों की प्राप्ति होने पर जिसके मन में उद्वेग नहीं होता, सुखों की प्राप्ति में जो सर्वथा निःस्पृह है, तथा जिसके राग, भय और क्रोध नष्ट हो चुके हैं—ऐसा मुनि 'स्थितप्रज्ञ' कहा जाता है।",
+        en: "One whose mind remains undisturbed amidst misery, who does not crave pleasure, and who is free from attachment, fear, and anger, is called a sage of steady wisdom.",
+        hinglish: "Dukhon me jiska man vichlit nahi hota, sukhon ki chah se jo mukt hai, aur jiske rag, bhay aur krodh nasht ho chuke hain—wahi sthitpragya sant hai.",
+        sa: "दुःखेषु यस्य मनः उद्वेगरहितं भवति, सुखेषु निःस्पृहः, रागभयक्रोधरहितः मुनिः स्थितधीः उच्यते।",
+        ur: "جس کا دل دکھوں میں بے چین نہ ہو، جو سکھوں کی حرص نہ رکھے، اور جس کے خوف، غصہ اور لگاؤ ختم ہو چکے ہوں۔"
       },
-      samaveda: {
-        id: "samaveda",
-        title: "सामवेद संहिता",
-        category: "तृतीय वेद / उपासना कांड",
-        verseCount: "१,८७५ ऋचाएं (गान)",
-        divisions: "पूर्वार्चिक (६ प्रपाठक) एवं उत्तरार्चिक (२१ अध्याय)",
-        rishi: "महर्षि जैमिनि",
-        theme: "veda",
-        essence: "गान, मधुर संगीत और नादब्रह्म का मूल स्रोत। भारतीय शास्त्रीय संगीत का जन्मदाता। स्वयं भगवान श्रीकृष्ण ने गीता (१०.२२) में कहा है: 'वेदानां सामवेदोऽस्मि' (वेदों में मैं सामवेद हूँ)।",
-        highlights: [
-          {
-            title: "उद्गीथ उपासना (छान्दोग्योपनिषद् १.१.१)",
-            sanskrit: "ओमित्येतदक्षरमुद्गीथमुपासीत। ओमिति ह्युद्गायति तस्योपव्याख्यानम्॥",
-            meaning: "अविनाशी 'ॐ' ही समस्त उद्गीथ (सामगान) का सार है। ॐ की ध्वनि ही परब्रह्म का साक्षात स्वरूप है, इसी महामंत्र की उपासना करनी चाहिए।"
-          },
-          {
-            title: "तत्वमसि महावाक्य (छान्दोग्योपनिषद् ६.८.७)",
-            sanskrit: "स य एषोऽणिमैतदात्म्यमिदं सर्वं तत्सत्यं स आत्मा तत्त्वमसि श्वेतकेतो॥",
-            meaning: "वह जो अत्यंत सूक्ष्म परम सत्य है, उसी से यह संपूर्ण संसार अनुप्राणित है। वही शाश्वत सत्य है, वही आत्मा है, और हे श्वेतकेतु! 'वह ब्रह्म तू ही है' (तत् त्वम् असि)।"
-          }
-        ]
+      "gita-4": {
+        hi: "समस्त सांसारिक आश्रयों को त्याग कर केवल मेरी अनन्य शरण में आ जाओ। मैं तुम्हें समस्त पापों और बंधनों से मुक्त कर दूँगा, तनिक भी शोक मत करो।",
+        en: "Abandon all varieties of worldly doctrines and simply surrender unto Me alone. I shall liberate you from all sinful reactions; do not grieve.",
+        hinglish: "Saare aashray chhodkar keval meri sharan me aa jao. Main tumhe sabhi paapon aur bandhano se mukt kar doonga, tanch mat darr karo.",
+        sa: "सर्वान् धर्मान् परित्यज्य माम् एकं शरणं व्रज। अहं त्वां सर्वपापेभ्यः मोक्षयिष्यामि, मा शुचः।",
+        ur: "تمام دنیاوی سہاروں کو چھوڑ کر صرف میری پناہ میں آ جاؤ۔ میں تمہیں تمام گناہوں اور زنجیروں سے آزاد کر دوں گا۔"
       },
-      atharvaveda: {
-        id: "atharvaveda",
-        title: "अथर्ववेद संहिता",
-        category: "चतुर्थ वेद / विज्ञान एवं व्यवहार",
-        verseCount: "५,९७७ मंत्र (७३० सूक्त)",
-        divisions: "२० कांड • १११ अनुवाक",
-        rishi: "महर्षि अथर्वा एवं अंगिरा",
-        theme: "veda",
-        essence: "आयुर्वेद, चिकित्सा विज्ञान, राष्ट्र-रक्षा, वास्तुशिल्प, समाज व्यवस्था और गूढ़ अध्यात्म का समन्वय। मांडूक्य, मुंडक और प्रश्न जैसे सर्वोच्च उपनिषद इसी वेद के अंग हैं।",
-        highlights: [
-          {
-            title: "पृथ्वी सूक्त (मातृभूमि वंदना - कांड १२, सूक्त १, मंत्र १२)",
-            sanskrit: "माता भूमिः पुत्रोऽहं पृथिव्याः।\nपर्जन्यः पिता स उ नः पिपर्तु॥",
-            meaning: "यह पावन धरा मेरी माता है और मैं इस पवित्र पृथ्वी का निष्ठावान पुत्र हूँ। पर्जन्य (मेघ) हमारे पिता हैं जो जल बरसाकर हमारा पालन-पोषण करते हैं।"
-          },
-          {
-            title: "सत्यमेव जयते (मुण्डकोपनिषद् ३.१.६)",
-            sanskrit: "सत्यमेव जयते नानृतं सत्येन पन्था विततो देवयानः।\nयेनाक्रमन्त्यृषयो ह्याप्तकामा यत्र तत् सत्यस्य परमं निधानम्॥",
-            meaning: "सत्य की ही सदा विजय होती है, असत्य की नहीं। सत्य के आलोक से ही देवयान पद प्रशस्त होता है, जिस पर चलकर निष्काम ऋषिगण उस परम सत्य के परम धाम को प्राप्त करते हैं।"
-          },
-          {
-            title: "अयमात्मा ब्रह्म (माण्डूक्योपनिषद् मंत्र २)",
-            sanskrit: "सर्वं ह्येतद् ब्रह्म अयमात्मा ब्रह्म सोऽयमात्मा चतुष्पात्॥",
-            meaning: "यह सब कुछ निश्चय ही ब्रह्म है। यह जीवात्मा ही परब्रह्म है। यह आत्मा चार अवस्थाओं (जाग्रत, स्वप्न, सुषुप्ति और तुरीय) से युक्त है।"
-          }
-        ]
+      "veda-1": {
+        hi: "उस प्राणस्वरूप, दुःखनाशक, सुखस्वरूप, तेजस्वी और पापनाशक परमात्मा को हम अपनी अन्तरात्मा में धारण करें। वह परमेश्वर हमारी बुद्धि को निरंतर सन्मार्ग पर प्रेरित करे।",
+        en: "We meditate upon the supreme adorable radiance of the Divine Creator, who illumines the realms. May That Divine Source inspire and enlighten our intellect.",
+        hinglish: "Us praanswaroop, dukhnaashak, tejomay parmatma ka hum dhyan karein, jo hamari buddhi ko hamesha satya aur sanmarg par prerit kare.",
+        sa: "तं सवितुः देवस्य वरेण्यं भर्गः धीमहि, यः नः धियः प्रचोदयात्।",
+        ur: "ہم اس کائنات کے خالقِ حقیقی کے نورِ الٰہی کا دھیان کرتے ہیں۔"
       },
-
-      // 18 MAHAPURANAS WITH FULL TEXTUAL INFORMATION & SHLOKAS
-      brahma: {
-        id: "brahma",
-        title: "ब्रह्म महापुराण",
-        category: "आदि पुराण / राजस",
-        verseCount: "१०,००० श्लोक",
-        divisions: "२४५ अध्याय",
-        rishi: "महर्षि वेदव्यास / सूत जी",
-        theme: "puran",
-        essence: "समस्त १८ पुराणों में प्रथम होने के कारण इसे 'आदि पुराण' कहा जाता है। इसमें सूर्य उपासना, सृष्टि की उत्पत्ति, राजा पृथु का चरित्र, तथा गोदावरी (गौतमी) तट के पावन तीर्थों का अनुपम वर्णन है।",
-        highlights: [
-          {
-            title: "सृष्टि स्थिति संहार वंदना (अध्याय १, श्लोक १)",
-            sanskrit: "सृष्टिस्थित्यन्तकरणीं दयानिधिमहर्निशम्।\nप्रणम्य जगतां धात्रीं सर्वकामप्रदायिनीम्॥",
-            meaning: "संसार की उत्पत्ति, पालन और प्रलय करने वाली, दया की सागर तथा संपूर्ण कामनाओं को सिद्ध करने वाली जगदम्बा व आदिपुरुष को हम नमन करते हैं।"
-          }
-        ]
+      "veda-2": {
+        hi: "हम त्रिनेत्रधारी देवाधिदेव महादेव शिव की उपासना करते हैं, जो समस्त संसार में सुगन्ध और पुष्टि का विस्तार करते हैं। जिस प्रकार पका खरबूजा बेल से मुक्त होता है, वैसे ही हम मृत्यु व बंधनों से मुक्त होकर अमरत्व को प्राप्त हों।",
+        en: "We worship the Three-Eyed Lord Shiva, the fragrant nourisher of all beings. As a ripe melon is released from its vine, may we be liberated from death and bondage into immortality.",
+        hinglish: "Hum trinetradhari Mahadev Shiv ki upasana karte hain jo sabhi praniyon me shakti aur pushti bharte hain.",
+        sa: "सुगन्धिं पुष्टिवर्धनं त्र्यम्बकं यजामहे। उर्वारुकम् इव बन्धनात् मृत्योः मुक्षीय मा अमृतात्।",
+        ur: "ہم تین آنکھوں والے مہادیو کی عبادت کرتے ہیں جو حیات بخش ہیں۔"
       },
-      padma: {
-        id: "padma",
-        title: "पद्म महापुराण",
-        category: "सात्विक महापुराण",
-        verseCount: "५५,००० श्लोक",
-        divisions: "५ खंड (सृष्टि, भूमि, स्वर्ग, पाताल, उत्तर)",
-        rishi: "महर्षि वेदव्यास",
-        theme: "puran",
-        essence: "यह महापुराण अत्यंत विशाल है। कमल (पद्म) से सृष्टि का प्राकट्य, भगवान श्रीराम की विस्तृत कथा, शकुंतला आख्यान, श्रीमद्भगवद्गीता महात्म्य और श्रीराधा-कृष्ण के गोलोक लीला का अमृतमय विश्लेषण है।",
-        highlights: [
-          {
-            title: "गीता सुगीता कर्तव्या (उत्तर खंड)",
-            sanskrit: "गीता सुगीता कर्तव्या किमन्यैः शास्त्रविस्तरैः।\nया स्वयं पद्मनाभस्य मुखपद्माद्विनिःसृता॥",
-            meaning: "श्रीमद्भगवद्गीता का ही भलीभांति गान और स्वाध्याय करना चाहिए, अन्य शास्त्रों के विस्तार से क्या प्रयोजन? क्योंकि यह स्वयं भगवान पद्मनाभ के श्रीमुख से प्रकट हुई है।"
-          }
-        ]
-      },
-      vishnu: {
-        id: "vishnu",
-        title: "विष्णु महापुराण",
-        category: "वैष्णव / सात्विक",
-        verseCount: "२३,००० श्लोक",
-        divisions: "६ अंश • १२६ अध्याय",
-        rishi: "महर्षि पराशर (सूत जी द्वारा कथित)",
-        theme: "puran",
-        essence: "पुराण के पांचों लक्षणों (सर्ग, प्रतिसर्ग, वंश, मन्वन्तर, वंशानुचरित) से सर्वाधिक परिपूर्ण प्रामाणिक ग्रंथ। इसमें ध्रुव-चरित्र, भक्त प्रह्लाद की कथा, श्रीकृष्ण अवतार तथा काल-गणना (युग, मन्वन्तर, कल्प) का वैज्ञानिक निरूपण है।",
-        highlights: [
-          {
-            title: "मंगलाचरण (प्रथम अंश, १.१)",
-            sanskrit: "ॐ नमो भगवते वासुदेवाय॥\nशान्ताकारं भुजगशयनं पद्मनाभं सुरेशं विश्वाधारं गगनसदृशं मेघवर्णं शुभाङ्गम्।\nलक्ष्मीकान्तं कमलनयनं योगिभिर्ध्यानगम्यं वन्दे विष्णुं भवभयहरं सर्वलोकैकनाथम्॥",
-            meaning: "जो शांत स्वरूप हैं, शेषनाग की शय्या पर शयन करते हैं, जिनकी नाभि में कमल है, जो संपूर्ण ब्रह्मांड के आधार हैं, उन भवभयहारी सर्वलोकेश्वर भगवान विष्णु की हम वंदना करते हैं।"
-          },
-          {
-            title: "भारतवर्ष की महिमा (द्वितीय अंश, ३.१)",
-            sanskrit: "उत्तरं यत्समुद्रस्य हिमाद्रेश्चैव दक्षिणम्।\nवर्षं तद् भारतं नाम भारती यत्र संततिः॥",
-            meaning: "जो समुद्र के उत्तर में और हिमालय के दक्षिण में स्थित है, उस पावन देश का नाम 'भारत' है और हम सब उसकी संतान (भारती) हैं।"
-          }
-        ]
-      },
-      shiva: {
-        id: "shiva",
-        title: "शिव महापुराण",
-        category: "शैव महापुराण",
-        verseCount: "२४,००० श्लोक",
-        divisions: "७ संहिताएं (विद्येश्वर, रुद्र, शतरुद्र, कोटिरुद्र, उमा, कैलास, वायु)",
-        rishi: "महर्षि व्यास / रोमहर्षण सूत जी",
-        theme: "katha",
-        essence: "देवाधिदेव महादेव शिव के अनादि ज्योतिर्लिंग स्वरूप, द्वादश ज्योतिर्लिंगों के प्राकट्य, सती-पार्वती विवाह, कार्तिकेय-गणेश उत्पत्ति तथा महामृत्युंजय व पंचाक्षर मंत्र (ॐ नमः शिवाय) के रहस्यों का प्रामाणिक विवरण।",
-        highlights: [
-          {
-            title: "शिव पंचाक्षर स्तोत्र (विद्येश्वर संहिता)",
-            sanskrit: "नागेन्द्रहाराय त्रिलोचनाय भस्माङ्गरागाय महेश्वराय।\nनित्याय शुद्धाय दिगम्बराय तस्मै नकाराय नमः शिवाय॥",
-            meaning: "जिनके कंठ में नागराज का हार है, जो त्रिनेत्रधारी हैं, जिनका विग्रह भस्म से सुशोभित है, जो नित्य, शुद्ध और सर्वव्यापी हैं—उस 'न' कार स्वरूप भगवान शिव को प्रणाम है।"
-          },
-          {
-            title: "रुद्र गायत्री",
-            sanskrit: "ॐ तत्पुरुषाय विद्महे महादेवाय धीमहि। तन्नो रुद्रः प्रचोदयात्॥",
-            meaning: "हम उस परम पुरुष महादेव का ध्यान करते हैं। वे संहारक व कल्याणकारी रुद्र हमारी बुद्धि को ज्ञान के आलोक में प्रेरित करें।"
-          }
-        ]
-      },
-      bhagavata: {
-        id: "bhagavata",
-        title: "श्रीमद्भागवत महापुराण",
-        category: "परमहंस संहिता / सात्विक मुकुटमणि",
-        verseCount: "१८,००० श्लोक",
-        divisions: "१२ स्कंध • ३३५ अध्याय",
-        rishi: "महर्षि शुकदेव जी (राजा परीक्षित को उपदिष्ट)",
-        theme: "puran",
-        essence: "वेदों और उपनिषदों का सबसे परिपक्व अमृत फल। १२ स्कंधों में नवधा भक्ति, राजा परीक्षित और शुकदेव जी का संवाद, कपिलाहूती संवाद, तथा भगवान श्रीकृष्ण की संपूर्ण रासलीला व मथुरा-द्वारका चरित्र का ब्रह्माण्डीय विश्लेषण।",
-        highlights: [
-          {
-            title: "परम सत्य मंगलाचरण (स्कंध १, अध्याय १, श्लोक १)",
-            sanskrit: "जन्माद्यस्य यतोऽन्वयादितरतश्चार्थेष्वभिज्ञः स्वराट्\nतेने ब्रह्म हृदा य आदिकवये मुह्यन्ति यत्सूरयः।\nतेजोवारिमृदां यथा विनिमयो यत्र त्रिसर्गोऽमृषा\nधाम्ना स्वेन सदा निरस्तकुहकं सत्यं परं धीमहि॥",
-            meaning: "जिससे इस संपूर्ण विश्व का जन्म, स्थिति और प्रलय होता है; जो सर्वज्ञ और स्वराट् हैं; जिन्होंने ब्रह्मा के हृदय में वेदों का ज्ञान दिया; जिनके स्वरूप में यह त्रिगुणात्मक जगत सत्य प्रतीत होता है—उस मायारहित परम सत्य (श्रीहरि) का हम ध्यान करते हैं।"
-          },
-          {
-            title: "चतुःश्लोकी भागवत सार (स्कंध २, अध्याय ९, श्लोक ३३)",
-            sanskrit: "अहमेवासमेवाग्रे नान्यद् यत् सदसत् परम्।\nपश्चादहं यदेतच्च योऽवशिष्येत सोऽस्म्यहम्॥",
-            meaning: "सृष्टि से पूर्व केवल मैं ही था, मेरे अतिरिक्त स्थूल-सूक्ष्म कुछ न था। सृष्टि के रूप में भी मैं ही हूँ, और प्रलय के पश्चात जो शेष रहेगा, वह भी केवल मैं ही हूँ।"
-          }
-        ]
-      },
-      narada: {
-        id: "narada",
-        title: "नारद महापुराण",
-        category: "वैष्णव महापुराण",
-        verseCount: "२५,००० श्लोक",
-        divisions: "पूर्व भाग (४ पाद) एवं उत्तर भाग",
-        rishi: "देवर्षि नारद एवं सनकादिक मुनि",
-        theme: "puran",
-        essence: "वेदांगों (शिक्षा, कल्प, व्याकरण, निरुक्त, छंद, ज्योतिष) का विशद विश्लेषण। इसमें एकादशी व्रत की वैज्ञानिक व आध्यात्मिक महिमा, तीर्थ यात्रा विधान और मोक्ष धर्म का अद्भुत विवेचन है।",
-        highlights: [
-          {
-            title: "नारायण नाम महिमा",
-            sanskrit: "नारायण परा वेदा नारायण परा मखाः।\nनारायण परा योगा नारायण पराः क्रियाः॥",
-            meaning: "समस्त वेद नारायण के ही प्रतिपादक हैं, समस्त यज्ञ नारायण के निमित्त हैं, सारे योग नारायण की प्राप्ति के लिए हैं और समस्त क्रियाएं नारायण को ही अर्पित हैं।"
-          }
-        ]
-      },
-      markandeya: {
-        id: "markandeya",
-        title: "मार्कण्डेय महापुराण",
-        category: "शाक्त / प्राचीनतम पुराण",
-        verseCount: "९,००० श्लोक",
-        divisions: "१३७ अध्याय",
-        rishi: "ऋषि मार्कण्डेय एवं जैमिनि संवाद",
-        theme: "katha",
-        essence: "सनातन संस्कृति का अत्यंत तेजस्वी ग्रंथ। इसी महापुराण के ७०० श्लोक जगत्प्रसिद्ध 'श्री दुर्गा सप्तशती' (देवी महात्म्य) कहलाते हैं, जिसमें महाकाली, महालक्ष्मी और महासरस्वती द्वारा मधु-कैटभ, महिषासुर और शुम्भ-निशुम्भ वध का आख्यान है।",
-        highlights: [
-          {
-            title: "दुर्गा सप्तशती मंगलाचरण (देवी स्तुति)",
-            sanskrit: "सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके।\nशरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते॥",
-            meaning: "हे नारायणी! तुम सब मंगलों में मंगलमयी हो, कल्याणदायिनी हो, सब पुरुषार्थों (धर्म, अर्थ, काम, मोक्ष) को सिद्ध करने वाली, शरणागतवत्सला और त्रिनेत्रधारी गौरी हो; तुम्हें हमारा बारंबार नमन है।"
-          }
-        ]
-      },
-      agni: {
-        id: "agni",
-        title: "अग्नि महापुराण",
-        category: "सनातन विश्वकोष (ज्ञानकोष)",
-        verseCount: "१५,४०० श्लोक",
-        divisions: "३८३ अध्याय",
-        rishi: "अग्निदेव द्वारा महर्षि वसिष्ठ को उपदिष्ट",
-        theme: "katha",
-        essence: "प्राचीन भारत का एनसाइक्लोपीडिया। इसमें अध्यात्म के साथ-साथ धनुर्वेद (युद्ध कला), आयुर्वेद (रोग निदान), राजनीतिशास्त्र, वास्तुशास्त्र, रत्न परीक्षा, व्याकरण और छंदशास्त्र का वैज्ञानिक संग्रह है।",
-        highlights: [
-          {
-            title: "विद्या एवं ज्ञान महिमा",
-            sanskrit: "अग्निहोत्रं फला वेदाः शीलवृत्तफलं श्रुतम्।\nरतिपुत्रफला नारी दत्तभुक्तफलं धनम्॥",
-            meaning: "वेदों का वास्तविक फल सदाचार है, ज्ञान का फल उत्तम चरित्र है, और धन का सच्चा फल परोपकार में दान तथा सदुपयोग है।"
-          }
-        ]
-      },
-      bhavishya: {
-        id: "bhavishya",
-        title: "भविष्य महापुराण",
-        category: "भविष्यवाणी एवं सौर ग्रंथ",
-        verseCount: "१४,५०० श्लोक",
-        divisions: "४ पर्व (ब्राह्म, मध्यम, प्रतिसर्ग, उत्तर)",
-        rishi: "महर्षि वेदव्यास / सुमन्तु मुनि",
-        theme: "puran",
-        essence: "भगवान सूर्य की उपासना का प्रधान ग्रंथ। इसमें धर्मशास्त्र, सदाचार के साथ-साथ आने वाले कलियुग के ऐतिहासिक राजवंशों, विक्रमादित्य काल, तथा आधुनिक युग की अनेक सामाजिक घटनाओं का आश्चर्यजनक पूर्वाभास है।",
-        highlights: [
-          {
-            title: "सूर्य वंदना श्लोक",
-            sanskrit: "नमः सवित्रे जगदेकचक्षुषे जगत्प्रसूतिस्थितिनाशहेतवे।\nत्रयीमयाय त्रिगुणात्मधारिणे विरिञ्चिनारायणशङ्करात्मने॥",
-            meaning: "संसार के एकमात्र नेत्र, जगत की उत्पत्ति, पालन और प्रलय के कारण, तीनों वेदों के स्वरूप तथा ब्रह्मा, विष्णु, महेश रूप धारी भगवान सूर्य को सादर नमन है।"
-          }
-        ]
-      },
-      brahmavaivarta: {
-        id: "brahmavaivarta",
-        title: "ब्रह्मवैवर्त महापुराण",
-        category: "वैष्णव महापुराण",
-        verseCount: "१८,००० श्लोक",
-        divisions: "४ खंड (ब्रह्म, प्रकृति, गणपति, श्रीकृष्णजन्म)",
-        rishi: "महर्षि वेदव्यास",
-        theme: "puran",
-        essence: "परम व्योम गोलोक धाम, श्रीराधा-कृष्ण का नित्य अभेद स्वरूप, श्रीगणेश का आविर्भाव और प्रकृति के मूल पंचतत्वों (दुर्गा, लक्ष्मी, सरस्वती, सावित्री, राधा) का दार्शनिक विवेचन।",
-        highlights: [
-          {
-            title: "राधा-कृष्ण अभेद तत्व (श्रीकृष्णजन्म खंड)",
-            sanskrit: "यथा क्षीरे च धावल्यं यथा वह्नौ च दाहिका।\nतथा मयि स्थिता राधा न भेदोऽस्ति कदाचन॥",
-            meaning: "श्रीकृष्ण कहते हैं: जैसे दूध में धवलता (सफेदी) और अग्नि में दाहकता (गर्मी) अभिन्न है, वैसे ही श्रीराधा मुझमें स्थित हैं; हम दोनों में कभी कोई भेद नहीं है।"
-          }
-        ]
-      },
-      linga: {
-        id: "linga",
-        title: "लिङ्ग महापुराण",
-        category: "शैव महापुराण",
-        verseCount: "११,००० श्लोक",
-        divisions: "पूर्व (१०८ अध्याय) एवं उत्तर (५५ अध्याय) भाग",
-        rishi: "महर्षि वेदव्यास / सूत जी",
-        theme: "katha",
-        essence: "निराकार ब्रह्म के साकार प्रतीक 'शिवलिंग' के प्राकट्य, ज्योतिर्लिंग की अगम्य महिमा, भगवान शिव के तांडव नृत्य, २८ योगावतारों तथा अघोर आदि पंचब्रह्म स्वरूपों का गंभीर दार्शनिक निरूपण।",
-        highlights: [
-          {
-            title: "शिवलिंग लक्षण",
-            sanskrit: "प्रधानं प्रकृतिश्चेति यदाहुर्लिङ्गलक्षणम्।\nगन्धवर्णरसैर्हीनं शब्दस्पर्शादिवर्जितम्॥",
-            meaning: "जिससे संपूर्ण जगत प्रकट होता है और जिसमें लीन होता है, वह प्रकृति व पुरुष का संयुक्त अनादि निराकार प्रतीक ही 'लिंग' कहलाता है।"
-          }
-        ]
-      },
-      varaha: {
-        id: "varaha",
-        title: "वराह महापुराण",
-        category: "वैष्णव महापुराण",
-        verseCount: "२४,००० श्लोक",
-        divisions: "२१७ अध्याय",
-        rishi: "भगवान वराह एवं पृथ्वी देवी संवाद",
-        theme: "puran",
-        essence: "रसातल से पृथ्वी का उद्धार करने वाले भगवान वराह और भूदेवी के मध्य पावन संवाद। इसमें द्वादशी व्रत, मथुरा तीर्थ महिमा, संन्यास धर्म तथा मोक्ष प्राप्ति के वैदिक उपायों का उपदेश है।",
-        highlights: [
-          {
-            title: "वराह भगवान स्तुति",
-            sanskrit: "जलौघमग्ना सचराचरा धरा विषाणकोट्याऽखिलविश्वधारिणा।\nसमुद्धृता येन वराहरूपिणा स मे स्वयम्भूर्भगवान् प्रसीदतु॥",
-            meaning: "प्रलयकाल के जल में डूबी हुई चराचर पृथ्वी को जिन्होंने अपने दंष्ट्राग्र पर उठाकर पुनः स्थापित किया, वे वराहरूपी सर्वेश्वर श्रीहरि हम पर प्रसन्न हों।"
-          }
-        ]
-      },
-      skanda: {
-        id: "skanda",
-        title: "स्कन्द महापुराण",
-        category: "सर्वाधिक विशाल महापुराण",
-        verseCount: "८१,१०० श्लोक",
-        divisions: "७ खंड (माहेश्वर, वैष्णव, ब्राह्म, काशी, अवन्ती, नागर, प्रभास)",
-        rishi: "भगवान कार्तिकेय (स्कन्द)",
-        theme: "katha",
-        essence: "समस्त पुराणों में सबसे विशालकाय ग्रंथ। इसमें काशी विश्वनाथ की मुक्तिदायिनी महिमा (काशी खंड), जगन्नाथ पुरी का इतिहास, रामेश्वरम् ज्योतिर्लिंग, और जन-जन में प्रसिद्ध 'श्रीसत्यनारायण व्रत कथा' समाहित है।",
-        highlights: [
-          {
-            title: "काशी महिमा (काशी खंड)",
-            sanskrit: "वाराणसी समा नास्ति गतिरन्यत्र कुत्रचित्।\nअत्र जन्तुर्मृतो मुक्तिं लभते नान्यथा क्वचित्॥",
-            meaning: "समस्त लोकों में काशी के समान कोई मोक्षदायिनी नगरी नहीं है। यहाँ देहत्याग करने वाले जीव को देवाधिदेव महादेव स्वयं तारक मंत्र देकर मुक्त कर देते हैं।"
-          }
-        ]
-      },
-      vamana: {
-        id: "vamana",
-        title: "वामन महापुराण",
-        category: "वैष्णव / शैव समन्वय",
-        verseCount: "१०,००० श्लोक",
-        divisions: "९५ अध्याय",
-        rishi: "महर्षि पुलस्त्य एवं नारद संवाद",
-        theme: "puran",
-        essence: "भगवान विष्णु के वामन अवतार, दैत्यराज बलि के सर्वस्व समर्पण, कुरुक्षेत्र की तीर्थ महिमा तथा शिव-पार्वती के दांपत्य की पावन कथाओं का अनुपम समन्वय।",
-        highlights: [
-          {
-            title: "त्रिविक्रम अवतार महिमा",
-            sanskrit: "पद्भ्यां महीं नभो मूर्ध्ना दिशो दोर्भिस्तथैव च।\nआचक्राम जगन्नाथस्ततो विष्णुः स उच्यते॥",
-            meaning: "जिन्होंने एक पग से पृथ्वी, दूसरे से आकाश और संपूर्ण दिशाओं को नाप लिया, वे सर्वव्यापक जगन्नाथ ही 'विष्णु' कहलाते हैं।"
-          }
-        ]
-      },
-      kurma: {
-        id: "kurma",
-        title: "कूर्म महापुराण",
-        category: "समन्वय महापुराण",
-        verseCount: "१७,००० श्लोक",
-        divisions: "पूर्व एवं उत्तर विभाग",
-        rishi: "भगवान कूर्म (कच्छप अवतार)",
-        theme: "puran",
-        essence: "समुद्र मंथन के समय मंदराचल पर्वत को अपनी पीठ पर धारण करने वाले कच्छप अवतार द्वारा राजा इंद्रद्युम्न को दिया गया ज्ञान। इसका उत्तर विभाग 'ईश्वर गीता' कहलाता है, जो अद्वैत ज्ञान की पराकाष्ठा है।",
-        highlights: [
-          {
-            title: "ईश्वर गीता श्लोक",
-            sanskrit: "एकः सर्वस्य जगतः स्रष्टा संहर्तृपालकः।\nमायया बहुधा भाति सत्यज्ञानानन्दलक्षणः॥",
-            meaning: "वह एक ही सत्य-ज्ञान-आनंद स्वरूप परमात्मा अपनी माया से अनेक रूपों में भासित होता हुआ संपूर्ण जगत का सृजन, पालन और संहार करता है।"
-          }
-        ]
-      },
-      matsya: {
-        id: "matsya",
-        title: "मत्स्य महापुराण",
-        category: "प्राचीनतम महापुराण",
-        verseCount: "१४,००० श्लोक",
-        divisions: "२९० अध्याय",
-        rishi: "भगवान मत्स्य (मनु संवाद)",
-        theme: "puran",
-        essence: "महाप्रलय के समय विशाल नौका में सत्यव्रत मनु, सप्तर्षियों और औषधियों की रक्षा करने वाले मत्स्य अवतार का आख्यान। इसमें प्राचीन भारतीय वास्तुशिल्प, मूर्तिकला और राजधर्म के प्रामाणिक सूत्र हैं।",
-        highlights: [
-          {
-            title: "मत्स्य अवतार वचन",
-            sanskrit: "मम शृङ्गे निबध्नीध्वं नावं तां मुनिपुङ्गवाः।\nअहं वो मोचयिष्यामि विपुलात् तस्मादर्णवात्॥",
-            meaning: "भगवान मत्स्य ने कहा: हे ऋषियों! अपनी नौका को मेरे सींग से बांध दो; मैं इस भीषण महाप्रलय के महासागर से तुम्हारी रक्षा कर नवसृष्टि का मार्ग प्रशस्त करूँगा।"
-          }
-        ]
-      },
-      garuda: {
-        id: "garuda",
-        title: "गरुड़ महापुराण",
-        category: "वैष्णव / मोक्ष ग्रंथ",
-        verseCount: "१९,००० श्लोक",
-        divisions: "पूर्वखंड (आचार कांड) एवं उत्तरखंड (प्रेत कल्प)",
-        rishi: "पक्षीराज गरुड़ एवं भगवान विष्णु",
-        theme: "puran",
-        essence: "मृत्यु के पश्चात जीवात्मा की सूक्ष्म यात्रा, यमलोक का विधान, कर्मों का फल, पितृ श्राद्ध की महत्ता तथा आत्मज्ञान द्वारा मोक्ष प्राप्त करने के गूढ़ रहस्यों का प्रामाणिक दिग्दर्शन।",
-        highlights: [
-          {
-            title: "आत्मज्ञान सार (प्रेत कल्प)",
-            sanskrit: "अमृतं चैव मृत्युश्च द्वयं देहे प्रतिष्ठितम्।\nमोहादापद्यते मृत्युः सत्येनापद्यतेऽमृतम्॥",
-            meaning: "अमरत्व और मृत्यु दोनों ही मनुष्य के शरीर में स्थित हैं। अज्ञान और मोह में पड़े रहने से मृत्यु (पुनर्जन्म बंधन) मिलती है, और सत्य के साक्षात्कार से अमरत्व (मोक्ष) मिलता है।"
-          }
-        ]
-      },
-      brahmanda: {
-        id: "brahmanda",
-        title: "ब्रह्माण्ड महापुराण",
-        category: "ब्रह्मांड विज्ञान / शाक्त",
-        verseCount: "१२,००० श्लोक",
-        divisions: "४ भाग (प्रक्रिया, अनुषंग, उपोद्घात, उपसंहार)",
-        rishi: "महर्षि वेदव्यास",
-        theme: "puran",
-        essence: "गोल्डन कॉस्मिक एग (हिरण्यगर्भ) से ब्रह्मांड की उत्पत्ति, खगोल शास्त्र, भूगोल और परशुराम चरित्र। इसी महापुराण में अध्यात्म रामायण, जगत्प्रसिद्ध 'श्री ललिता सहस्रनाम' और 'आदित्य हृदय स्तोत्र' समाहित हैं।",
-        highlights: [
-          {
-            title: "आदित्य हृदय स्तोत्र (युद्ध कांड संदर्भ)",
-            sanskrit: "ततो युद्धपरिश्रान्तं समरे चिन्तया स्थितम्।\nरावणं चाग्रतो दृष्ट्वा युद्धाय समुपस्थितम्॥\nदैवतैश्च समागम्य द्रष्टुमभ्यागतो रणम्।\nउपागम्याब्रवीद्राममगस्त्यो भगवान् ऋषिः॥",
-            meaning: "भगवान श्रीराम को रणभूमि में क्लांत देखकर महर्षि अगस्त्य ने उन्हें समस्त शत्रुओं पर विजय दिलाने वाले नित्य पावन 'आदित्य हृदय स्तोत्र' का उपदेश दिया।"
-          },
-          {
-            title: "ललिता सहस्रनाम मंगलाचरण",
-            sanskrit: "श्रीमाता श्रीमहाराज्ञी श्रीमत्सिंहासनेश्वरी।\nचिदग्निकुण्डसम्भूता देवकार्यसमुद्यता॥",
-            meaning: "जो संपूर्ण जगत की ममतामयी माता हैं, चक्रवर्ती सम्राज्ञी हैं, चिद्रूपी पावन अग्निकुण्ड से प्रकट होकर देवकार्यों को सिद्ध करने वाली हैं, उन माँ त्रिपुरसुंदरी ललिता को वंदन है।"
-          }
-        ]
+      "veda-3": {
+        hi: "हे परमेश्वर! मुझे असत्य से सत्य की ओर ले चलें। मुझे अज्ञान रूपी अंधकार से ज्ञान रूपी प्रकाश की ओर ले चलें। मुझे मृत्यु के नश्वर बंधन से अमरत्व की ओर ले चलें।",
+        en: "O Divine Lord! Lead me from untruth to truth. Lead me from darkness to divine light. Lead me from death to immortality. Om Peace, Peace, Peace.",
+        hinglish: "Hey Prabhu! Mujhe asatya se satya ki taraf le chalein. Andhkar se gyan ke divya prakash ki taraf le chalein.",
+        sa: "असत्यतः सत्यं प्रति, अन्धकारतः प्रकाशं प्रति, मृत्योः अमृतं प्रति मां गमय।",
+        ur: "اے ربِ کریم! مجھے جھوٹ سے سچائی کی طرف اور اندھیرے سے روشنی کی طرف لے چل۔"
       }
     };
 
-    // 3. USER PROFILE & PREFERENCES
+    // 4. DEITY CATALOG & CHANTS
+    const deityCatalog = [
+      { id: "ram", hindiName: "श्री राम", aliases: ["ram", "rama", "raghav", "sitaram", "ramchandra", "राम", "श्रीराम"], chants: ["राम राम", "जय श्री राम", "सिया राम", "रघुपति राघव"] },
+      { id: "krishna", hindiName: "श्री कृष्ण", aliases: ["krishna", "krishn", "kanha", "kanhaiya", "shyam", "gopal", "कृष्ण", "कान्हा"], chants: ["राधे राधे", "जय श्री कृष्ण", "हरे कृष्ण", "गोविन्द"] },
+      { id: "shiva", hindiName: "महादेव शिव", aliases: ["shiva", "shiv", "mahadev", "bholenath", "bhole", "shankar", "शिव", "महादेव", "भोलेनाथ"], chants: ["ॐ नमः शिवाय", "हर हर महादेव", "जय भोलेनाथ", "शम्भो"] },
+      { id: "hanuman", hindiName: "श्री हनुमान जी", aliases: ["hanuman", "bajrangbali", "maruti", "हनुमान", "बजरंगबली"], chants: ["जय बजरंगबली", "जय श्री राम", "ॐ हनुमते नमः", "संकटमोचन"] },
+      { id: "vishnu", hindiName: "श्री हरि विष्णु", aliases: ["vishnu", "hari", "narayan", "विष्णु", "नारायण"], chants: ["ॐ नमो भगवते वासुदेवाय", "नारायण", "श्रीहरि"] },
+      { id: "durga", hindiName: "माँ दुर्गा / शक्ति", aliases: ["durga", "mata", "ambe", "bhavani", "दुर्गा", "माता", "काली"], chants: ["जय माता दी", "जय माँ भवानी", "ॐ दुर्गे"] },
+      { id: "ganesh", hindiName: "श्री गणेश", aliases: ["ganesh", "ganpati", "vinayaka", "गणेश", "गणपति"], chants: ["ॐ गं गणपतये नमः", "जय गणेश", "विघ्नहर्ता"] }
+    ];
+
+    const universalChants = ["राम राम", "जय श्री राम", "ॐ नमः शिवाय", "राधे राधे", "हरे कृष्ण", "ॐ नमो भगवते वासुदेवाय", "हरि ॐ", "नारायण"];
+
+    function detectDeity(inputStr) {
+      if (!inputStr || !inputStr.trim()) {
+        return { id: "all", hindiName: "सभी देव स्वरूप", chants: universalChants, isExplicit: false };
+      }
+      const clean = inputStr.toLowerCase().trim();
+      for (const d of deityCatalog) {
+        for (const alias of d.aliases) {
+          if (clean === alias || clean.includes(alias) || alias.includes(clean)) {
+            return { ...d, isExplicit: true };
+          }
+        }
+      }
+      return { id: "custom", hindiName: "श्री " + inputStr.trim(), chants: ["जय " + inputStr.trim(), "प्रभु शरणम्", "ॐ"], isExplicit: true };
+    }
+
+    function handleDeityInput(val, previewElemId) {
+      const detected = detectDeity(val);
+      const preview = document.getElementById(previewElemId);
+      if (preview) {
+        preview.innerText = (!val || !val.trim()) ? `✨ स्वीकृत इष्टदेव: सभी देव स्वरूप (Default)` : `✨ स्वीकृत इष्टदेव: ${detected.hindiName}`;
+      }
+      return detected;
+    }
+
+    function quickSelectDeity(deityId, inputElemId, previewElemId) {
+      const d = deityCatalog.find(item => item.id === deityId) || deityCatalog[0];
+      const input = document.getElementById(inputElemId);
+      if (input) input.value = d.hindiName;
+      handleDeityInput(d.hindiName, previewElemId);
+    }
+
+    function clearDeityInput(inputElemId, previewElemId) {
+      const input = document.getElementById(inputElemId);
+      if (input) input.value = "";
+      handleDeityInput("", previewElemId);
+    }
+
+    // 5. LOCALIZATION
+    const i18n = {
+      hi: {
+        siteTitle: "सनातन ज्ञान महासागर",
+        rankPrefix: "पदवी: ",
+        ranks: ["साधक", "अनन्य भक्त", "हरि अनुरागी", "सिद्ध साधक", "परम वैष्णव", "महा तपस्वी", "ब्रह्मर्षि", "परमहंस"],
+        dailyTag: "☀️ आज का दिव्य श्लोक",
+        shareBtn: "साझा करें 🟢",
+        searchPlaceholder: "🔍 श्लोक खोजें या AI से पूछें...",
+        aiSearchBtn: "✨ AI खोजें",
+        sugHeader: "✨ दिव्य सुझाव (Tap to explore):",
+        resetBtn: "आज का ० करें",
+        tabGita: "श्रीमद्भगवद्गीता",
+        tabVeda: "वेद एवं उपनिषद",
+        tabPuran: "महापुराण संग्रह",
+        tabKatha: "अमर कथाएं",
+        aiCardBadge: "✨ दिव्य ओंकार AI श्लोक दर्शन"
+      },
+      en: {
+        siteTitle: "Sanatan Divine Ocean",
+        rankPrefix: "Rank: ",
+        ranks: ["Seeker", "Devotee", "Divine Lover", "Siddha Sadhak", "Param Vaishnav", "Maha Tapasvi", "Brahmarshi", "Paramahamsa"],
+        dailyTag: "☀️ Daily Divine Shloka",
+        shareBtn: "Share 🟢",
+        searchPlaceholder: "🔍 Search shlokas or ask AI...",
+        aiSearchBtn: "✨ AI Search",
+        sugHeader: "✨ Divine Suggestions (Tap to explore):",
+        resetBtn: "Reset Today's 0",
+        tabGita: "Bhagavad Gita",
+        tabVeda: "Vedas & Upanishads",
+        tabPuran: "Maha Puranas",
+        tabKatha: "Immortal Stories",
+        aiCardBadge: "✨ Divine Omkar AI Revelation"
+      },
+      hinglish: {
+        siteTitle: "Sanatan Gyan Mahasagar",
+        rankPrefix: "Padvi: ",
+        ranks: ["Sadhak", "Ananya Bhakt", "Hari Anuragi", "Siddha Sadhak", "Param Vaishnav", "Maha Tapasvi", "Brahmarshi", "Paramahamsa"],
+        dailyTag: "☀️ Aaj Ka Divya Shlok",
+        shareBtn: "Share Karein 🟢",
+        searchPlaceholder: "🔍 Shlok khojein ya AI se poochein...",
+        aiSearchBtn: "✨ AI Search",
+        sugHeader: "✨ Divya Sujhav (Tap to explore):",
+        resetBtn: "Aaj ka 0 karein",
+        tabGita: "Shrimad Bhagavad Gita",
+        tabVeda: "Ved & Upanishad",
+        tabPuran: "Mahapuran Sangrah",
+        tabKatha: "Amar Kathayein",
+        aiCardBadge: "✨ Divya Omkar AI Shlok Darshan"
+      },
+      sa: {
+        siteTitle: "सनातनज्ञानमहासागरः",
+        rankPrefix: "पदम्: ",
+        ranks: ["साधकः", "अनन्यभक्तः", "हरि-अनुरागी", "सिद्धसाधकः", "परमवैष्णवः", "महातपस्वी", "ब्रह्मर्षिः", "परमहंसः"],
+        dailyTag: "☀️ अद्यतनं दिव्यश्लोकम्",
+        shareBtn: "संविभज 🟢",
+        searchPlaceholder: "🔍 श्लोकं अन्विष्यतु उत AI पृच्छतु...",
+        aiSearchBtn: "✨ AI अन्वेषणम्",
+        sugHeader: "✨ दिव्याः प्रस्तावाः:",
+        resetBtn: "अद्यतनं शून्यं कुरु",
+        tabGita: "श्रीमद्भगवद्गीता",
+        tabVeda: "वेदाः उपनिषदश्च",
+        tabPuran: "महापुराणसङ्ग्रहः",
+        tabKatha: "अमराः कथाः",
+        aiCardBadge: "✨ ओंकार-AI-श्लोकदर्शनम्"
+      },
+      ur: {
+        siteTitle: "سنتان گیان مہاساگر",
+        rankPrefix: "منصب: ",
+        ranks: ["سالک", "مخلص بھکت", "عاشقِ الٰہی", "سدھ سادھک", "پرم ویشنو", "مہا تپسوی", "برہم رشی", "پرم ہنس"],
+        dailyTag: "☀️ آج کا متبرک شلوک",
+        shareBtn: "شیئر کریں 🟢",
+        searchPlaceholder: "🔍 شلوک تلاش کریں...",
+        aiSearchBtn: "✨ AI تلاش",
+        sugHeader: "✨ روحانی تجاویز:",
+        resetBtn: "آج کا صفر کریں",
+        tabGita: "شریمد بھگواد گیتا",
+        tabVeda: "وید و اپنشد",
+        tabPuran: "مہاپُران",
+        tabKatha: "امر کہانیاں",
+        aiCardBadge: "✨ اوم کار AI شلوک درشن"
+      }
+    };
+
+    // 6. STATE
     let userName = SafeStorage.get('SANATAN_USER_NAME', '');
-    let userDeity = SafeStorage.get('SANATAN_USER_DEITY', 'सभी देव स्वरूप');
+    let userDeityRaw = SafeStorage.get('SANATAN_USER_DEITY_RAW', ''); 
+    let activeDeityObj = detectDeity(userDeityRaw);
     let userLang = SafeStorage.get('SANATAN_USER_LANG', 'hi');
 
-    let dailyJaap = parseInt(SafeStorage.get('SANATAN_DAILY_JAAP', '0'), 10) || 0;
-    let lifetimeJaap = parseInt(SafeStorage.get('SANATAN_LIFETIME_JAAP', '0'), 10) || 0;
-
-    let isSoundMuted = false;
     let isSpeechGuideEnabled = true;
+    let lifetimeJaap = parseInt(SafeStorage.get('SANATAN_LIFETIME_JAAP', '0'), 10);
+    let dailyJaap = parseInt(SafeStorage.get('SANATAN_DAILY_JAAP', '0'), 10);
+    let lastDate = SafeStorage.get('SANATAN_LAST_ACTIVE_DATE', '');
 
-    // 4. AUDIO & SPEECH ENGINE
+    const currentDateStr = new Date().toDateString();
+    if (lastDate !== currentDateStr) {
+      dailyJaap = 0;
+      SafeStorage.set('SANATAN_DAILY_JAAP', '0');
+      SafeStorage.set('SANATAN_LAST_ACTIVE_DATE', currentDateStr);
+    }
+
+    // 7. VOICE GUIDANCE FOR ONBOARDING
+    function speakDivineGuide(text, lang = 'hi-IN') {
+      if (!isSpeechGuideEnabled || !('speechSynthesis' in window)) return;
+      try {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.92;
+        utterance.pitch = 1.05;
+        window.speechSynthesis.speak(utterance);
+      } catch (e) {}
+    }
+
+    function stopDivineGuide() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+
+    function toggleSpeechGuide(e) {
+      if (e) e.stopPropagation();
+      isSpeechGuideEnabled = !isSpeechGuideEnabled;
+      const btn = document.getElementById('voiceToggleBtn');
+      const status = document.getElementById('voiceGuideStatus');
+      if (isSpeechGuideEnabled) {
+        btn.innerText = "🔊 बंद करें";
+        status.innerText = "🎙️ दिव्य वाणी मार्गदर्शन चालू है";
+        speakDivineGuide("सनातन ज्ञान महासागर में आपका स्वागत है। पहले अपनी भाषा चुनें, अपना शुभ नाम दर्ज करें, और इष्टदेव का नाम लिखकर प्रवेश करें।", 'hi-IN');
+      } else {
+        stopDivineGuide();
+        btn.innerText = "🔇 आवाज़ चालू करें";
+        status.innerText = "🔇 वाणी मार्गदर्शन बंद है";
+      }
+    }
+
+    function handleLangSelectChange(selectedLang) {
+      userLang = selectedLang;
+      if (selectedLang === 'en') {
+        speakDivineGuide("Language set to English. Please enter your name and beloved deity to enter.", 'en-US');
+      } else if (selectedLang === 'ur') {
+        speakDivineGuide("خوش آمدید۔ براہ کرم اپنا نام اور محبوب دیوتا کا نام درج فرما کر داخل ہوں۔", 'ur-PK');
+      } else {
+        speakDivineGuide("भाषा चुन ली गई है। कृपया अपना शुभ नाम और इष्टदेव का नाम लिखकर प्रवेश करें।", 'hi-IN');
+      }
+    }
+
+    function checkUserOnboarding() {
+      if (!userName) {
+        const modal = document.getElementById('onboardingModal');
+        if (modal) modal.style.display = 'flex';
+        setTimeout(() => {
+          speakDivineGuide("सनातन ज्ञान महासागर में आपका स्वागत है। कृपया पहले अपनी भाषा चुनें, अपना शुभ नाम दर्ज करें, और अपने इष्टदेव का नाम लिखकर प्रवेश करें।", 'hi-IN');
+        }, 600);
+      }
+    }
+
+    function closeOnboardingModal(e) {
+      if (e) e.stopPropagation();
+      stopDivineGuide();
+      const modal = document.getElementById('onboardingModal');
+      if (modal) modal.style.display = 'none';
+      if (!userName) {
+        userName = 'साधक';
+        SafeStorage.set('SANATAN_USER_NAME', userName);
+        applyLanguageAndDeity();
+      }
+      triggerEntrancePortalAndDiya();
+    }
+
+    function submitOnboarding() {
+      stopDivineGuide();
+      userLang = document.getElementById('obLangInput').value || 'hi';
+      const name = document.getElementById('obNameInput').value.trim();
+      userName = name || 'साधक';
+      const deityTyped = document.getElementById('obDeityInput').value.trim();
+      userDeityRaw = deityTyped;
+      activeDeityObj = detectDeity(userDeityRaw);
+
+      SafeStorage.set('SANATAN_USER_LANG', userLang);
+      SafeStorage.set('SANATAN_USER_NAME', userName);
+      SafeStorage.set('SANATAN_USER_DEITY_RAW', userDeityRaw);
+
+      const modal = document.getElementById('onboardingModal');
+      if (modal) modal.style.display = 'none';
+      applyLanguageAndDeity();
+      triggerEntrancePortalAndDiya();
+    }
+
+    // 8. LOGIN DIYA SHLOK TYPEWRITER
+    let entryShlokTimer = null;
+    let typeWriterInterval1 = null;
+    let typeWriterInterval2 = null;
+
+    function triggerEntrancePortalAndDiya() {
+      playSingingBowlBell();
+      openDailyDiyaDarshan();
+    }
+
+    function openDailyDiyaDarshan(e) {
+      if (e) e.stopPropagation();
+      dismissDailyEntryShlok();
+
+      const modal = document.getElementById('dailyEntryModal');
+      const titleElem = document.getElementById('entryShlokTitle');
+      const sanskritElem = document.getElementById('entryShlokSanskrit');
+      const meaningElem = document.getElementById('entryShlokMeaning');
+      const timerBar = document.getElementById('entryTimerBar');
+
+      const todayData = dailyScriptures[new Date().getDate() % dailyScriptures.length];
+
+      titleElem.innerText = todayData.title;
+      sanskritElem.innerText = "";
+      meaningElem.innerText = "";
+
+      timerBar.style.animation = 'none';
+      void timerBar.offsetWidth;
+      timerBar.style.animation = 'entryTimerCountdown 10s linear forwards';
+
+      modal.style.display = 'flex';
+
+      let idx1 = 0;
+      const shlokStr = todayData.shlok;
+      typeWriterInterval1 = setInterval(() => {
+        if (idx1 < shlokStr.length) {
+          sanskritElem.innerText += shlokStr.charAt(idx1);
+          idx1++;
+        } else {
+          clearInterval(typeWriterInterval1);
+          
+          let idx2 = 0;
+          const translatedMeaning = (todayData.meanings && todayData.meanings[userLang]) || todayData.meanings.hi;
+          const meaningPrefix = (userLang === 'en' ? "Meaning: " : (userLang === 'ur' ? "مفہوم: " : "भावार्थ: "));
+          const meaningStr = meaningPrefix + translatedMeaning;
+
+          typeWriterInterval2 = setInterval(() => {
+            if (idx2 < meaningStr.length) {
+              meaningElem.innerText += meaningStr.charAt(idx2);
+              idx2++;
+            } else {
+              clearInterval(typeWriterInterval2);
+            }
+          }, 18);
+        }
+      }, 26);
+
+      entryShlokTimer = setTimeout(() => {
+        dismissDailyEntryShlok();
+      }, 10000);
+    }
+
+    function dismissDailyEntryShlok() {
+      clearTimeout(entryShlokTimer);
+      clearInterval(typeWriterInterval1);
+      clearInterval(typeWriterInterval2);
+      const modal = document.getElementById('dailyEntryModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    // 9. COSMIC VOICE AGENT (ONE-TAP OPEN / ANYWHERE TAP CLOSE)
+    let isAgentSpeaking = false;
+    let isAgentListening = false;
+    let speechRecognizer = null;
+    let isVoiceAgentActive = false;
+
+    function initSpeechRecognition() {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (!SpeechRecognition) return null;
+      const recognition = new SpeechRecognition();
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      
+      const langMap = { hi: 'hi-IN', en: 'en-US', hinglish: 'hi-IN', sa: 'hi-IN', ur: 'ur-PK' };
+      recognition.lang = langMap[userLang] || 'hi-IN';
+
+      recognition.onstart = () => {
+        isAgentListening = true;
+        document.getElementById('agentStatusTag').innerText = "🎙️ सुन रहा हूँ... बोलिए वत्स";
+        document.getElementById('auraMicIcon').innerText = "👂";
+        document.getElementById('agentMicBtn').innerText = "🛑 सुनना बंद करें";
+        document.getElementById('auraCore').style.background = 'radial-gradient(circle, #00f0ff 0%, #0088ff 60%, #ffd700 100%)';
+      };
+
+      recognition.onresult = async (event) => {
+        const spokenQuery = event.results[0][0].transcript;
+        document.getElementById('agentSpeechOutput').innerText = `"${spokenQuery}"`;
+        document.getElementById('agentStatusTag').innerText = "✨ ओंकार चेतना मंथन कर रही है...";
+        document.getElementById('auraMicIcon').innerText = "⌛";
+
+        await executeVoiceAgentQuery(spokenQuery);
+      };
+
+      recognition.onerror = () => {
+        isAgentListening = false;
+        document.getElementById('agentStatusTag').innerText = "✨ पुनः बोलें वत्स...";
+        document.getElementById('auraMicIcon').innerText = "ॐ";
+        document.getElementById('agentMicBtn').innerText = "🎤 बोलकर पूछें (Tap to Speak)";
+      };
+
+      recognition.onend = () => {
+        isAgentListening = false;
+        if (!isAgentSpeaking) {
+          document.getElementById('auraMicIcon').innerText = "ॐ";
+          document.getElementById('agentMicBtn').innerText = "🎤 बोलकर पूछें (Tap to Speak)";
+          document.getElementById('auraCore').style.background = 'radial-gradient(circle, #fff2a3 0%, #ffd700 50%, #ff6600 100%)';
+        }
+      };
+
+      return recognition;
+    }
+
+    function openVoiceAgent() {
+      isVoiceAgentActive = true;
+      const modal = document.getElementById('voiceAgentModal');
+      modal.style.display = 'flex';
+      playSingingBowlBell();
+
+      // Show Active Radiant Aura on ॐ
+      document.getElementById('omActiveHalo').style.display = 'block';
+
+      const greetingMap = {
+        hi: `ॐ शान्तिः! बोलो वत्स ${userName ? userName : ''}, क्या संशय है तुम्हारे चित्त में?`,
+        en: `Om Shanti! Speak, my child ${userName ? userName : ''}, what resides in your heart?`,
+        hinglish: `Om Shanti! Bolo vats ${userName ? userName : ''}, kya prashna hai tumhare man mein?`,
+        sa: `ॐ शान्तिः! वद वत्स, किं संशयं वर्तते?`,
+        ur: `اوم شانتی! کہو فرزند، دل کا کیا سوال ہے؟`
+      };
+
+      const greetingText = greetingMap[userLang] || greetingMap.hi;
+      document.getElementById('agentSpeechOutput').innerText = `"${greetingText}"`;
+      document.getElementById('agentStatusTag').innerText = "✨ दिव्य ओंकार वाणी...";
+
+      agentSpeakResponse(greetingText, () => {
+        startAgentListening();
+      });
+    }
+
+    function closeVoiceAgent() {
+      if (!isVoiceAgentActive) return;
+      isVoiceAgentActive = false;
+      stopAgentVoice();
+      if (speechRecognizer) {
+        try { speechRecognizer.stop(); } catch (e) {}
+      }
+      document.getElementById('voiceAgentModal').style.display = 'none';
+      
+      // Hide Radiant Aura on ॐ
+      document.getElementById('omActiveHalo').style.display = 'none';
+    }
+
+    function agentSpeakResponse(text, callback) {
+      if (!('speechSynthesis' in window)) {
+        if (callback) callback();
+        return;
+      }
+
+      window.speechSynthesis.cancel();
+      const utterance = new SpeechSynthesisUtterance(text);
+      const langMap = { hi: 'hi-IN', en: 'en-US', hinglish: 'hi-IN', sa: 'hi-IN', ur: 'ur-PK' };
+      utterance.lang = langMap[userLang] || 'hi-IN';
+      utterance.rate = 0.95;
+      utterance.pitch = 1.02;
+
+      isAgentSpeaking = true;
+      document.getElementById('auraCore').style.boxShadow = '0 0 65px #ffd700, 0 0 130px #ff6600';
+
+      utterance.onend = () => {
+        isAgentSpeaking = false;
+        document.getElementById('auraCore').style.boxShadow = '0 0 45px #ffd700, 0 0 90px #ff6600';
+        if (callback) callback();
+      };
+
+      utterance.onerror = () => {
+        isAgentSpeaking = false;
+        if (callback) callback();
+      };
+
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function stopAgentVoice() {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      isAgentSpeaking = false;
+    }
+
+    function startAgentListening() {
+      stopAgentVoice();
+      if (!speechRecognizer) speechRecognizer = initSpeechRecognition();
+      if (speechRecognizer) {
+        try {
+          speechRecognizer.start();
+        } catch (e) {
+          try { speechRecognizer.stop(); speechRecognizer.start(); } catch (err) {}
+        }
+      }
+    }
+
+    function toggleAgentListening() {
+      if (isAgentListening) {
+        if (speechRecognizer) speechRecognizer.stop();
+      } else {
+        startAgentListening();
+      }
+    }
+
+    function handleAuraClick() {
+      toggleAgentListening();
+    }
+
+    async function executeVoiceAgentQuery(userSpokenText) {
+      const deityName = activeDeityObj.hindiName;
+      const fullPrompt = `[Divine Omkar Voice Agent - User: "${userName}", Deity: "${deityName}", Language: "${userLang}"]
+User asked via Voice: "${userSpokenText}"
+Instructions: Respond with serene, wise Vedic counsel as the primordial cosmic consciousness (Omkar) in user's language (${userLang}).
+Start naturally with "ॐ शान्तिः! वत्स,". Keep the answer spoken, sweet, inspiring, and concise (within 2-3 short sentences).`;
+
+      try {
+        const res = await fetch(CLOUDFLARE_WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: fullPrompt })
+        });
+        const data = await res.json();
+        const reply = data.reply || "ॐ शान्तिः! वत्स, चित्त को एकाग्र कर पुनः पूछें।";
+
+        document.getElementById('agentStatusTag').innerText = "✨ दिव्य ओंकार का पावन उत्तर";
+        document.getElementById('agentSpeechOutput').innerText = `"${reply}"`;
+
+        agentSpeakResponse(reply, () => {
+          document.getElementById('agentStatusTag').innerText = "✨ पुनः पूछने के लिए माइक दबाएं";
+          document.getElementById('auraMicIcon').innerText = "ॐ";
+          document.getElementById('agentMicBtn').innerText = "🎤 बोलकर पूछें (Tap to Speak)";
+        });
+      } catch (err) {
+        const errReply = "ॐ शान्तिः! संपर्क में क्षणिक बाधा आई है वत्स।";
+        document.getElementById('agentSpeechOutput').innerText = `"${errReply}"`;
+        agentSpeakResponse(errReply);
+      }
+    }
+
+    // 10. SETTINGS MODAL
+    let settingsOpenTimestamp = 0;
+
+    function openSettingsModal(e) {
+      if (e) {
+        e.stopPropagation();
+        if (e.cancelable) e.preventDefault();
+      }
+      settingsOpenTimestamp = Date.now();
+
+      const nameEl = document.getElementById('setCustName');
+      const deityEl = document.getElementById('setCustDeity');
+      const langEl = document.getElementById('setCustLang');
+
+      if (nameEl) nameEl.value = (userName === 'साधक' ? '' : userName);
+      if (deityEl) deityEl.value = userDeityRaw || '';
+      handleDeityInput(userDeityRaw || '', 'setDeityPreview');
+      if (langEl) langEl.value = userLang || 'hi';
+
+      const modal = document.getElementById('settingsModal');
+      if (modal) modal.style.display = 'flex';
+    }
+
+    function forceCloseSettings() {
+      const modal = document.getElementById('settingsModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function closeSettingsModal(e) {
+      if (e) {
+        e.stopPropagation();
+        if (Date.now() - settingsOpenTimestamp < 350) return;
+        if (e.target !== document.getElementById('settingsModal')) return;
+      }
+      forceCloseSettings();
+    }
+
+    function saveSettings() {
+      userLang = document.getElementById('setCustLang').value;
+      const name = document.getElementById('setCustName').value.trim();
+      userName = name || 'साधक';
+      userDeityRaw = document.getElementById('setCustDeity').value.trim();
+      activeDeityObj = detectDeity(userDeityRaw);
+
+      SafeStorage.set('SANATAN_USER_LANG', userLang);
+      SafeStorage.set('SANATAN_USER_NAME', userName);
+      SafeStorage.set('SANATAN_USER_DEITY_RAW', userDeityRaw);
+
+      forceCloseSettings();
+      applyLanguageAndDeity();
+      playCalmMalaSound();
+    }
+
+    function getSpiritualRank(count) {
+      const langPack = i18n[userLang] || i18n.hi;
+      const rankList = langPack.ranks;
+      if (count >= 10800) return rankList[7];
+      if (count >= 5400)  return rankList[6];
+      if (count >= 2160)  return rankList[5];
+      if (count >= 1080)  return rankList[4];
+      if (count >= 540)   return rankList[3];
+      if (count >= 216)   return rankList[2];
+      if (count >= 108)   return rankList[1];
+      return rankList[0];
+    }
+
+    function applyLanguageAndDeity() {
+      const t = i18n[userLang] || i18n.hi;
+      const deityName = activeDeityObj.hindiName;
+      const displayName = (userName && userName !== 'साधक') ? userName : t.siteTitle;
+
+      document.getElementById('headerUserGreeting').innerText = displayName;
+      document.getElementById('headerUserRank').innerText = t.rankPrefix + getSpiritualRank(dailyJaap) + ` • ${deityName}`;
+      
+      updateCountersOnly();
+
+      document.getElementById('resetBtnElem').innerText = t.resetBtn;
+      document.getElementById('liveSearch').placeholder = t.searchPlaceholder;
+      document.getElementById('aiSearchBtnElem').innerText = t.aiSearchBtn;
+      document.getElementById('sugHeaderElem').innerText = t.sugHeader;
+      document.getElementById('aiCardBadgeElem').innerText = t.aiCardBadge;
+
+      document.getElementById('btn-gita').innerText = t.tabGita;
+      document.getElementById('btn-veda').innerText = t.tabVeda;
+      document.getElementById('btn-puran').innerText = t.tabPuran;
+      document.getElementById('btn-katha').innerText = t.tabKatha;
+
+      document.getElementById('dailyTagElem').innerText = t.dailyTag;
+      document.getElementById('dailyShareBtn').innerText = t.shareBtn;
+
+      updateScriptureMeanings();
+      loadDailyWisdom();
+    }
+
+    function updateCountersOnly() {
+      document.getElementById('dailyJaapDisplay').innerText = dailyJaap.toLocaleString('hi-IN');
+      const malas = Math.floor(dailyJaap / 108);
+      const beads = dailyJaap % 108;
+      document.getElementById('jaapSubDisplay').innerText = `Mala: ${malas} (${beads}/108)`;
+      document.getElementById('lifetimeJaapDisplay').innerText = `Total: ${lifetimeJaap.toLocaleString('hi-IN')}`;
+    }
+
+    function updateScriptureMeanings() {
+      const p = (userLang === 'en' ? '<strong>Essence:</strong> ' : (userLang === 'ur' ? '<strong>مفہوم:</strong> ' : '<strong>गूढ़ भावार्थ:</strong> '));
+      const v1 = document.getElementById('meaning-gita-1'); if (v1) v1.innerHTML = p + (verseTranslations['gita-1'][userLang] || verseTranslations['gita-1'].hi);
+      const v2 = document.getElementById('meaning-gita-2'); if (v2) v2.innerHTML = p + (verseTranslations['gita-2'][userLang] || verseTranslations['gita-2'].hi);
+      const v3 = document.getElementById('meaning-gita-3'); if (v3) v3.innerHTML = p + (verseTranslations['gita-3'][userLang] || verseTranslations['gita-3'].hi);
+      const v4 = document.getElementById('meaning-gita-4'); if (v4) v4.innerHTML = p + (verseTranslations['gita-4'][userLang] || verseTranslations['gita-4'].hi);
+      const m1 = document.getElementById('meaning-veda-1'); if (m1) m1.innerHTML = p + (verseTranslations['veda-1'][userLang] || verseTranslations['veda-1'].hi);
+      const m2 = document.getElementById('meaning-veda-2'); if (m2) m2.innerHTML = p + (verseTranslations['veda-2'][userLang] || verseTranslations['veda-2'].hi);
+      const m3 = document.getElementById('meaning-veda-3'); if (m3) m3.innerHTML = p + (verseTranslations['veda-3'][userLang] || verseTranslations['veda-3'].hi);
+    }
+
+    function resetDailyCounter(e) {
+      if (e) e.stopPropagation();
+      if (confirm("Reset today's jaap counter to 0?")) {
+        dailyJaap = 0;
+        SafeStorage.set('SANATAN_DAILY_JAAP', '0');
+        updateCountersOnly();
+      }
+    }
+
+    // 11. AUDIO SYNTHESIS
     let audioCtx = null;
-    function initAudio() {
+    let isSoundMuted = false;
+
+    function initAudioContext() {
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === 'suspended') audioCtx.resume();
     }
@@ -1698,7 +2145,7 @@
     function playCalmMalaSound() {
       if (isSoundMuted) return;
       try {
-        initAudio();
+        initAudioContext();
         const now = audioCtx.currentTime;
         const osc = audioCtx.createOscillator();
         const gain = audioCtx.createGain();
@@ -1707,29 +2154,42 @@
         osc.frequency.exponentialRampToValueAtTime(70, now + 0.05);
         gain.gain.setValueAtTime(0.12, now);
         gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start(now);
-        osc.stop(now + 0.07);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(now); osc.stop(now + 0.07);
+      } catch (e) {}
+    }
+
+    function playTabSound() {
+      if (isSoundMuted) return;
+      try {
+        initAudioContext();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = "triangle";
+        osc.frequency.setValueAtTime(480, now);
+        osc.frequency.exponentialRampToValueAtTime(260, now + 0.07);
+        gain.gain.setValueAtTime(0.05, now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
+        osc.connect(gain); gain.connect(audioCtx.destination);
+        osc.start(now); osc.stop(now + 0.08);
       } catch (e) {}
     }
 
     function playSingingBowlBell() {
       if (isSoundMuted) return;
       try {
-        initAudio();
+        initAudioContext();
         const now = audioCtx.currentTime;
-        [432, 864, 1296].forEach((f, idx) => {
+        [432, 864].forEach((freq, idx) => {
           const osc = audioCtx.createOscillator();
           const gain = audioCtx.createGain();
           osc.type = "sine";
-          osc.frequency.setValueAtTime(f, now);
-          gain.gain.setValueAtTime([0.22, 0.08, 0.03][idx], now);
-          gain.gain.exponentialRampToValueAtTime(0.0001, now + 3.2);
-          osc.connect(gain);
-          gain.connect(audioCtx.destination);
-          osc.start(now);
-          osc.stop(now + 3.3);
+          osc.frequency.setValueAtTime(freq, now);
+          gain.gain.setValueAtTime([0.2, 0.08][idx], now);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.5);
+          osc.connect(gain); gain.connect(audioCtx.destination);
+          osc.start(now); osc.stop(now + 2.6);
         });
       } catch (e) {}
     }
@@ -1741,482 +2201,414 @@
       if (!isSoundMuted) playCalmMalaSound();
     }
 
-    function speakCalmVoice(text) {
-      if (!isSpeechGuideEnabled || !('speechSynthesis' in window)) return;
-      try {
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.lang = (userLang === 'en' ? 'en-IN' : 'hi-IN');
-        utterance.rate = 0.88;
-        utterance.pitch = 0.95;
-        window.speechSynthesis.speak(utterance);
-      } catch(e) {}
-    }
+    // 12. 108 MILESTONE CELEBRATION
+    const milestoneHolyShloks = [
+      { shlok: "कलयुग केवल नाम अधारा।<br>सुमिरि सुमिरि नर उतरहिं पारा॥", meaning: "कलियुग में केवल प्रभु का नाम ही समस्त भवों से पार उतारने वाला परम आधार है।" },
+      { shlok: "हरे कृष्ण हरे कृष्ण कृष्ण कृष्ण हरे हरे।<br>हरे राम हरे राम राम राम हरे हरे॥", meaning: "यह महामंत्र चित्त के समस्त संतापों को हर कर परम आनंद प्रदान करता है।" }
+    ];
 
-    function toggleSpeechGuide(e) {
-      if (e) e.stopPropagation();
-      isSpeechGuideEnabled = !isSpeechGuideEnabled;
-      const btn = document.getElementById('voiceToggleBtn');
-      const status = document.getElementById('voiceGuideStatus');
-      if (isSpeechGuideEnabled) {
-        btn.innerText = "🔊 बंद करें";
-        status.innerText = "🎙️ दिव्य वाणी मार्गदर्शन चालू है";
-        speakCalmVoice("सनातन ज्ञान महासागर में आपका स्वागत है।");
-      } else {
-        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-        btn.innerText = "🔇 आवाज़ चालू करें";
-        status.innerText = "🔇 वाणी मार्गदर्शन बंद है";
-      }
-    }
-
-    // 5. POPULATE ALL 4 VEDAS & 18 PURANAS ON HOME SCREEN
-    function populateScriptureShelves() {
-      const vedaContainer = document.getElementById('vedasShelfContainer');
-      const puranContainer = document.getElementById('puranasShelfContainer');
-
-      const vedaKeys = ['rigveda', 'yajurveda', 'samaveda', 'atharvaveda'];
-      const puranKeys = ['brahma', 'padma', 'vishnu', 'shiva', 'bhagavata', 'narada', 'markandeya', 'agni', 'bhavishya', 'brahmavaivarta', 'linga', 'varaha', 'skanda', 'vamana', 'kurma', 'matsya', 'garuda', 'brahmanda'];
-
-      vedaContainer.innerHTML = vedaKeys.map(k => {
-        const item = scripturesDB[k];
-        return `
-          <div class="scripture-portal-card" onclick="openScripturePortal('${k}')">
-            <div>
-              <span class="portal-card-badge">${item.category}</span>
-              <h3 class="portal-card-title">${item.title}</h3>
-              <p class="portal-card-desc">${item.essence}</p>
-            </div>
-            <div class="portal-open-tag">मंत्र एवं सूक्त दर्शन ➔</div>
-          </div>
-        `;
-      }).join('');
-
-      puranContainer.innerHTML = puranKeys.map((k, idx) => {
-        const item = scripturesDB[k];
-        return `
-          <div class="scripture-portal-card" onclick="openScripturePortal('${k}')">
-            <div>
-              <span class="portal-card-badge">महापुराण ${idx + 1} • ${item.verseCount}</span>
-              <h3 class="portal-card-title">${item.title}</h3>
-              <p class="portal-card-desc">${item.essence}</p>
-            </div>
-            <div class="portal-open-tag">कथा, श्लोक व रहस्य ➔</div>
-          </div>
-        `;
-      }).join('');
-    }
-
-    // 6. DEDICATED SCRIPTURE FULLSCREEN LAUNCHER
-    function openScripturePortal(scriptureKey) {
+    let milestoneTimer = null;
+    function triggerMilestoneCelebration() {
       playSingingBowlBell();
-      const item = scripturesDB[scriptureKey];
-      if (!item) return;
+      const curtain = document.getElementById('milestoneCurtain');
+      const malas = Math.floor(dailyJaap / 108);
+      const rank = getSpiritualRank(dailyJaap);
+      const shlokData = milestoneHolyShloks[(malas - 1) % milestoneHolyShloks.length];
 
-      const portalView = document.getElementById('dedicatedPortalView');
-      const container = document.getElementById('portalDynamicContent');
+      document.getElementById('milestoneTitle').innerText = '🌸 ' + malas + ' Mala Completed! 🌸';
+      document.getElementById('milestoneRankBanner').innerText = rank;
+      document.getElementById('milestoneShlok').innerHTML = shlokData.shlok;
+      document.getElementById('milestoneMeaning').innerText = shlokData.meaning;
 
-      // Change background animation theme
-      setAppSectionTheme(item.theme || 'puran');
-
-      let highlightsHTML = '';
-      if (item.highlights && item.highlights.length) {
-        highlightsHTML = item.highlights.map(h => `
-          <div class="portal-verse-block">
-            <h3>🕉️ ${h.title}</h3>
-            <div class="sanskrit-box">${h.sanskrit.replace(/\n/g, '<br>')}</div>
-            <p class="meaning-box"><strong>गूढ़ भावार्थ:</strong> ${h.meaning}</p>
-            <div style="display:flex; justify-content:flex-end; gap:8px; margin-top:14px;">
-              <button class="util-btn" onclick="copyText('${h.title}\\n\\n${h.sanskrit}\\n\\nभावार्थ: ${h.meaning}')">📋 Copy</button>
-              <button class="util-btn" onclick="shareCustomWhatsApp('${h.title}', '${h.sanskrit}', '${h.meaning}')">🟢 WhatsApp</button>
-            </div>
-          </div>
-        `).join('');
-      } else {
-        highlightsHTML = `
-          <div class="portal-verse-block">
-            <h3>📖 महात्म्य एवं प्रामाणिक सार</h3>
-            <p class="meaning-box" style="font-size:1.05rem; line-height:1.85;">${item.essence}</p>
-          </div>
-        `;
-      }
-
-      container.innerHTML = `
-        <div class="portal-hero-banner">
-          <span class="portal-card-badge">${item.category}</span>
-          <h1>${item.title}</h1>
-          <p style="color:#ffd899; font-size:1.02rem; line-height:1.75;">${item.essence}</p>
-          
-          <div class="portal-meta-grid">
-            <div class="portal-meta-item"><small>श्लोक / मंत्र संख्या</small><strong>${item.verseCount}</strong></div>
-            <div class="portal-meta-item"><small>विभाजन / संरचना</small><strong>${item.divisions || 'अध्याय एवं संहिता'}</strong></div>
-            <div class="portal-meta-item"><small>वक्ता / ऋषि</small><strong>${item.speaker || item.rishi || 'महर्षि व्यास'}</strong></div>
-          </div>
-        </div>
-
-        <h2 style="font-family:var(--font-title); color:var(--gold-bright); margin-bottom:18px;">✨ पावन श्लोक, सूक्त एवं प्रामाणिक रहस्य</h2>
-        ${highlightsHTML}
-      `;
-
-      portalView.style.display = 'flex';
-      portalView.scrollTop = 0;
-      document.body.classList.add('modal-locked');
+      curtain.style.display = 'flex';
+      clearTimeout(milestoneTimer);
+      milestoneTimer = setTimeout(() => { closeMilestoneModal(); }, 7000);
     }
 
-    function closeScripturePortal() {
-      playCalmMalaSound();
-      document.getElementById('dedicatedPortalView').style.display = 'none';
-      document.body.classList.remove('modal-locked');
-      setAppSectionTheme('gita');
-    }
-
-    // 7. DRAGGABLE PERSISTENT 'ॐ' AVATAR (STAYS FIXED TO SCREEN)
-    const floatingOm = document.getElementById('divineFloatingOm');
-    let isDragging = false;
-    let dragStart = { x: 0, y: 0 };
-    let hasMoved = false;
-
-    function handleOmClick(e) {
+    function closeMilestoneModal(e) {
       if (e) e.stopPropagation();
-      playSingingBowlBell();
-
-      const overlay = document.getElementById('suryaKiranOverlay');
-      overlay.classList.add('active');
-      document.getElementById('appRoot').classList.add('cosmic-blurred');
-
-      setTimeout(() => {
-        document.getElementById('naradBackdrop').style.display = 'flex';
-        document.body.classList.add('modal-locked');
-        setTimeout(() => overlay.classList.remove('active'), 150);
-      }, 420);
+      document.getElementById('milestoneCurtain').style.display = 'none';
+      clearTimeout(milestoneTimer);
     }
 
-    function closeNaradWindow(e) {
-      if (e) e.stopPropagation();
-      stopVoiceRecording();
-      document.getElementById('naradBackdrop').style.display = 'none';
-      document.getElementById('appRoot').classList.remove('cosmic-blurred');
-      document.body.classList.remove('modal-locked');
+    // 13. PARTICLES ENGINE
+    const pCanvas = document.getElementById('particleCanvas');
+    const pCtx = pCanvas.getContext('2d');
+    function resizePCanvas() { 
+      pCanvas.width = window.innerWidth || 360; 
+      pCanvas.height = window.innerHeight || 640; 
     }
+    window.addEventListener('resize', resizePCanvas);
+    resizePCanvas();
 
-    // Touch & Mouse Drag logic
-    floatingOm.addEventListener('touchstart', (e) => {
-      isDragging = true;
-      hasMoved = false;
-      dragStart = { x: e.touches[0].clientX, y: e.touches[0].clientY };
-    }, { passive: true });
-
-    window.addEventListener('touchmove', (e) => {
-      if (!isDragging) return;
-      const dx = e.touches[0].clientX - dragStart.x;
-      const dy = e.touches[0].clientY - dragStart.y;
-      if (Math.hypot(dx, dy) > 8) hasMoved = true;
-      floatingOm.style.left = (e.touches[0].clientX - 38) + 'px';
-      floatingOm.style.top = (e.touches[0].clientY - 38) + 'px';
-      floatingOm.style.bottom = 'auto';
-      floatingOm.style.right = 'auto';
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-      if (!isDragging) return;
-      isDragging = false;
-      if (!hasMoved) handleOmClick(e);
-    });
-
-    // 8. CHATGPT / GEMINI MODERN AI CHAT ENGINE
-    async function executeNaradChat() {
-      const field = document.getElementById('userQueryInput');
-      const q = field.value.trim();
-      if (!q) return;
-
-      const stream = document.getElementById('chatStream');
-      
-      const userBubble = document.createElement('div');
-      userBubble.className = 'chat-bubble user selectable-text';
-      userBubble.innerText = q;
-      stream.appendChild(userBubble);
-      field.value = '';
-      stream.scrollTop = stream.scrollHeight;
-
-      const aiBubble = document.createElement('div');
-      aiBubble.className = 'chat-bubble narad selectable-text';
-      aiBubble.innerText = 'ॐ तत्सत्! समस्त वेदों, १८ पुराणों व गीता का मंथन कर रहा हूँ...';
-      stream.appendChild(aiBubble);
-      stream.scrollTop = stream.scrollHeight;
-
-      const promptContext = `[User Context - Name: "${userName || 'साधक'}", Deity: "${userDeity}", Lang: "${userLang}"]
-You are 'सनातन दिव्य AI' (Sanatan Divine Cosmic Wisdom Guide).
-Answer the user's spiritual or philosophical question authoritatively using authentic citations from:
-- 4 Vedas (Rig, Yajur, Sama, Atharva)
-- 18 Mahapuranas (Bhagavata, Vishnu, Shiva, etc.)
-- Shrimad Bhagavad Gita
-Format:
-🕉️ [गूढ़ आध्यात्मिक समाधान]
-📖 [ग्रंथ प्रमाण / श्लोक संदर्भ]
-💡 [साधक हेतु व्यावहारिक मार्ग]
-User asks: ${q}`;
-
-      try {
-        const controller = new AbortController();
-        const tid = setTimeout(() => controller.abort(), 9000);
-        const res = await fetch(CLOUDFLARE_WORKER_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ query: promptContext }),
-          signal: controller.signal
-        });
-        clearTimeout(tid);
-        const data = await res.json();
-        const reply = data.reply || getLocalVedicResponse(q);
-        aiBubble.innerText = reply;
-        speakCalmVoice(reply.replace(/[*#🕉️📖💡]/g, ''));
-      } catch (err) {
-        const fallbackReply = getLocalVedicResponse(q);
-        aiBubble.innerText = fallbackReply;
-        speakCalmVoice(fallbackReply.replace(/[*#🕉️📖💡]/g, ''));
+    let divineAuras = [];
+    class DivineAuraWave {
+      constructor(x, y) {
+        this.x = x; this.y = y; this.radius = 4; this.maxRadius = 55; this.alpha = 0.85; this.speed = 3.0;
       }
-      stream.scrollTop = stream.scrollHeight;
-    }
-
-    // Comprehensive Fallback Offline Spiritual Chatbot Engine
-    function getLocalVedicResponse(query) {
-      const q = query.toLowerCase();
-      if (q.includes('कर्म') || q.includes('भाग्य')) {
-        return `🕉️ **कर्म एवं भाग्य का रहस्य:**\nभगवान श्रीकृष्ण गीता (२.४७) में स्पष्ट करते हैं कि मनुष्य का अधिकार केवल वर्तमान कर्तव्य कर्म पर है। पूर्व जन्मों के संचित कर्म ही 'प्रारब्ध' (भाग्य) बनते हैं, परंतु आज का पुरुषार्थ भाग्य को बदलने में सक्षम है।\n\n📖 **ग्रंथ प्रमाण:** श्रीमद्भगवद्गीता २.४७ एवं योगवासिष्ठ।\n💡 **मार्गदर्शन:** फल की चिंता त्यागकर ईश्वरार्पण बुद्धि से निष्काम कर्म करें।`;
-      } else if (q.includes('मन') || q.includes('शांति') || q.includes('तनाव') || q.includes('एकाग्र')) {
-        return `🕉️ **चित्त शांति का वैदिक मार्ग:**\nमन वायु के समान चंचल है (गीता ६.३५)। इसे वश में करने के दो ही उपाय हैं—'अभ्यास' (नियमित नाम जप व प्राणायाम) और 'वैराग्य' (क्षणभंगुर भोगों से आसक्ति हटाना)।\n\n📖 **ग्रंथ प्रमाण:** पातंजल योगसूत्र एवं गीता ६.३५।\n💡 **मार्गदर्शन:** प्रतिदिन कम से कम १०८ बार ॐ नमः शिवाय या अपने इष्ट मंत्र का मौन ध्यान करें।`;
-      } else if (q.includes('वेद') || q.includes('पुराण')) {
-        return `🕉️ **वेद व पुराणों का शाश्वत संदेश:**\nचारों वेद (ऋक्, यजुः, साम, अथर्व) सनातन सत्य के साक्षात संविधान हैं, और १८ महापुराण उसी गूढ़ ज्ञान को सरल कथाओं व इतिहास द्वारा समझाते हैं। महर्षि व्यास का अंतिम निष्कर्ष है—'परोपकाराय पुण्याय पापाय परपीडनम्'।\n\n📖 **ग्रंथ प्रमाण:** अष्टादश पुराण सार।\n💡 **मार्गदर्शन:** परोपकार ही सबसे बड़ा पुण्य है और किसी को कष्ट न देना ही परम धर्म है।`;
-      } else if (q.includes('मृत्यु') || q.includes('आत्मा') || q.includes('मोक्ष')) {
-        return `🕉️ **आत्मा की अमरता का सत्य:**\nआत्मा अजन्मा, नित्य, सनातन और अविनाशी है (गीता २.२०)। जैसे मनुष्य पुराने वस्त्रों को त्यागकर नए वस्त्र धारण करता है, वैसे ही आत्मा जीर्ण शरीर को छोड़कर नया शरीर पाती है।\n\n📖 **ग्रंथ प्रमाण:** कठोपनिषद् एवं श्रीमद्भगवद्गीता २.२२।\n💡 **मार्गदर्शन:** शरीर के नश्वरता का बोध रखते हुए आत्म-साक्षात्कार की साधना करें।`;
-      } else {
-        return `🕉️ **सनातन दिव्य परामर्श:**\nवत्स, आपके प्रश्न '${query}' के संदर्भ में समस्त शास्त्र यही निर्देश करते हैं कि आत्मबोध, सत्य का आचरण और ईश्वर शरणागति ही समस्त संशयों का अंतिम समाधान है।\n\n📖 **प्रमाण:** 'सर्वधर्मान्परित्यज्य मामेकं शरणं व्रज' (गीता १८.६६)।\n💡 **मार्गदर्शन:** जो भी परिस्थिति हो, स्थिर बुद्धि होकर धर्मानुकूल निर्णय लें और प्रभु का स्मरण रखें।`;
+      update() { this.radius += this.speed; this.alpha -= 0.04; }
+      draw() {
+        pCtx.save();
+        pCtx.globalAlpha = Math.max(0, this.alpha);
+        pCtx.strokeStyle = '#ffd700';
+        pCtx.lineWidth = 1.6;
+        pCtx.beginPath();
+        pCtx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        pCtx.stroke();
+        pCtx.restore();
       }
     }
 
-    function applySuggestion(topic) {
-      document.getElementById('liveSearch').value = topic;
-      document.getElementById('suggestionsBox').classList.remove('active');
-      executeAISearch();
-    }
-
-    function openSuggestions() { document.getElementById('suggestionsBox').classList.add('active'); }
-
-    function executeAISearch(e) {
-      if (e) e.stopPropagation();
-      const val = document.getElementById('liveSearch').value.trim();
-      if (!val) return;
-      document.getElementById('userQueryInput').value = val;
-      handleOmClick();
-      setTimeout(() => executeNaradChat(), 600);
-    }
-
-    // 9. SPEECH-TO-TEXT MIC
-    let speechRecognizer = null;
-    let isRecording = false;
-
-    function initSpeechEngine() {
-      const SpeechClass = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (!SpeechClass) return;
-      speechRecognizer = new SpeechClass();
-      speechRecognizer.lang = (userLang === 'en' ? 'en-IN' : 'hi-IN');
-      speechRecognizer.onstart = () => {
-        isRecording = true;
-        document.getElementById('voiceMicBtn').classList.add('listening');
-        document.getElementById('userQueryInput').placeholder = "सुन रहा हूँ... बोलिए";
-      };
-      speechRecognizer.onresult = (e) => {
-        document.getElementById('userQueryInput').value = e.results[0][0].transcript;
-        stopVoiceRecording();
-        setTimeout(() => executeNaradChat(), 300);
-      };
-      speechRecognizer.onerror = () => stopVoiceRecording();
-      speechRecognizer.onend = () => stopVoiceRecording();
-    }
-
-    function toggleVoiceRecording(e) {
-      if (e) e.stopPropagation();
-      if (!speechRecognizer) initSpeechEngine();
-      if (!speechRecognizer) { alert("वॉइस इनपुट इस ब्राउज़र में समर्थित नहीं है।"); return; }
-      if (isRecording) {
-        stopVoiceRecording();
-      } else {
-        try { speechRecognizer.start(); } catch(err) { stopVoiceRecording(); }
+    function loopParticleCanvas() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+      for (let i = divineAuras.length - 1; i >= 0; i--) {
+        divineAuras[i].update(); divineAuras[i].draw();
+        if (divineAuras[i].alpha <= 0) divineAuras.splice(i, 1);
       }
+      requestAnimationFrame(loopParticleCanvas);
+    }
+    loopParticleCanvas();
+
+    function triggerSmoothGoldenAura(x, y) {
+      divineAuras.push(new DivineAuraWave(x, y));
     }
 
-    function stopVoiceRecording() {
-      if (speechRecognizer && isRecording) try { speechRecognizer.stop(); } catch(e) {}
-      isRecording = false;
-      document.getElementById('voiceMicBtn').classList.remove('listening');
-      document.getElementById('userQueryInput').placeholder = "पूछें या 🎙️ दबाकर बोलें...";
-    }
+    // 14. CLEAN TAP-ONLY JAAP ENGINE
+    const holyColors = ["#ffd700", "#ff6a00", "#00f0ff", "#ffe680", "#ffb300"];
+    const jaapOrb = document.getElementById('jaapOrb');
+    const chantContainer = document.getElementById('chantLayer');
 
-    // 10. SACRED GEOMETRY CANVAS SYSTEM
-    const bgCanvas = document.getElementById('divineCanvas');
-    const bgCtx = bgCanvas.getContext('2d');
-    let bgRot = 0;
-    let activeTheme = 'gita';
-
-    const themeColors = {
-      gita: { glow: '#ffd700', border: 'rgba(255, 215, 0, 0.4)', accent: '#ff6600', c1: [48, 20, 4], c2: [20, 8, 2], c3: [6, 2, 1] },
-      veda: { glow: '#00d4ff', border: 'rgba(0, 212, 255, 0.4)', accent: '#0055ff', c1: [8, 24, 60], c2: [4, 12, 32], c3: [2, 4, 16] },
-      puran: { glow: '#00ffaa', border: 'rgba(0, 255, 170, 0.4)', accent: '#00a86b', c1: [4, 42, 32], c2: [2, 20, 16], c3: [1, 8, 6] },
-      katha: { glow: '#ff8800', border: 'rgba(255, 136, 0, 0.4)', accent: '#d83a00', c1: [58, 20, 6], c2: [28, 9, 2], c3: [10, 3, 1] }
-    };
-
-    function setAppSectionTheme(key) {
-      activeTheme = key || 'gita';
-      const t = themeColors[activeTheme] || themeColors.gita;
-      document.documentElement.style.setProperty('--theme-glow', t.glow);
-      document.documentElement.style.setProperty('--theme-border', t.border);
-      document.documentElement.style.setProperty('--theme-accent', t.accent);
-    }
-
-    function renderCanvasBg() {
-      const w = window.innerWidth;
-      const h = window.innerHeight;
-      bgCanvas.width = w;
-      bgCanvas.height = h;
-
-      const t = themeColors[activeTheme] || themeColors.gita;
-      const cx = w / 2;
-      const cy = h / 2;
-
-      const grad = bgCtx.createRadialGradient(cx, cy * 0.7, 10, cx, cy * 0.7, Math.max(w, h) * 0.85);
-      grad.addColorStop(0, `rgb(${t.c1.join(',')})`);
-      grad.addColorStop(0.5, `rgb(${t.c2.join(',')})`);
-      grad.addColorStop(1, `rgb(${t.c3.join(',')})`);
-      bgCtx.fillStyle = grad;
-      bgCtx.fillRect(0, 0, w, h);
-
-      bgCtx.save();
-      bgCtx.translate(cx, cy);
-      bgCtx.rotate(bgRot);
-      const rad = Math.min(w * 0.38, 220);
-
-      bgCtx.beginPath();
-      bgCtx.arc(0, 0, rad, 0, Math.PI * 2);
-      bgCtx.arc(0, 0, rad * 0.78, 0, Math.PI * 2);
-      bgCtx.strokeStyle = 'rgba(255, 215, 0, 0.12)';
-      bgCtx.lineWidth = 2;
-      bgCtx.stroke();
-
-      for (let i = 0; i < 24; i++) {
-        const a = (i * Math.PI * 2) / 24;
-        bgCtx.beginPath();
-        bgCtx.moveTo(0, 0);
-        bgCtx.lineTo(Math.cos(a) * rad, Math.sin(a) * rad);
-        bgCtx.strokeStyle = 'rgba(255, 215, 0, 0.08)';
-        bgCtx.stroke();
-      }
-      bgCtx.restore();
-
-      bgRot += 0.0025;
-      requestAnimationFrame(renderCanvasBg);
-    }
-    requestAnimationFrame(renderCanvasBg);
-
-    // 11. NAAM JAAP ENGINE
-    function handleOrbClick(e) {
-      if (e) e.stopPropagation();
+    function performJaapAt(x, y) {
       dailyJaap++;
       lifetimeJaap++;
       SafeStorage.set('SANATAN_DAILY_JAAP', dailyJaap);
       SafeStorage.set('SANATAN_LIFETIME_JAAP', lifetimeJaap);
+      SafeStorage.set('SANATAN_LAST_ACTIVE_DATE', new Date().toDateString());
 
-      document.getElementById('dailyJaapDisplay').innerText = dailyJaap;
-      document.getElementById('lifetimeJaapDisplay').innerText = `कुल: ${lifetimeJaap}`;
-      document.getElementById('jaapSubDisplay').innerText = `आज का जाप • माला: ${Math.floor(dailyJaap / 108)} (${dailyJaap % 108}/108)`;
-
+      updateCountersOnly();
       playCalmMalaSound();
-      if (navigator.vibrate) try { navigator.vibrate(10); } catch(err) {}
+      triggerSmoothGoldenAura(x, y);
 
-      const orb = document.getElementById('jaapOrb');
-      orb.classList.add('pulse-burst');
-      setTimeout(() => orb.classList.remove('pulse-burst'), 130);
-    }
+      jaapOrb.style.transform = 'scale(1.22)';
+      setTimeout(() => { jaapOrb.style.transform = 'scale(1)'; }, 120);
 
-    function resetDailyCounter(e) {
-      if (e) e.stopPropagation();
-      if (confirm("क्या आप आज का नाम जाप शून्य करना चाहते हैं?")) {
-        dailyJaap = 0;
-        SafeStorage.set('SANATAN_DAILY_JAAP', '0');
-        document.getElementById('dailyJaapDisplay').innerText = '0';
-        document.getElementById('jaapSubDisplay').innerText = 'आज का जाप • माला: ० (०/१०८)';
+      let currentChantPool = universalChants;
+      if (activeDeityObj.isExplicit && activeDeityObj.chants && activeDeityObj.chants.length > 0) {
+        currentChantPool = activeDeityObj.chants;
+      }
+      const selectedChant = currentChantPool[Math.floor(Math.random() * currentChantPool.length)];
+
+      const span = document.createElement('span');
+      span.className = 'divine-float-text';
+      span.innerText = selectedChant;
+      span.style.color = holyColors[Math.floor(Math.random() * holyColors.length)];
+      span.style.left = x + 'px';
+      span.style.top = y + 'px';
+      span.style.textShadow = '0 0 10px ' + span.style.color;
+
+      chantContainer.appendChild(span);
+      setTimeout(() => span.remove(), 1050);
+
+      if (dailyJaap % 108 === 0 && dailyJaap !== 0) {
+        triggerMilestoneCelebration();
       }
     }
 
-    // 12. ONBOARDING & SETTINGS
-    function checkOnboarding() {
-      if (!userName) {
-        document.getElementById('onboardingModal').style.display = 'flex';
-        document.body.classList.add('modal-locked');
-      } else {
-        document.getElementById('headerUserGreeting').innerText = userName;
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      const dx = Math.abs(e.changedTouches[0].clientX - touchStartX);
+      const dy = Math.abs(e.changedTouches[0].clientY - touchStartY);
+
+      if (dx > 8 || dy > 8) return;
+
+      const x = e.changedTouches[0].clientX;
+      const y = e.changedTouches[0].clientY;
+      const target = document.elementFromPoint(x, y);
+
+      // If user tapped anywhere while voice agent was active -> CLOSE IT!
+      if (isVoiceAgentActive) {
+        closeVoiceAgent();
+        return;
+      }
+
+      if (target && (
+        target.closest('#voiceAgentModal') ||
+        target.closest('.modal-curtain') ||
+        target.closest('#dailyEntryModal') ||
+        target.closest('.search-sanctum') ||
+        target.closest('#aiSearchResultCard') ||
+        target.closest('button') ||
+        target.closest('select') ||
+        target.closest('input') ||
+        target.closest('#omDivineEntity')
+      )) {
+        return;
+      }
+
+      performJaapAt(x, y);
+    }, { passive: true });
+
+    window.addEventListener('click', (e) => {
+      if ('ontouchstart' in window) return;
+
+      if (isVoiceAgentActive) {
+        closeVoiceAgent();
+        return;
+      }
+
+      if (
+        e.target.closest('#voiceAgentModal') || 
+        e.target.closest('.modal-curtain') || 
+        e.target.closest('#dailyEntryModal') || 
+        e.target.closest('.search-sanctum') || 
+        e.target.closest('#aiSearchResultCard') ||
+        e.target.closest('button') || 
+        e.target.closest('select') || 
+        e.target.closest('input') || 
+        e.target.closest('#omDivineEntity')
+      ) return;
+      performJaapAt(e.clientX, e.clientY);
+    });
+
+    function handleOrbClick(e) {
+      if (e) e.stopPropagation();
+      const rect = jaapOrb.getBoundingClientRect();
+      performJaapAt(rect.left + rect.width / 2, rect.top + 75);
+    }
+
+    // 15. AI SEARCH
+    function openSuggestions() { document.getElementById('suggestionsBox').classList.add('active'); }
+    function closeSuggestions() { document.getElementById('suggestionsBox').classList.remove('active'); }
+    function applySuggestion(topic) {
+      document.getElementById('liveSearch').value = topic;
+      closeSuggestions();
+      executeAISearch();
+    }
+    function handleSearchKey(event) {
+      executeLocalFilter();
+      if (event.key === 'Enter') { closeSuggestions(); executeAISearch(); }
+    }
+    function executeLocalFilter() {
+      const q = document.getElementById('liveSearch').value.toLowerCase().trim();
+      const currentTab = document.querySelector('.tab-section.active');
+      if (!currentTab) return;
+      currentTab.querySelectorAll('.verse-card').forEach(card => {
+        card.style.display = card.innerText.toLowerCase().includes(q) ? 'block' : 'none';
+      });
+    }
+
+    async function executeAISearch(e) {
+      if (e) e.stopPropagation();
+      const query = document.getElementById('liveSearch').value.trim();
+      if (!query) return;
+
+      closeSuggestions();
+      const aiCard = document.getElementById('aiSearchResultCard');
+      const content = document.getElementById('aiCardContent');
+      aiCard.style.display = 'block';
+      content.innerHTML = '✨ *दिव्य ओंकार वेदों का मंथन कर रहा है... प्रतीक्षा करें।*';
+
+      const deityName = activeDeityObj.hindiName;
+      const structuredPrompt = `[User Profile - Name: "${userName}", Beloved Deity: "${deityName}", Language: "${userLang}"]
+Topic: "${query}". Provide: 1 Shloka with Reference and inspiring summary in ${userLang}.`;
+
+      try {
+        const res = await fetch(CLOUDFLARE_WORKER_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ query: structuredPrompt })
+        });
+        const data = await res.json();
+        content.innerText = data.reply || "ॐ! उत्तर प्राप्त नहीं हो सका।";
+      } catch (err) {
+        content.innerText = "ॐ शान्तिः! संपर्क में बाधा आई है।";
+      }
+    }
+    function closeAICard(e) { if (e) e.stopPropagation(); document.getElementById('aiSearchResultCard').style.display = 'none'; }
+    function copyAIData(e) {
+      if (e) e.stopPropagation();
+      navigator.clipboard.writeText(document.getElementById('aiCardContent').innerText).then(() => alert("कॉपी किया गया!"));
+    }
+    function shareAIWhatsApp(e) {
+      if (e) e.stopPropagation();
+      const text = document.getElementById('aiCardContent').innerText;
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('🕉️ *दिव्य AI श्लोक*\n\n' + text), '_blank');
+    }
+
+    // 16. DRAGGABLE & VERTICAL SLOW-FLOATING "ॐ" CONTROLLER
+    const omEntity = document.getElementById('omDivineEntity');
+    let omX = (window.innerWidth || 360) - 95; 
+    let omY = 160;
+    let isDraggingOm = false;
+    let dragStartX = 0, dragStartY = 0;
+    let initialX = omX, initialY = omY;
+    let hasMovedOm = false;
+
+    // Slow Vertical Floating Loop
+    function verticalOmFloatLoop() {
+      if (!isDraggingOm && omEntity) {
+        const verticalBob = Math.sin(Date.now() * 0.0016) * 16;
+        omEntity.style.transform = `translate3d(${omX}px, ${omY + verticalBob}px, 0)`;
+      }
+      requestAnimationFrame(verticalOmFloatLoop);
+    }
+    requestAnimationFrame(verticalOmFloatLoop);
+
+    function onOmDragStart(clientX, clientY) {
+      isDraggingOm = true;
+      hasMovedOm = false;
+      dragStartX = clientX; dragStartY = clientY;
+      initialX = omX; initialY = omY;
+    }
+
+    function onOmDragMove(clientX, clientY) {
+      if (!isDraggingOm) return;
+      const dx = clientX - dragStartX;
+      const dy = clientY - dragStartY;
+      if (Math.hypot(dx, dy) > 6) hasMovedOm = true;
+      omX = Math.max(10, Math.min((window.innerWidth || 360) - 90, initialX + dx));
+      omY = Math.max(65, Math.min((window.innerHeight || 640) - 110, initialY + dy));
+      omEntity.style.transform = `translate3d(${omX}px, ${omY}px, 0)`;
+    }
+
+    function onOmDragEnd(e) {
+      if (!isDraggingOm) return;
+      isDraggingOm = false;
+      // Single Tap on ॐ -> Open Voice Agent!
+      if (!hasMovedOm) {
+        if (e && e.stopPropagation) e.stopPropagation();
+        openVoiceAgent();
       }
     }
 
-    function closeOnboardingModal(e) {
+    omEntity.addEventListener('touchstart', (e) => onOmDragStart(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+    window.addEventListener('touchmove', (e) => { if (isDraggingOm) onOmDragMove(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+    window.addEventListener('touchend', (e) => { if (isDraggingOm) onOmDragEnd(e); });
+
+    omEntity.addEventListener('mousedown', (e) => { e.preventDefault(); onOmDragStart(e.clientX, e.clientY); });
+    window.addEventListener('mousemove', (e) => { if (isDraggingOm) onOmDragMove(e.clientX, e.clientY); });
+    window.addEventListener('mouseup', (e) => { if (isDraggingOm) onOmDragEnd(e); });
+
+    // 17. BACKGROUND SACRED GEOMETRY
+    const bgCanvas = document.getElementById('divineCanvas');
+    const bgCtx = bgCanvas.getContext('2d');
+    function resizeBgCanvas() { 
+      bgCanvas.width = window.innerWidth || 360; 
+      bgCanvas.height = window.innerHeight || 640; 
+    }
+    window.addEventListener('resize', resizeBgCanvas);
+    resizeBgCanvas();
+
+    let bgRot = 0;
+    function renderDivineBackground() {
+      const w = bgCanvas.width || 360, h = bgCanvas.height || 640, cx = w / 2, cy = h / 2;
+      bgCtx.clearRect(0, 0, w, h);
+      const baseRadius = Math.min(w * 0.42, 260);
+      bgCtx.save();
+      bgCtx.translate(cx, cy);
+      bgCtx.rotate(-bgRot * 0.3);
+      bgCtx.strokeStyle = 'rgba(255, 215, 0, 0.08)';
+      bgCtx.lineWidth = 1.5;
+      bgCtx.setLineDash([8, 6]);
+      bgCtx.beginPath();
+      bgCtx.arc(0, 0, baseRadius, 0, Math.PI * 2);
+      bgCtx.stroke();
+      bgCtx.restore();
+      bgRot += 0.003;
+      requestAnimationFrame(renderDivineBackground);
+    }
+    renderDivineBackground();
+
+    // 18. TAB NAVIGATION
+    function switchCategory(catId, btnElement, e) {
       if (e) e.stopPropagation();
-      document.getElementById('onboardingModal').style.display = 'none';
-      document.body.classList.remove('modal-locked');
+      playTabSound();
+      document.querySelectorAll('.tab-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      const targetSec = document.getElementById(catId);
+      if (targetSec) targetSec.classList.add('active');
+      if (btnElement) btnElement.classList.add('active');
+      executeLocalFilter();
     }
-
-    function submitOnboarding() {
-      userName = document.getElementById('obNameInput').value.trim() || 'साधक';
-      userDeity = document.getElementById('obDeityInput').value.trim() || 'सभी देव स्वरूप';
-      userLang = document.getElementById('obLangInput').value || 'hi';
-
-      SafeStorage.set('SANATAN_USER_NAME', userName);
-      SafeStorage.set('SANATAN_USER_DEITY', userDeity);
-      SafeStorage.set('SANATAN_USER_LANG', userLang);
-
-      document.getElementById('headerUserGreeting').innerText = userName;
-      closeOnboardingModal();
-      playSingingBowlBell();
-    }
-
-    function quickSelectDeity(name) {
-      const map = { ram: 'श्री राम', shiva: 'महादेव शिव', krishna: 'श्री कृष्ण', hanuman: 'हनुमान जी', durga: 'माँ दुर्गा', ganesh: 'श्री गणेश' };
-      document.getElementById('obDeityInput').value = map[name] || name;
-    }
-
-    function openSettingsModal(e) {
+    function filterByTag(tag) { document.getElementById('liveSearch').value = tag; executeLocalFilter(); }
+    function copyCardData(btn, e) {
       if (e) e.stopPropagation();
-      document.getElementById('onboardingModal').style.display = 'flex';
-      document.body.classList.add('modal-locked');
+      const card = btn.closest('.verse-card');
+      navigator.clipboard.writeText(card.querySelector('h2').innerText + '\n\n' + card.innerText).then(() => {
+        btn.innerText = "✓ Copy!"; setTimeout(() => btn.innerText = "📋 Copy", 2000);
+      });
+    }
+    function shareWhatsApp(btn, e) {
+      if (e) e.stopPropagation();
+      const card = btn.closest('.verse-card');
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('🕉️ *' + card.querySelector('h2').innerText + '*\n\n' + card.innerText), '_blank');
     }
 
-    // 13. UTILS (COPY & WHATSAPP)
-    function copyText(txt) {
-      navigator.clipboard.writeText(txt).then(() => alert("श्लोक व भावार्थ कॉपी किया गया!"));
-    }
+    // 19. SCRIPTURES DATA
+    const dailyScriptures = [
+      {
+        title: "कर्मण्येवाधिकारस्ते (श्रीमद्भगवद्गीता २.४७)",
+        shlok: "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥",
+        meanings: {
+          hi: "तुम्हारा अधिकार केवल कर्तव्य-कर्म करने में है, उसके फल पर कभी नहीं। फल की वासना से कर्म मत करो, और अकर्मण्यता में भी अनुराग न हो।",
+          en: "You have a right to perform your duty, but never to the fruits of action.",
+          hinglish: "Tumhara adhikar keval kartavya-karm karne me hai, uske phal par kabhi nahi.",
+          sa: "कर्मण्येव तवाधिकारः अस्ति, फलेषु कदापि मा अस्तु।",
+          ur: "آپ کا حق صرف اپنے فرض کی ادائیگی پر ہے، اس کے نتائج پر نہیں۔"
+        }
+      },
+      {
+        title: "गायत्री महामंत्र (ऋग्वेद ३.६२.१०)",
+        shlok: "ॐ भूर्भुवः स्वः तत्सवितुर्वरेण्यं\nभर्गो देवस्य धीमहि धियो यो नः प्रचोदयात्॥",
+        meanings: {
+          hi: "उस प्राणस्वरूप, दुःखनाशक परमात्मा का हम ध्यान करें, वह हमारी बुद्धि को सन्मार्ग पर प्रेरित करे।",
+          en: "We meditate on the divine light of the Creator, may It guide our intellect.",
+          hinglish: "Us praan-daata parmeshwar ka hum dhyan karein jo hamari buddhi ko sanmarg par le jaye.",
+          sa: "सवितुः देवस्य तद् वरेण्यं भर्गः धीमहि, यः नः धियः प्रचोदयात्।",
+          ur: "ہم اس کائنات کے نورِ حقیقی کا دھیان کرتے ہیں جو ہماری عقل کو سیدھی راہ دکھائے۔"
+        }
+      }
+    ];
 
-    function shareCustomWhatsApp(title, shlok, meaning) {
-      const txt = encodeURIComponent(`🕉️ *${title}*\n\n${shlok}\n\n*भावार्थ:* ${meaning}\n\n👉 पढ़ें सनातन ज्ञान महासागर पर: ${window.location.href}`);
-      window.open('https://api.whatsapp.com/send?text=' + txt, '_blank');
+    function loadDailyWisdom() {
+      const data = dailyScriptures[new Date().getDate() % dailyScriptures.length];
+      const container = document.getElementById('dailyVerseContainer');
+      const translatedMeaning = (data.meanings && data.meanings[userLang]) || data.meanings.hi;
+      const meaningPrefix = (userLang === 'en' ? "Essence: " : (userLang === 'ur' ? "مفہوم: " : "भावार्थ: "));
+
+      if (container) {
+        container.innerHTML = 
+          '<h3 style="color:var(--gold-bright); font-family:var(--font-title); font-size:1.15rem; margin-bottom:4px;">' + data.title + '</h3>' +
+          '<p style="color:#ffe8b3; font-style:italic; font-size:0.95rem; margin-bottom:6px; white-space:pre-line;">' + data.shlok + '</p>' +
+          '<p style="color:#dfcaa7; font-size:0.88rem;">' + meaningPrefix + translatedMeaning + '</p>';
+      }
     }
 
     function shareDailyWhatsApp(e) {
       if (e) e.stopPropagation();
-      shareCustomWhatsApp("कर्मण्येवाधिकारस्ते (श्रीमद्भगवद्गीता)", "कर्मण्येवाधिकारस्ते मा फलेषु कदाचन।\nमा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥", "तुम्हारा अधिकार केवल कर्तव्य-कर्म करने में है, फल पर नहीं। फल की आसक्ति छोड़कर निष्काम कर्म करो।");
+      const data = dailyScriptures[new Date().getDate() % dailyScriptures.length];
+      const translatedMeaning = (data.meanings && data.meanings[userLang]) || data.meanings.hi;
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent('🕉️ *' + data.title + '*\n\n' + data.shlok + '\n\n*भावार्थ:* ' + translatedMeaning), '_blank');
     }
 
-    function openDailyDiyaDarshan(e) {
-      if (e) e.stopPropagation();
-      openScripturePortal('gita');
+    // 20. INITIALIZE SAFELY
+    function initSanatanApp() {
+      applyLanguageAndDeity();
+      checkUserOnboarding();
     }
 
-    // INITIALIZATION
-    window.addEventListener('DOMContentLoaded', () => {
-      populateScriptureShelves();
-      checkOnboarding();
-      document.getElementById('dailyVerseContainer').innerHTML = `
-        <h3 style="color:var(--gold-bright); font-family:var(--font-title); font-size:1.15rem; margin-bottom:4px;">कर्मण्येवाधिकारस्ते (गीता २.४७)</h3>
-        <p style="color:#ffe8b3; font-style:italic; font-size:0.95rem; margin-bottom:6px;">कर्मण्येवाधिकारस्ते मा फलेषु कदाचन। मा कर्मफलहेतुर्भूर्मा ते सङ्गोऽस्त्वकर्मणि॥</p>
-        <p style="color:#dfcaa7; font-size:0.88rem;"><strong>भावार्थ:</strong> कर्म पर तुम्हारा अधिकार है, फल पर कभी नहीं। फल की कामना छोड़कर निष्काम कर्तव्य निभाओ।</p>
-      `;
-    });
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initSanatanApp);
+    } else {
+      initSanatanApp();
+    }
   </script>
 </body>
 </html>
